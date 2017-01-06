@@ -1,0 +1,1 @@
+INDEX VERSION 1.129+/Users/michaelgeddes/Documents/GitHub/Steamworks2017/.metadata/.plugins/org.eclipse.jdt.core

@@ -1,0 +1,4 @@
+2017-01-05 20:31:18,060 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2017-01-05 20:32:21,851 [Thread-7] ERROR org.eclipse.jgit.util.FS - 2017-01-05 20:32:21.125 xcodebuild[896:33648] [MT] PluginLoading: Required plug-in compatibility UUID DA4FDFD8-C509-4D8B-8B55-84A7B66AE701 for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Unity4XC.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2017-01-05 20:32:21.128 xcodebuild[896:33648] Failed to load plugin at: /Users/michaelgeddes/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Unity4XC.xcplugin, skipping.  Reason for failure: *** -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]
+
