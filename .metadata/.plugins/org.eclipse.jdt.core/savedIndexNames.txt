@@ -6,7 +6,6 @@ INDEX VERSION 1.129+/Users/michaelgeddes/Documents/GitHub/Steamworks2017/.metada
 2777386132.index
 1116271856.index
 346711152.index
-2968020283.index
 1165542491.index
 4059364602.index
 489563832.index

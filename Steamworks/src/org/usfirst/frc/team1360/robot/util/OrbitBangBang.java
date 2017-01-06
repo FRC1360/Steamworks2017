@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1360.robot.util;
 
 public class OrbitBangBang {
+	
 	private double highOutput;
 	private double lowOutput;
 	private double target;
