@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="athena-project-build" default="deploy">
+  <property file="${user.home}/wpilib/cpp/${version}/ant/ni_image.properties"/>
+
+  <!-- Load Tasks -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <pathelement location="${wpilib.ant.dir}/ant-contrib.jar"/>
+    </classpath>
+  </taskdef>
+  <taskdef resource="net/jtools/classloadertask/antlib.xml" classpath="${classloadertask.jar}"/>
+  <classloader loader="system" classpath="${jsch.jar}"/>
+
+  <target name="clean" description="Clean up all build and distribution artifacts.">
+    <delete dir="${build.dir}"/>
+    <delete dir="${dist.dir}"/>
+  </target>
+
+  <!-- Targets -->
+
+  <target name="get-target-ip">
+    <property name="ant.enable.asserts" value="true"/>
+	<assert name="team-number" exists="true" message="Team number not set. Go to Window->Preferences->WPILib Preferences to set it."/>
+    <property name="target" value="roboRIO-${team-number}-FRC.local" />
+	<echo>Trying Target: ${target}</echo>
+	 <if>
+		<isreachable host="${target}" timeout="5"/>
+	  <then>
+		<echo>roboRIO found via mDNS</echo>
+	  </then>
+	  <else>
+		<var name="target" unset="true"/>
+		<echo> roboRIO not found via mDNS, falling back to DNS</echo>
+	  	<property name="target" value="roboRIO-${team-number}-FRC.lan"/>
+		<if>
+			<isreachable host="${target}" timeout="5"/>
+		  <then>
+			<echo>roboRIO found via DNS</echo>
+		  </then>
+	  	  <else>
+			<var name="target" unset="true"/>
+			<echo> roboRIO not found via DNS, falling back to static USB</echo>
+			<property name="target" value="172.22.11.2"/>
+			<if>
+				<isreachable host="${target}" timeout="5"/>
+			  <then>
+				<echo>roboRIO found via static USB</echo>
+			  </then>
+			  <else>
+				<var name="target" unset="true"/>
+				<math result="ip.upper" operand1="${team-number}" operation="/" operand2="100" datatype="int"/>
+				<math result="ip.lower" operand1="${team-number}" operation="%" operand2="100" datatype="int"/>
+				<property name="target" value="10.${ip.upper}.${ip.lower}.2"/>
+				<echo>roboRIO not found via USB, falling back to static address of ${target}</echo>
+				<assert name="roboRIOFound" message="roboRIO not found, please check that the roboRIO is connected, imaged and that the team number is set properly in Eclipse">
+					<bool>
+						<isreachable host="${target}" timeout="5"/>
+					</bool>
+				</assert>
+				<echo>roboRIO found via Ethernet static</echo>
+			  </else>
+			</if>
+	  	  </else>
+	  	</if>
+	  </else>
+	 </if>
+  </target>
+
+  <target name="deploy" depends="get-target-ip, dependencies" description="Deploy the progam and start it running.">
+    <deploy-libs libs.name="WPI_Native_Libraries" libs.basedir="${wpilib.lib}">
+      <libs.local>
+        <fileset id="wpiNativeLibs.local" dir="${wpilib.lib}">
+          <include name="libHALAthena.so"/>
+          <include name="libntcore.so"/>
+          <include name="libwpiutil.so"/>
+          <include name="libopencv*.so.3.1"/>
+          <include name="libcscore.so"/>
+          <include name="libwpilibc.so"/>
+        </fileset>
+      </libs.local>
+    </deploy-libs>
+    <deploy-libs libs.name="User_Libraries" libs.basedir="${userLibs.dir}">
+      <libs.local>
+        <fileset dir="${userLibs.dir}">
+          <include name="**/*.so"/>
+        </fileset>
+      </libs.local>
+    </deploy-libs>
+
+    <sshexec host="${target}"
+         username="${username}"
+         password="${password}"
+         trust="true"
+         failonerror="no"
+         command="rm -f ${deploy.dir}/FRCUserProgram" />
+
+    <sshexec host="${target}"
+         username="${adminUsername}"
+         password="${password}"
+         trust="true"
+         command="ldconfig" />
+
+    <echo>[athena-deploy] Copying code over.</echo>
+    <scp file="${out.exe}" todir="${username}@${target}:${deploy.dir}" password="${password}" trust="true"/>
+
+     <!-- Suppress the exit status so that if no netconsole was running then
+          it doesn't show up red on the output. -->
+    <sshexec host="${target}"
+               username="admin"
+               password="${password}"
+               trust="true"
+               failonerror="false"
+               command="killall -q netconsole-host || :"/>
+
+    <scp file="${wpilib.ant.dir}/robotCommand" todir="${username}@${target}:/home/lvuser/" password="${password}" trust="true"/>
+    <echo>[athena-deploy] Giving program CAP_SYS_NICE capability.</echo>
+    <sshexec host="${target}"
+       username="admin"
+       password="${password}"
+       trust="true"
+       failonerror="true"
+       command="setcap 'cap_sys_nice=pe' /home/lvuser/FRCUserProgram"/>
+
+    <echo>[athena-deploy] Starting program.</echo>
+    <sshexec host="${target}"
+       username="${username}"
+       password="${password}"
+       trust="true"
+	   failonerror="false"
+       command=". /etc/profile.d/natinst-path.sh; chmod a+x ${deploy.dir}/${out}; ${deploy.kill.command};"/>
+
+    <sshexec host="${target}"
+         username="${username}"
+         password="${password}"
+         trust="true"
+         command="sync" />
+
+  </target>
+
+  <target name="debug-prepare" depends="kill-program">
+    <scp file="${wpilib.ant.dir}/locale" todir="${adminUsername}@${target}:/bin/" password="${adminPassword}" trust="true"/>
+    <sshexec host="${target}"
+             username="${adminUsername}"
+             password="${adminPassword}"
+             trust="true"
+             command="chmod -R +x /bin/locale"
+    />
+  </target>
+    
+  <target name="kill-program" depends="get-target-ip" description="Kill the currently running FRC program">
+	  <sshexec host="${target}"
+		   username="${username}"
+		   password="${password}"
+		   trust="true"
+		   failonerror="false"
+		   command=". /etc/profile.d/natinst-path.sh; /usr/local/frc/bin/frcKillRobot.sh -t"/>
+  </target>
+
+  <!-- Simulation support -->
+  <target name="simulate">
+    <parallel>
+      <sequential>
+        <echo>[simulate] You may now run Gazebo and your driver station</echo>
+  	    <echo>[simulate] Running Code.</echo>
+        <exec executable="${sim.exe}"></exec>
+      </sequential>
+    </parallel>
+  </target>
+
+  <target name="dependencies" depends="get-target-ip">
+    <property name="ant.enable.asserts" value="true"/>
+	<post to="http://${target}/nisysapi/server" logfile="sysProps.xml" verbose="false" encoding="UTF-16LE" append="false">
+		<prop name="Function" value="GetPropertiesOfItem"/>
+		<prop name="Plugins" value="nisyscfg"/>
+		<prop name="Items" value="system"/>
+	</post>
+	<loadfile srcFile="sysProps.xml" encoding="UTF-16LE" property="roboRIOSysValues"/>
+	<propertyregex property="roboRIOImage" input="${roboRIOSysValues}" regexp="FRC_roboRIO_[0-9]+_v([0-9]+)" select="\1" defaultValue="ImageRegExFail"/>
+	<propertyregex property="roboRIOImageYear" input="${roboRIOSysValues}" regexp="FRC_roboRIO_([0-9]+)_v" select="\1" defaultValue="ImageRegExFail"/>
+	<assert message="Image of roboRIO does not match plugin. ${line.separator}Allowed image year: ${roboRIOAllowedYear} version: ${roboRIOAllowedImages}. ${line.separator}Actual image year: ${roboRIOImageYear} version ${roboRIOImage}. ${line.separator}RoboRIO needs to be re-imaged or plugins updated.">
+		<bool>
+			<and>
+				<contains string="${roboRIOAllowedImages}" substring="${roboRIOImage}"/>
+				<contains string="${roboRIOAllowedYear}" substring="${roboRIOImageYear}"/>
+			</and>
+		</bool>
+	</assert>
+	<echo>roboRIO image version validated</echo>
+  </target>
+
+  <!-- libs.name should not contain spaces as it is used to name a file -->
+  <macrodef name="deploy-libs">
+    <attribute name="libs.name"/>
+    <attribute name="libs.basedir"/>
+    <element name="libs.local"/>
+    <sequential>
+      <local name="libs.local.notEmpty"/>
+      <local name="libs.local.checksum"/>
+      <local name="libs.deployed.checksum"/>
+      <local name="libs.local.modified.property"/>
+
+      <delete file="@{libs.basedir}/@{libs.name}.properties"/>
+      <scp file="${adminUsername}@${target}:${libDeploy.dir}/@{libs.name}.properties"
+           todir="@{libs.basedir}"
+           password="${adminPassword}"
+           trust="true"
+           failonerror="false"/>
+      <restrict id="libs.local.modified">
+        <libs.local/>
+        <modified update="true"
+                  seldirs="true"
+                  cache="propertyfile"
+                  algorithm="digest"
+                  comparator="equal">
+          <param name="cache.cachefile" value="@{libs.basedir}/@{libs.name}.properties"/>
+          <param name="algorithm.algorithm" value="MD5"/>
+        </modified>
+      </restrict>
+
+      <pathconvert refid="libs.local.modified" property="libs.local.modified.property" pathsep="," setonempty="false">
+        <globmapper from="@{libs.basedir}/*" to="*" handledirsep="true" />
+      </pathconvert>
+
+      <if>
+        <isset property="libs.local.modified.property"/>
+        <then>
+          <echo message="Deploying libraries ${line.separator} ${libs.local.modified.property}"/>
+          <scp todir="${adminUsername}@${target}:${libDeploy.dir}"
+               password="${adminPassword}"
+               trust="true">
+            <fileset dir="@{libs.basedir}" includes="${libs.local.modified.property}"/>
+            <fileset file="@{libs.basedir}/@{libs.name}.properties"/>
+          </scp>
+          <sshexec host="${target}"
+                   username="${adminUsername}"
+                   password="${adminPassword}"
+                   trust="true"
+                   command="chmod -R +x ${libDeploy.dir}"
+          />
+        </then>
+      </if>
+    </sequential>
+  </macrodef>
+</project>
