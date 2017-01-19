@@ -35,7 +35,7 @@ public class RobotOutput {
 		driveLeftBackward.set(-left);
 		driveRightForward.set(right);
 		driveRightBackward.set(right);
-}
+	}
 	public void stopAll()
 	{
 		
