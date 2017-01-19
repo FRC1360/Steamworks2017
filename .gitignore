@@ -1,5 +1,6 @@
 
 .metadata
+*.xmi
 bin/
 tmp/
 *.tmp
