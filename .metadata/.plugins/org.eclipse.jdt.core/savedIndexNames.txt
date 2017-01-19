@@ -1,6 +1,24 @@
-INDEX VERSION 1.129+/Users/michaelgeddes/Documents/GitHub/Steamworks2017/.metadata/.plugins/org.eclipse.jdt.core
-2968020283.index
-2602553659.index
-358772488.index
-2194964731.index
-3103886620.index
+INDEX VERSION 1.129+C:\Users\alexm\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.jdt.core
+2133282975.index
+2700873215.index
+3417200662.index
+2809250744.index
+996170980.index
+2019903893.index
+211808235.index
+618723895.index
+2637943071.index
+2855899100.index
+808374113.index
+2800558102.index
+471236001.index
+985286902.index
+414978335.index
+3407430047.index
+351221734.index
+1644702904.index
+4184201189.index
+3609743817.index
+781808.index
+927654412.index
+1075794691.index
