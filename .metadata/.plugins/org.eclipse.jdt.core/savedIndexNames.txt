@@ -1,6 +1,0 @@
-INDEX VERSION 1.129+C:\Users\nmeritn\Documents\FRC 1360\Code\Steamworks2017\.metadata\.plugins\org.eclipse.jdt.core
-996170980.index
-211808235.index
-3609743817.index
-2700873215.index
-927654412.index
