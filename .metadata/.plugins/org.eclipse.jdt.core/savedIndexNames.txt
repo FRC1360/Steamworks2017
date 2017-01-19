@@ -9,7 +9,6 @@ INDEX VERSION 1.129+C:\Users\Kevin Zhang\Documents\GitHub\Steamworks2017\.metada
 4075476442.index
 4202600244.index
 1280402761.index
-3609743817.index
 889527592.index
 3002687700.index
 4033920976.index
