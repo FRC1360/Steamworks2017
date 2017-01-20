@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
+import org.usfirst.frc.team1360.auto.step1.DriveToBaselineMiddle;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.util.Debugger;
@@ -54,6 +55,7 @@ private static AutonControl instance;
         // --- STEP 1 SUBMODES
         ArrayList<AutonMode> step1 = this.autonSteps.get(0);
         step1.add(new DefaultMode());
+        step1.add(new DriveToBaselineMiddle());
         
         
         // --- STEP 2 SUBMODES
