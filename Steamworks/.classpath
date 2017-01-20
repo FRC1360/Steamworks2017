@@ -10,5 +10,6 @@
 	<classpathentry kind="var" path="networktables" sourcepath="networktables.sources"/>
 	<classpathentry kind="var" path="opencv" sourcepath="opencv.sources"/>
 	<classpathentry kind="var" path="cscore" sourcepath="cscore.sources"/>
+	<classpathentry kind="lib" path="ostermillerutils-1.08.02.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
