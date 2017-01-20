@@ -12,11 +12,6 @@ public abstract class CommandComponentBase extends Thread implements Component {
 	private InputStream i;
 	private OutputStream o;
 
-	public CommandComponentBase(InputStream i, OutputStream o) {
-		this.i = i;
-		this.o = o;
-	}
-
 	@Override
 	public final void run() {
 		try {
@@ -76,5 +71,11 @@ public abstract class CommandComponentBase extends Thread implements Component {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public final void initialize(InputStream i, OutputStream o) {
+		this.i = i;
+		this.o = o;
+		start();
 	}
 }

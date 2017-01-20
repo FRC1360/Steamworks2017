@@ -22,10 +22,9 @@ public class Connection implements Closeable {
 		mcs = new MultiChannelStream(conn.getInputStream(), conn.getOutputStream());
 	}
 	
-	public <T extends Component> T AddComponent(BiFunction<InputStream, OutputStream, T> generator, int channel) {
-		T component = generator.apply(mcs.getInputStream(channel), mcs.getOutputStream(channel));
+	public void AddComponent(Component component, int channel) {
 		components[channel] = component;
-		return component;
+		component.initialize(mcs.getInputStream(channel), mcs.getOutputStream(channel));
 	}
 
 	@Override
