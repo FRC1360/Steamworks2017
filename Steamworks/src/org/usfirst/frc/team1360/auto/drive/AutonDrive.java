@@ -7,7 +7,6 @@ import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 public class AutonDrive extends AutonCommand {
 
 	public RobotOutput robotOutput;
-	public double speed;
 	public double leftspeed;
 	public double rightspeed;
 	
