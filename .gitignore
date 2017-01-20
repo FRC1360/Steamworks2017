@@ -16,13 +16,6 @@ local.properties
 *.log
 *.sql
 *.sqlite
-*.tis
-*.tii
-*.nrm
-*.fnm
-*.fdx
-*.fdt
-*.lock
 
 # Eclipse Core
 .project
