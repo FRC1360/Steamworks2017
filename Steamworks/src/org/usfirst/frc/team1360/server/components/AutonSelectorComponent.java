@@ -13,6 +13,11 @@ import org.usfirst.frc.team1360.server.util.IOUtils;
 public class AutonSelectorComponent extends CommandComponentBase {
 	private ArrayList<AutonMode>[] modeOptions;
 	private int[] selections;
+	
+	public AutonSelectorComponent(ArrayList<AutonMode>[] modeOptions) {
+		this.modeOptions = modeOptions;
+		selections = new int[modeOptions.length];
+	}
 
 	@Override
 	protected void onCommand(int id, byte[] data) throws IOException {
