@@ -37,6 +37,11 @@ public class HumanInput {
 		return driver.getLeftTrigger();
 	}
 	
+	public double getTurn()
+	{
+		return driver.getLeftXAxis();
+	}
+	
 	
 	//Operator Controls
 	

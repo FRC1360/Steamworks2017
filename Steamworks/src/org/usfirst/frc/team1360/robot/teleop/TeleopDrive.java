@@ -25,7 +25,10 @@ public class TeleopDrive implements TeleopComponent {
 	
 	@Override
 	public void calculate() {
-		double speed = humanInput.getDriveRight()
+		double speed = humanInput.getDriveRight() - humanInput.getDriveLeft();
+		double turn = humanInput.getTurn();
+		
+		robotOutput.arcadeDrive(turn, speed);
 	}
 
 	@Override

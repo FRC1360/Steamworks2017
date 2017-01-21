@@ -36,6 +36,15 @@ public class RobotOutput {
 		driveRightForward.set(right);
 		driveRightBackward.set(right);
 	}
+	
+	public void arcadeDrive(double turn, double speed)
+	{
+		driveLeftForward.set(speed + turn);
+		driveLeftBackward.set(speed + turn);
+		driveRightForward.set(speed - turn);
+		driveRightBackward.set(speed - turn);
+	}
+	
 	public void stopAll()
 	{
 		
