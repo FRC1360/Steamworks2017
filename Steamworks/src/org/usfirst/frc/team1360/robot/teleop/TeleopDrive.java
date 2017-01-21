@@ -33,7 +33,7 @@ public class TeleopDrive implements TeleopComponent {
 
 	@Override
 	public void disable() {
-		// TODO Auto-generated method stub
+		robotOutput.tankDrive(0, 0);
 		
 	}
 
