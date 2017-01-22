@@ -15,13 +15,12 @@ public abstract class CommandComponentBase extends Thread implements Component {
 	@Override
 	public final void run() {
 		try {
-			byte[] header = new byte[6];
+			byte[] header, data;
 			while (true) {
-				i.read(header);
+				header = IOUtils.ReadBytes(i, 6);
 				int id = IOUtils.UInt16Big(header, 0);
 				int len = IOUtils.Int32Big(header, 2);
-				byte[] data = new byte[len];
-				i.read(data);
+				data = IOUtils.ReadBytes(i, len);
 				new HandlerThread(id, data).start();
 			}
 		} catch (IOException e) {
@@ -41,6 +40,7 @@ public abstract class CommandComponentBase extends Thread implements Component {
 			o.write(IOUtils.UInt16Big(id));
 			o.write(IOUtils.Int32Big(os.size()));
 			o.write(os.toByteArray());
+			System.out.printf("Sent: %d, %d\n", id, os.size());
 		}
 	}
 
@@ -65,8 +65,10 @@ public abstract class CommandComponentBase extends Thread implements Component {
 
 		@Override
 		public void run() {
+			System.out.printf("Received: %d, %d\n", id, data.length);
 			try {
-			onCommand(id, data);
+				yield();
+				onCommand(id, data);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

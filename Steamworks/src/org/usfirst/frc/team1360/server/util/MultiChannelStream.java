@@ -1,9 +1,9 @@
 package org.usfirst.frc.team1360.server.util;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.ArrayDeque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 import com.Ostermiller.util.CircularByteBuffer;
 
@@ -28,22 +28,26 @@ public class MultiChannelStream {
 					synchronized (input) {
 						c = input.read();
 						l = IOUtils.UInt16Big(input);
-						data = new byte[l];
-						input.read(data);
+						data = IOUtils.ReadBytes(input, l);
 					}
 					synchronized (this) {
 						if (channels[c] == null)
 							channels[c] = new Channel(c);
 					}
+					//new CopyThread(c, data).start();
 					synchronized (channels[c]) {
-						channels[c].buffer.getOutputStream().write(data);
+						System.out.println("Received on channel " + c);
+						//channels[c]._o.write(data);
+						for (byte b : data)
+							channels[c].queue.add(b);
+						channels[c].notify();
 					}
 				}
 			} catch (Exception ignored) {
-				for (Runnable r : errorNotifiers)
-					r.run();
+				errorNotifiers.forEach(Runnable::run);
 			}
 		}));
+		rt.start();
 	}
 	
 	public synchronized InputStream getInputStream(int channel) {
@@ -57,6 +61,28 @@ public class MultiChannelStream {
 			channels[channel] = new Channel(channel);
 		return channels[channel].getOutputStream();
 	}
+
+	/*private class CopyThread extends Thread {
+		private int channel;
+		private byte[] data;
+
+		public CopyThread(int channel, byte[] data) {
+			this.channel = channel;
+			this.data = data;
+		}
+
+		@Override
+		public void run() {
+			try {
+				synchronized (channels[channel]) {
+					System.out.println("Received on channel " + channel);
+					channels[channel]._o.write(data);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}*/
 	
 	private class Channel {
 		public CircularByteBuffer buffer = new CircularByteBuffer();
@@ -64,11 +90,13 @@ public class MultiChannelStream {
 		private int channel;
 		private ChannelInputStream i;
 		private ChannelOutputStream o;
+		private Queue<Byte> queue;
 		
 		public Channel(int channel){
 			this.channel = channel;
 			i = new ChannelInputStream();
 			o = new ChannelOutputStream();
+			queue = new ArrayDeque<>();
 		}
 		
 		public InputStream getInputStream() {
@@ -82,18 +110,20 @@ public class MultiChannelStream {
 		private class ChannelInputStream extends InputStream {			
 			@Override
 			public synchronized int read() throws IOException {
-				if (buffer.getSize() == 0){
-					notifier = this::notify;
-					try {
-						wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-						throw new IOException(e);
+				synchronized (Channel.this) {
+					if (queue.size() == 0) {
+						notifier = Channel.this::notify;
+						try {
+							Channel.this.wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+							throw new IOException(e);
+						}
+						notifier = null;
 					}
+					return queue.remove();
 				}
-				synchronized(Channel.this) {
-					return buffer.getInputStream().read();
-				}
+				//return buffer.getInputStream().read();
 			}
 		}
 		

@@ -22,7 +22,7 @@ public class Connection implements Closeable {
 		mcs = new MultiChannelStream(conn.getInputStream(), conn.getOutputStream());
 	}
 	
-	public void AddComponent(Component component, int channel) {
+	public void addComponent(Component component, int channel) {
 		components[channel] = component;
 		component.initialize(mcs.getInputStream(channel), mcs.getOutputStream(channel));
 	}

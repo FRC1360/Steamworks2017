@@ -12,13 +12,11 @@ public final class IOUtils {
 	}
 
 	public static int UInt16Big(byte[] data, int off) {
-		return data[0] << 8 + data[1];
+		return (data[off] << 8) + data[off + 1];
 	}
 
 	public static int UInt16Big(InputStream s) throws IOException {
-		byte[] data = new byte[2];
-		s.read(data);
-		return UInt16Big(data, 0);
+		return UInt16Big(ReadBytes(s, 2), 0);
 	}
 
 	public static byte[] Int32Big(int value) {
@@ -26,12 +24,18 @@ public final class IOUtils {
 	}
 	
 	public static int Int32Big(byte[] data, int off) {
-		return data[0] << 24 + data[1] << 16 + data[2] << 8 + data[3];
+		return (data[off] << 24) + (data[off + 1] << 16) + (data[off + 2] << 8) + data[off + 3];
 	}
 	
 	public static int Int32Big(InputStream s) throws IOException {
-		byte[] data = new byte[4];
-		s.read(data);
-		return Int32Big(data, 0);
+		return Int32Big(ReadBytes(s, 4), 0);
+	}
+
+	public static byte[] ReadBytes(InputStream s, int count) throws IOException {
+		byte[] a = new byte[count];
+		int r = 0;
+		while (r < count)
+			r += s.read(a, r, count - r);
+		return a;
 	}
 }
