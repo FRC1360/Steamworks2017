@@ -3,6 +3,7 @@ package org.usfirst.frc.team1360.robot;
 
 import java.io.IOException;
 
+import org.usfirst.frc.team1360.auto.AutonControl;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
@@ -47,7 +48,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() 
     {
-
+    	AutonControl.getInstance().initialize();
     }
 
     public void disabledInit()
@@ -63,7 +64,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic()
     {
-    	
+    	AutonControl.getInstance().runCycle();
     }
 
 

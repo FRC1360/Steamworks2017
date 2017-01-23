@@ -5,8 +5,6 @@ import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.Ostermiller.util.CircularByteBuffer;
-
 public class MultiChannelStream {
 	private static final int MAX_BLOCK = 65535;
 	
@@ -34,10 +32,8 @@ public class MultiChannelStream {
 						if (channels[c] == null)
 							channels[c] = new Channel(c);
 					}
-					//new CopyThread(c, data).start();
 					synchronized (channels[c]) {
 						System.out.println("Received on channel " + c);
-						//channels[c]._o.write(data);
 						for (byte b : data)
 							channels[c].queue.add(b);
 						channels[c].notify();
@@ -61,32 +57,8 @@ public class MultiChannelStream {
 			channels[channel] = new Channel(channel);
 		return channels[channel].getOutputStream();
 	}
-
-	/*private class CopyThread extends Thread {
-		private int channel;
-		private byte[] data;
-
-		public CopyThread(int channel, byte[] data) {
-			this.channel = channel;
-			this.data = data;
-		}
-
-		@Override
-		public void run() {
-			try {
-				synchronized (channels[channel]) {
-					System.out.println("Received on channel " + channel);
-					channels[channel]._o.write(data);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}*/
 	
 	private class Channel {
-		public CircularByteBuffer buffer = new CircularByteBuffer();
-		public Runnable notifier;
 		private int channel;
 		private ChannelInputStream i;
 		private ChannelOutputStream o;
@@ -111,19 +83,15 @@ public class MultiChannelStream {
 			@Override
 			public synchronized int read() throws IOException {
 				synchronized (Channel.this) {
-					if (queue.size() == 0) {
-						notifier = Channel.this::notify;
+					if (queue.size() == 0)
 						try {
 							Channel.this.wait();
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 							throw new IOException(e);
 						}
-						notifier = null;
-					}
 					return queue.remove();
 				}
-				//return buffer.getInputStream().read();
 			}
 		}
 		

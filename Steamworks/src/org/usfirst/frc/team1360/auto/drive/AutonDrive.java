@@ -6,20 +6,20 @@ import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 
 public class AutonDrive extends AutonCommand {
 
-public RobotOutput robotOutput;
-public double speed;
-
-public AutonDrive(long timeout, double speed){
-	super(RobotSubsystems.DRIVE);
+	public RobotOutput robotOutput;
+	public double leftspeed;
+	public double rightspeed;
 	
-	this.speed=speed;
-}
+	public AutonDrive(long timeout, double leftspeed, double rightspeed){
+		super(RobotSubsystems.DRIVE);
+		this.leftspeed = leftspeed;
+		this.rightspeed = rightspeed;
+	}
 	@Override
 	public boolean calculate() {
-		this.robotOutput.tankDrive(speed,speed);
+		this.robotOutput.tankDrive(leftspeed,rightspeed);
 		return false;
 	}
-
 	@Override
 	public void override() {
 		this.robotOutput.tankDrive(0, 0);
