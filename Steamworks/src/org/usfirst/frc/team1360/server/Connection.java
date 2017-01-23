@@ -2,11 +2,8 @@ package org.usfirst.frc.team1360.server;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.function.BiFunction;
 
 import org.usfirst.frc.team1360.server.util.MultiChannelStream;
 

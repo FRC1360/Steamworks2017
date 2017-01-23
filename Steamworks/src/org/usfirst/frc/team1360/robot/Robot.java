@@ -16,13 +16,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
-
+	private static Robot instance;
+	
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
 	private Connection connection;
 	
+	public Robot()
+	{
+		// Called by WPILib for us
+		instance = this;
+	}
+	
+	public static Robot getInstance()
+	{
+		// Already initialized by WPILib through constructor
+		return instance;
+	}
 	
     public void robotInit() 
     {
@@ -41,7 +53,7 @@ public class Robot extends IterativeRobot {
 		}
     }
     
-    public Connection GetConnection()
+    public Connection getConnection()
     {
     	return connection;
     }
