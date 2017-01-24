@@ -38,6 +38,8 @@ public class AutonControl {
     }
 
     private AutonControl() {
+    	System.out.println("Auton control setup begin");
+    	
         this.autonDelay = 0;
         this.currIndex = 0;
         
@@ -66,6 +68,8 @@ public class AutonControl {
         
         selector = new AutonSelectorComponent(autonSteps);
         Robot.getInstance().getConnection().addComponent(selector, 0);
+
+    	System.out.println("Auton control setup end");
     }
 
     public void initialize() {

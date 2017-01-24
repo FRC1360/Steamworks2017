@@ -17,9 +17,11 @@ public abstract class CommandComponentBase extends Thread implements Component {
 		try {
 			byte[] header, data;
 			while (true) {
+				System.out.println("Waiting for command");
 				header = IOUtils.ReadBytes(i, 6);
 				int id = IOUtils.UInt16Big(header, 0);
 				int len = IOUtils.Int32Big(header, 2);
+				System.out.printf("Begin receive command: %d, %d-byte payload\n", id, len);
 				data = IOUtils.ReadBytes(i, len);
 				new HandlerThread(id, data).start();
 			}
