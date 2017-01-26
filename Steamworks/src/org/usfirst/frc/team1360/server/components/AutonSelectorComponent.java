@@ -1,11 +1,7 @@
 package org.usfirst.frc.team1360.server.components;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.server.CommandComponentBase;
 import org.usfirst.frc.team1360.server.util.IOUtils;
