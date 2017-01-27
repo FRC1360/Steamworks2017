@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.util.XboxRemote"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.SensorInput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.teleop.TeleopControl"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.AutonMode"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.util.Debugger"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.AutonBuilder"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.RobotOutput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.HumanInput"/>
+<fullyQualifiedTypeName name="java.io.StringWriter"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonStop"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonControl"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonCommand"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.RobotSubsystems"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.DefaultMode"/>
+</qualifiedTypeNameHistroy>

@@ -27,28 +27,9 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-	public double getDriveRight()
-	{
-		return driver.getRightTrigger();
-	}
-	
-	public double getDriveLeft()
-	{
-		return driver.getLeftTrigger();
-	}
-	
-	public double getTurn()
-	{
-		return driver.getLeftXAxis();
-	}
 	
 	
 	//Operator Controls
-	
-	public double getIntake()
-	{
-		return operator.getRightTrigger();
-	}
 	
 	
 	//Auto Controls
