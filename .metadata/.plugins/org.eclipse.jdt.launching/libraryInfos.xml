@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home" version="1.8.0_65">
+<bootpath>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/resources.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/rt.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/sunrsasign.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jsse.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jce.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/charsets.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jfr.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="/Users/michaelgeddes/Library/Java/Extensions"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/ext"/>
+<entry path="/Library/Java/Extensions"/>
+<entry path="/Network/Library/Java/Extensions"/>
+<entry path="/System/Library/Java/Extensions"/>
+<entry path="/usr/lib/java"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jdk1.8.0_111" version="1.8.0_111">
+<bootpath>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home" version="1.8.0_66">
+<bootpath>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/resources.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/sunrsasign.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jsse.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jce.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/charsets.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jfr.jar"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="/Users/karen/Library/Java/Extensions"/>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/ext"/>
+<entry path="/Library/Java/Extensions"/>
+<entry path="/Network/Library/Java/Extensions"/>
+<entry path="/System/Library/Java/Extensions"/>
+<entry path="/usr/lib/java"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jdk1.8.0_92" version="1.8.0_92">
+<bootpath>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jre1.8.0_111" version="1.8.0_111">
+<bootpath>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_111\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_111\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

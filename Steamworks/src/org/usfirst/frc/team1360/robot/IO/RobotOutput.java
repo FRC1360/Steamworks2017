@@ -8,6 +8,8 @@ public class RobotOutput {
 	private Victor driveLeftBackward;
 	private Victor driveRightForward;
 	private Victor driveRightBackward;
+	private Victor climberFront;
+	private Victor climberBack;
 	
 	private static  RobotOutput instance;
 	
@@ -17,6 +19,8 @@ public class RobotOutput {
 		driveLeftBackward = new Victor(1);
 		driveRightForward = new Victor(2);
 		driveRightBackward = new Victor(3);
+		climberFront = new Victor(4);
+		climberBack = new Victor(5);
 	}
 	
 	public static RobotOutput getInstance()
@@ -36,6 +40,15 @@ public class RobotOutput {
 		driveRightForward.set(right);
 		driveRightBackward.set(right);
 	}
+	
+	public void arcadeDrive(double turn, double speed)
+	{
+		driveLeftForward.set((-speed) - turn);
+		driveLeftBackward.set((-speed) - turn);
+		driveRightForward.set((-speed) + turn);
+		driveRightBackward.set((-speed) + turn);
+	}
+	
 	public void stopAll()
 	{
 		
