@@ -9,7 +9,7 @@ public class TeleopControl {
 	
 	private TeleopControl()
 	{
-		this.components = new ArrayList<>();
+		this.components = new ArrayList<TeleopComponent>();
 	}
 	
 	public static TeleopControl getInstance()
