@@ -62,6 +62,12 @@ public class RobotOutput {
 		gearRelease.set(release);
 	}
 	
+	public void climb(double speed)
+	{
+		climberFront.set(speed);
+		climberBack.set(speed);
+	}
+	
 	public void stopAll()
 	{
 		driveLeftForward.set(0);

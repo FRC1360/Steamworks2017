@@ -38,11 +38,12 @@ public class HumanInput {
 	}
 	
 	public double getTurn()
-	{
+	{	
 		return driver.getLeftXAxis();
 	}
 	
-	
+
+
 	//Operator Controls
 	
 	public double getIntake()
@@ -54,8 +55,12 @@ public class HumanInput {
 	{
 		return operator.getButtonA();
 	}
-	
-	
+
+	public double getClimb()
+	{
+		return operator.getLeftTrigger();
+	}
+
 	//Auto Controls
 	 public boolean getAutonSetModeButton() 
 	 {
