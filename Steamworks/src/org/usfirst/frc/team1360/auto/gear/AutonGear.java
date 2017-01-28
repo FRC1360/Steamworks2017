@@ -11,8 +11,8 @@ public class AutonGear extends AutonCommand {
 	private boolean release;
 	private boolean flap;
 	
-	public AutonGear(long timeout, boolean release, boolean flap) {
-		super(RobotSubsystems.GEAR, timeout);
+	public AutonGear(boolean release, boolean flap) {
+		super(RobotSubsystems.GEAR);
 
 		this.robotOutput = RobotOutput.getInstance();
 		this.flap = flap;
