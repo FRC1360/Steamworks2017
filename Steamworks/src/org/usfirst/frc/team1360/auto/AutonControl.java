@@ -9,6 +9,9 @@ import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
 import org.usfirst.frc.team1360.auto.step1.DriveToBaselineMiddle;
 import org.usfirst.frc.team1360.auto.step1.DriveToBaselineOutside;
+import org.usfirst.frc.team1360.auto.step1.DropOffGearLeft;
+import org.usfirst.frc.team1360.auto.step1.DropOffGearMiddle;
+import org.usfirst.frc.team1360.auto.step1.DropOffGearRight;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.util.Debugger;
@@ -58,6 +61,9 @@ private static AutonControl instance;
         step1.add(new DefaultMode());
         step1.add(new DriveToBaselineMiddle());
         step1.add(new DriveToBaselineOutside());
+        step1.add(new DropOffGearMiddle());
+        step1.add(new DropOffGearRight());
+        step1.add(new DropOffGearLeft());
         
         
         // --- STEP 2 SUBMODES
