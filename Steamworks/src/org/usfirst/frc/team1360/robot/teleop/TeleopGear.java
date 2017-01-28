@@ -30,15 +30,15 @@ public class TeleopGear implements TeleopComponent{
 	@Override											
 	public void calculate()								//output for this routine
 	{
-		//double speed = this.humanInput.getGear;		//TO ADD??? to HumanInput class
-		double speed = 0.5;								//??? termporarly set speed to 0.5
-		//this.robotOutput.gear(speed);					//method needs to be created in robot output
+		boolean button = humanInput.getOperatorGear();
+		
+		this.robotOutput.releaseGear(button);
 	}
 	
 	@Override
 	public void disable()
 	{
-		//this.robotOutput.gear(0);						//TO ADD??? to RobotOutput class?
+		this.robotOutput.releaseGear(false);						//TO ADD??? to RobotOutput class?
 	}
 	
 

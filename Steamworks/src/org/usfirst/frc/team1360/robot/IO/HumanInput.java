@@ -50,6 +50,11 @@ public class HumanInput {
 		return operator.getRightTrigger();
 	}
 	
+	public boolean getOperatorGear()
+	{
+		return operator.getButtonA();
+	}
+	
 	
 	//Auto Controls
 	 public boolean getAutonSetModeButton() 
