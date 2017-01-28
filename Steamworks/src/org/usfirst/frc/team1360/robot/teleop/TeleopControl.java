@@ -11,6 +11,8 @@ public class TeleopControl {
 	{
 		this.components = new ArrayList<TeleopComponent>();
 		this.components.add(TeleopDrive.getInstance());
+		this.components.add(TeleopGear.getInstance());
+		this.components.add(TeleopIntake.getInstance());
 	}
 	
 	public static TeleopControl getInstance()

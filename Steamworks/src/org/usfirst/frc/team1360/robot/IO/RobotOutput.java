@@ -81,5 +81,10 @@ public class RobotOutput {
 		driveLeftBackward.set(0);
 		driveRightForward.set(0);
 		driveRightBackward.set(0);
+		intake.set(0);
+		climberFront.set(0);
+		climberBack.set(0);
+		gearFlap.set(false);
+		gearRelease.set(false);
 	}
 }

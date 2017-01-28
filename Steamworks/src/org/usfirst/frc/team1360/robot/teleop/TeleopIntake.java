@@ -5,11 +5,11 @@ import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 
 public class TeleopIntake implements TeleopComponent {
 
-	private TeleopIntake instance;
+	private static TeleopIntake instance;
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
 	
-	public TeleopIntake getInstance()
+	public static TeleopIntake getInstance()
 	{
 		if (instance == null)
 		{
@@ -28,13 +28,14 @@ public class TeleopIntake implements TeleopComponent {
 	@Override
 	public void calculate() {
 		// TODO Auto-generated method stub
-		
+		double speed = this.humanInput.getIntake();
+		this.robotOutput.intake(speed);
 	}
 
 	@Override
 	public void disable() {
 		// TODO Auto-generated method stub
-		
+		this.robotOutput.intake(0);
 	}
 
 }
