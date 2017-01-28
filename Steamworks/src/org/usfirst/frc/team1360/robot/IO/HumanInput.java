@@ -104,4 +104,6 @@ public class HumanInput {
 	    return result;
 	}
 	
+	//media is the best job {do memes}
+	//lol media suxs
 }
