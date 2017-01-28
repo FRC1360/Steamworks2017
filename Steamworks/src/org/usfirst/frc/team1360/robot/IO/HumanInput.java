@@ -51,9 +51,14 @@ public class HumanInput {
 		return operator.getRightTrigger();
 	}
 	
-	public boolean getOperatorGear()
+	public boolean getOperatorGearRelease()
 	{
-		return operator.getButtonX();
+		return this.operator.getButtonLB();
+	}
+	
+	public boolean getOperatorGearFlap()
+	{
+		return this.operator.getButtonRB();
 	}
 	
 	public boolean getOverride()

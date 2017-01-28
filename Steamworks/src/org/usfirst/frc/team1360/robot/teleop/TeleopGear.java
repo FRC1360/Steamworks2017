@@ -11,6 +11,7 @@ public class TeleopGear implements TeleopComponent{
 	private static TeleopGear instance;
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
+	private boolean isOpen = false;
 	
 	public static TeleopGear getInstance()		
 	{
@@ -30,15 +31,27 @@ public class TeleopGear implements TeleopComponent{
 	@Override											
 	public void calculate()								//output for this routine
 	{
-		boolean button = humanInput.getOperatorGear();
+		boolean flap = humanInput.getOperatorGearFlap();
+		boolean release = humanInput.getOperatorGearRelease();
 		
-		this.robotOutput.releaseGear(button);
+		if(flap && this.isOpen)
+		{
+			this.robotOutput.flapGear(false);
+		} 
+		else if(flap && !this.isOpen)
+		{
+			this.robotOutput.flapGear(true);
+		}
+		
+		this.robotOutput.releaseGear(release);
+
 	}
 	
 	@Override
 	public void disable()
 	{
-		this.robotOutput.releaseGear(false);						//TO ADD??? to RobotOutput class?
+		this.robotOutput.releaseGear(false);
+		this.robotOutput.flapGear(false);
 	}
 	
 

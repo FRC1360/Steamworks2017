@@ -65,8 +65,12 @@ public class RobotOutput {
 	
 	public void releaseGear(boolean release)
 	{
-		gearFlap.set(release);
 		gearRelease.set(release);
+	}
+	
+	public void flapGear(boolean release)
+	{
+		gearFlap.set(release);
 	}
 	
 	public void climb(double speed)
