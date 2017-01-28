@@ -11,13 +11,17 @@ public class AutonDrive extends AutonCommand {
 	public double rightspeed;
 	
 	public AutonDrive(long timeout, double leftspeed, double rightspeed){
-		super(RobotSubsystems.DRIVE);
+		super(RobotSubsystems.DRIVE, timeout);
+		
+		this.robotOutput = RobotOutput.getInstance();
 		this.leftspeed = leftspeed;
 		this.rightspeed = rightspeed;
 	}
 	@Override
 	public boolean calculate() {
+		
 		this.robotOutput.tankDrive(leftspeed,rightspeed);
+		
 		return false;
 	}
 	@Override
