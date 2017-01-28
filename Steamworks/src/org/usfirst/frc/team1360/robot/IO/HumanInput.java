@@ -53,6 +53,11 @@ public class HumanInput {
 	
 	public boolean getOperatorGear()
 	{
+		return operator.getButtonX();
+	}
+	
+	public boolean getOverride()
+	{
 		return operator.getButtonA();
 	}
 
