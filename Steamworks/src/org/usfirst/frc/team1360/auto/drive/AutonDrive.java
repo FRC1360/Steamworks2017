@@ -11,7 +11,7 @@ public class AutonDrive extends AutonCommand {
 	public double rightspeed;
 	
 	public AutonDrive(long timeout, double leftspeed, double rightspeed){
-		super(RobotSubsystems.DRIVE);
+		super(RobotSubsystems.DRIVE, timeout);
 		this.leftspeed = leftspeed;
 		this.rightspeed = rightspeed;
 	}
