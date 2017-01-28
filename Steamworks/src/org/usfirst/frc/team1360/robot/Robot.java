@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
     }
-    
+  
 
     public void autonomousInit() 
     {
@@ -43,6 +43,7 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic()
     {
     	this.sensorInput.calculate();
+    	AutonControl.getInstance().updateModes();
     }
 
     public void autonomousPeriodic()
