@@ -50,10 +50,10 @@ public class RobotOutput {
 	
 	public void arcadeDrive(double turn, double speed)
 	{
-		driveLeftForward.set((-speed) - turn);
-		driveLeftBackward.set((-speed) - turn);
-		driveRightForward.set((-speed) + turn);
-		driveRightBackward.set((-speed) + turn);
+		double left = (-turn) - speed;
+		double right = (-turn) + speed;
+		
+		tankDrive(left, right);
 	}
 	
 	public void releaseGear(boolean release)
