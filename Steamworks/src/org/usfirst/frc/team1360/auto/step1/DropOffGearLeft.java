@@ -15,7 +15,7 @@ public class DropOffGearLeft implements AutonMode {
 		ab.addCommand(new AutonDrive(1500, 1, 0));
 		ab.addCommand(new AutonDrive(1500, 1, 1));
 		ab.addCommand(new DriveWait());
-		ab.addCommand(new AutonGear(false, false));
+		ab.addCommand(new AutonGear(true, true));
 		ab.addCommand(new AutonWait(1500));
 	}
 
