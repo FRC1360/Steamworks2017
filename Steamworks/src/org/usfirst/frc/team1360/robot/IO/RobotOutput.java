@@ -11,6 +11,7 @@ public class RobotOutput {
 	private Victor driveRightBackward;
 	private Victor climberFront;
 	private Victor climberBack;
+	private Victor intake;
 	
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
@@ -25,6 +26,7 @@ public class RobotOutput {
 		driveRightBackward = new Victor(3);
 		climberFront = new Victor(4);
 		climberBack = new Victor(5);
+		intake = new Victor(6);
 		
 		gearFlap = new Solenoid(2);
 		gearRelease = new Solenoid(3);
@@ -54,6 +56,11 @@ public class RobotOutput {
 		double right = (-turn) + speed;
 		
 		tankDrive(left, right);
+	}
+	
+	public void intake(double speed)
+	{
+		intake.set(speed);
 	}
 	
 	public void releaseGear(boolean release)
