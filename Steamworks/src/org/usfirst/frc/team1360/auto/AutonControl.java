@@ -12,6 +12,12 @@ import org.usfirst.frc.team1360.auto.step1.DriveToBaselineOutside;
 import org.usfirst.frc.team1360.auto.step1.DropOffGearLeft;
 import org.usfirst.frc.team1360.auto.step1.DropOffGearMiddle;
 import org.usfirst.frc.team1360.auto.step1.DropOffGearRight;
+import org.usfirst.frc.team1360.auto.step1.balls.DropOffBallsBlue1;
+import org.usfirst.frc.team1360.auto.step1.balls.DropOffBallsBlue2;
+import org.usfirst.frc.team1360.auto.step1.balls.DropOffBallsBlue3;
+import org.usfirst.frc.team1360.auto.step1.balls.DropOffBallsRed1;
+import org.usfirst.frc.team1360.auto.step1.balls.DropOffBallsRed2;
+import org.usfirst.frc.team1360.auto.step1.balls.DropOffBallsRed3;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.util.Debugger;
@@ -64,6 +70,12 @@ private static AutonControl instance;
         step1.add(new DropOffGearMiddle());
         step1.add(new DropOffGearRight());
         step1.add(new DropOffGearLeft());
+        step1.add(new DropOffBallsBlue1());
+        step1.add(new DropOffBallsBlue2());
+        step1.add(new DropOffBallsBlue3());
+        step1.add(new DropOffBallsRed1());
+        step1.add(new DropOffBallsRed2());
+        step1.add(new DropOffBallsRed3());
         
         
         // --- STEP 2 SUBMODES
