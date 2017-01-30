@@ -42,6 +42,11 @@ public class HumanInput {
 		return driver.getLeftXAxis();
 	}
 	
+	public boolean getShiftSpeed()
+	{
+		return driver.getButtonA();
+	}
+	
 
 
 	//Operator Controls

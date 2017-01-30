@@ -37,10 +37,12 @@ public class TeleopGear implements TeleopComponent{
 		if(flap && this.isOpen)
 		{
 			this.robotOutput.flapGear(false);
+			isOpen = false;
 		} 
 		else if(flap && !this.isOpen)
 		{
 			this.robotOutput.flapGear(true);
+			isOpen = true;
 		}
 		
 		this.robotOutput.releaseGear(release);

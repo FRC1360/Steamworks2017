@@ -13,6 +13,8 @@ public class RobotOutput {
 	private Victor climberBack;
 	private Victor intake;
 	
+	private Solenoid leftDrive;
+	private Solenoid rightDrive;
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
 	
@@ -28,6 +30,8 @@ public class RobotOutput {
 		climberBack = new Victor(5);
 		intake = new Victor(6);
 		
+		leftDrive = new Solenoid(0);
+		rightDrive = new Solenoid(1);
 		gearFlap = new Solenoid(2);
 		gearRelease = new Solenoid(3);
 	}
@@ -71,6 +75,12 @@ public class RobotOutput {
 	public void flapGear(boolean release)
 	{
 		gearFlap.set(release);
+	}
+	
+	public void shiftSpeed(boolean shift)
+	{
+		leftDrive.set(shift);
+		rightDrive.set(shift);
 	}
 	
 	public void climb(double speed)
