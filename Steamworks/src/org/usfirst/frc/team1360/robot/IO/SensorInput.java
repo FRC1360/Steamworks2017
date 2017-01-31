@@ -9,16 +9,16 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 
 public class SensorInput {
 
-	private static SensorInput instance;     //fields of class SensorInput
+	private static SensorInput instance;				//Fields of class SensorInput
 	
 	private PowerDistributionPanel PDP;
 	
-	private SensorInput()                   //constructor to initialize fields  
+	private SensorInput()								//Constructor to initialize fields  
 	{
 		PDP = new PowerDistributionPanel();
 	}
 	
-	public static SensorInput getInstance()
+	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
 	{
 		if (instance == null)
 		{
@@ -28,12 +28,12 @@ public class SensorInput {
 		return instance;
 	}
 	
-	public double getClimberFrontCurrent()    //method in class SensorInput
+	public double getClimberFrontCurrent()				//Method in class SensorInput
 	{
-		return this.PDP.getCurrent(4);        //PDP port 4 for ClimberFront Motor
+		return this.PDP.getCurrent(4);					//PDP port 4 for ClimberFront Motor
 	}
 	
-	public double getClimberBackCurrent()     //PDP port 5 for ClimberBack Motor
+	public double getClimberBackCurrent()				//PDP port 5 for ClimberBack Motor
 	{
 		return this.PDP.getCurrent(5);
 	}

@@ -1,19 +1,22 @@
 package org.usfirst.frc.team1360.robot.IO;
-
+/*****
+ * Author: Tatiana Tomas Zahhar
+ * Date: 30 Jan 2017 - added comments
+ */
 import org.usfirst.frc.team1360.robot.util.XboxRemote;
 
 public class HumanInput {
 	
-	private static HumanInput instance;
+	private static HumanInput instance;						//Fields of class HumanInput
 	private XboxRemote driver;
 	private XboxRemote operator;
 	private boolean autonIncreaseStepWasPressed = false;
 	private boolean autonDecreaseStepWasPressed = false;
 	
-	private HumanInput()
+	private HumanInput()									//Constructor to initialize fields
 	{
-		this.driver = new XboxRemote(0);
-		this.operator = new XboxRemote(1);
+		this.driver = new XboxRemote(0);					//Driver Xbox on USB Port 0 on DS
+		this.operator = new XboxRemote(1);					//Operator Xbox on USB Port 1 on DS			
 	}
 	
 	public static HumanInput getInstance()
