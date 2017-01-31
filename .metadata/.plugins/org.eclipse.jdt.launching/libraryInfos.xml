@@ -23,6 +23,25 @@
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jre1.8.0_65" version="1.8.0_65">
+<bootpath>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_65\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_65\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
 <libraryInfo home="C:\Program Files\Java\jdk1.8.0_111" version="1.8.0_111">
 <bootpath>
 <entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\resources.jar"/>
