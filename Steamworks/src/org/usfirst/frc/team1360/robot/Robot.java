@@ -75,7 +75,6 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic()
     {
     	this.sensorInput.calculate();
-    	AutonControl.getInstance().updateModes();
     }
 
     public void autonomousPeriodic()

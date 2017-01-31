@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1360.server.components;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -19,6 +20,10 @@ public class ClimberCurrentDisplayComponent implements Component {
 	
 	public void update()
 	{
-		out.write(IOUtils.Int32Big(Float.floatToRawIntBits((sensorInput.getClimberFrontCurrent() + sensorInput.getClimberBackCurrent()) / 2)));
+		try {
+			out.write(IOUtils.Int32Big(Float.floatToRawIntBits((float)(sensorInput.getClimberFrontCurrent() + sensorInput.getClimberBackCurrent()) / 2)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
