@@ -38,11 +38,17 @@ public class HumanInput {
 	}
 	
 	public double getTurn()
-	{
+	{	
 		return driver.getLeftXAxis();
 	}
 	
+	public boolean getShiftSpeed()
+	{
+		return driver.getButtonA();
+	}
 	
+
+
 	//Operator Controls
 	
 	public double getIntake()
@@ -50,7 +56,26 @@ public class HumanInput {
 		return operator.getRightTrigger();
 	}
 	
+	public boolean getOperatorGearRelease()
+	{
+		return this.operator.getButtonLB();
+	}
 	
+	public boolean getOperatorGearFlap()
+	{
+		return this.operator.getButtonRB();
+	}
+	
+	public boolean getOverride()
+	{
+		return operator.getButtonA();
+	}
+
+	public double getClimb()
+	{
+		return operator.getLeftTrigger();
+	}
+
 	//Auto Controls
 	 public boolean getAutonSetModeButton() 
 	 {
@@ -84,4 +109,6 @@ public class HumanInput {
 	    return result;
 	}
 	
+	//media is the best job {do memes}
+	//lol media suxs
 }

@@ -8,6 +8,7 @@ public class TeleopDrive implements TeleopComponent {
 	private static TeleopDrive instance;
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
+	private boolean isShifted = false;
 	
 	TeleopDrive()
 	{
@@ -27,6 +28,18 @@ public class TeleopDrive implements TeleopComponent {
 	public void calculate() {
 		double speed = humanInput.getDriveRight() - humanInput.getDriveLeft();
 		double turn = humanInput.getTurn();
+		boolean shift = humanInput.getShiftSpeed();
+		
+		if(shift && !isShifted)
+		{
+			isShifted = true;
+			robotOutput.shiftSpeed(true);
+		}
+		else if (shift && isShifted)
+		{
+			isShifted = false;
+			robotOutput.shiftSpeed(false);
+		}
 		
 		robotOutput.arcadeDrive(speed, turn);
 	}
