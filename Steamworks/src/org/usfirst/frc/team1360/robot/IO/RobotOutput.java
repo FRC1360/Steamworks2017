@@ -46,6 +46,18 @@ public class RobotOutput {
 		return instance;
 	}
 	
+	public void setDriveLeft(double speed)
+	{
+		driveLeftForward.set(-speed);
+		driveLeftBackward.set(-speed);
+	}
+	
+	public void setDriveRight(double speed)
+	{
+		driveRightForward.set(speed);
+		driveRightBackward.set(speed);
+	}
+	
 	public void tankDrive(double left, double right)
 	{
 		driveLeftForward.set(-left);

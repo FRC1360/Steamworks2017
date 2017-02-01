@@ -58,6 +58,11 @@ public class SensorInput {
 		return rightDriveEncoder.get() / ticksPerInch;
 	}
 	
+	public double getDriveEncoderAverage()
+	{
+		return ((this.getLeftDriveEncoder() + this.getRightDriveEncoder()) / 2);
+	}
+	
 	public void calculate()
 	{
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
