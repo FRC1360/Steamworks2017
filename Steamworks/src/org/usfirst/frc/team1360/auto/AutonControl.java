@@ -85,10 +85,10 @@ public class AutonControl {
         step3.add(new DefaultMode()); //0
         
         
-        selector = new AutonSelectorComponent(autonSteps);
-        Robot.getInstance().getConnection().addComponent(selector, 0);
+        //selector = new AutonSelectorComponent(autonSteps);
+        //Robot.getInstance().getConnection().addComponent(selector, 0);
 
-    	System.out.println("Auton control setup end");
+    	//System.out.println("Auton control setup end");
     }
 
     public void initialize() {

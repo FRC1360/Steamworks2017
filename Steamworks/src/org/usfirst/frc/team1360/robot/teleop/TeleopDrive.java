@@ -24,7 +24,6 @@ public class TeleopDrive implements TeleopComponent {
 		return instance;
 	}
 	
-	@Override
 	public void calculate() {
 		double speed = humanInput.getDriveRight() - humanInput.getDriveLeft();
 		double turn = humanInput.getTurn();
@@ -44,7 +43,6 @@ public class TeleopDrive implements TeleopComponent {
 		robotOutput.arcadeDrive(speed, turn);
 	}
 
-	@Override
 	public void disable() {
 		robotOutput.tankDrive(0, 0);
 		

@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot {
 	private AutonControl autonControl;
 	private Connection connection;
 	
-	public Robot()
+	/*public Robot()
 	{
 		// Called by WPILib for us
 		instance = this;
@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
 	{
 		// Already initialized by WPILib through constructor
 		return instance;
-	}
+	}*/
 	
     public void robotInit() 
     {
@@ -49,11 +49,13 @@ public class Robot extends IterativeRobot {
 			System.err.println("Unable to open connection to driver station!");
 			e.printStackTrace();
 		}
+    	
     	this.robotOutput = RobotOutput.getInstance();
     	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
     	this.autonControl = AutonControl.getInstance();
+    	this.sensorInput.reset();
     }
     
     public Connection getConnection()
@@ -64,12 +66,14 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() 
     {
     	autonControl.initialize();
+    	this.sensorInput.reset();
     }
 
     public void disabledInit()
     {
     	this.robotOutput.stopAll();
     	this.teleopControl.disable();
+    	this.sensorInput.calculate();
     }
     
     public void disabledPeriodic()
@@ -80,6 +84,7 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic()
     {
     	autonControl.runCycle();
+    	this.sensorInput.calculate();
     }
 
 
