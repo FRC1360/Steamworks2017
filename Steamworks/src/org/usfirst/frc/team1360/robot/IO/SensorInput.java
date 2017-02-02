@@ -12,20 +12,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SensorInput {
 
 	private static SensorInput instance;     //fields of class SensorInput
-	
 	private PowerDistributionPanel PDP;
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
 	
 	
 	//We have to add some extra stuff for gearing calculation
-	private double ticksPerInch = /*Ticks per rotation divided by */ Math.PI /* multiplied by wheel diameter*/;
+	private double ticksPerInch = 1024 * 40.0 / 24.0 * Math.PI * 8;
 	
 	private SensorInput()                   //constructor to initialize fields  
 	{
 		PDP = new PowerDistributionPanel();
-		leftDriveEncoder = new Encoder(4, 5);  //Random numbers are random
-		rightDriveEncoder = new Encoder(1, 2); //Random numbers are random
+		leftDriveEncoder = new Encoder(2, 3);  //Random numbers are random
+		rightDriveEncoder = new Encoder(0, 1); //Random numbers are random
+		SmartDashboard.putNumber("Drive Enc P: ", 1);
+		SmartDashboard.putNumber("Drive Enc I: ", 0.01);
+		SmartDashboard.putNumber("Drive Enc D: ", 0.1);
 	}
 	
 	public static SensorInput getInstance()
@@ -50,7 +52,7 @@ public class SensorInput {
 	
 	public double getLeftDriveEncoder()
 	{
-		return leftDriveEncoder.get() / ticksPerInch;
+		return leftDriveEncoder.get()  / ticksPerInch;
 	}
 	
 	public double getRightDriveEncoder()

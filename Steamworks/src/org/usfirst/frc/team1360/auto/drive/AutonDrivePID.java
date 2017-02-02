@@ -18,11 +18,16 @@ public class AutonDrivePID extends AutonCommand {
 	
 	private double target;
 	
+	public AutonDrivePID(double target, long timeout)
+	{
+		this(target, timeout, 5);
+	}
+	
 	public AutonDrivePID(double target, long timeout, double eps) {
 		super(RobotSubsystems.DRIVE, timeout);
 		
 		double p = SmartDashboard.getNumber("Drive Enc P: ", 0);
-		double i = SmartDashboard.getNumber("Drive Enc I:", 0);
+		double i = SmartDashboard.getNumber("Drive Enc I: ", 0);
 		double d = SmartDashboard.getNumber("Drive Enc D: ", 0);
 		this.drivePID = new OrbitPID(p, i, d, eps);
 		this.target = target;
@@ -36,9 +41,9 @@ public class AutonDrivePID extends AutonCommand {
 		{
 			this.drivePID.SetSetpoint(sensorInput.getDriveEncoderAverage() + this.target);
 			this.firstCycle = false;
+			
+
 		}
-		
-		this.drivePID.CalculateError();
 		
 		if(this.drivePID.isDone())
 		{
@@ -47,7 +52,18 @@ public class AutonDrivePID extends AutonCommand {
 		} 
 		else
 		{
-			this.robotOutput.tankDrive(this.drivePID.GetOutput(), this.drivePID.GetOutput());
+			this.drivePID.SetInput(this.sensorInput.getRightDriveEncoder());
+			this.drivePID.CalculateError();
+			this.robotOutput.setDriveRight(this.drivePID.GetOutput());
+			
+			this.drivePID.SetInput(this.sensorInput.getLeftDriveEncoder());
+			this.drivePID.CalculateError();
+			this.robotOutput.setDriveLeft(this.drivePID.GetOutput());
+			
+			System.out.println("Auto Done");
+			
+			System.out.println("777");
+			
 			return false;
 		}
 		

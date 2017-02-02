@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
 	
     public void robotInit() 
     {
-    	System.out.println("Nick Mertin - GUI Test Code");
+    	/*System.out.println("Nick Mertin - GUI Test Code");
     	try
     	{
 			this.connection = new Connection(5801);
@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
     	{
 			System.err.println("Unable to open connection to driver station!");
 			e.printStackTrace();
-		}
+		}*/
     	
     	this.robotOutput = RobotOutput.getInstance();
     	this.humanInput = HumanInput.getInstance();
@@ -65,7 +65,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() 
     {
-    	autonControl.initialize();
+    	this.autonControl.initialize();
     	this.sensorInput.reset();
     }
 
@@ -79,6 +79,7 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic()
     {
     	this.sensorInput.calculate();
+    	this.autonControl.updateModes();
     }
 
     public void autonomousPeriodic()
@@ -92,6 +93,7 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
+        this.sensorInput.reset(); //REMEMBER TO DELETE THIS
     }
  
 }

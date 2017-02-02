@@ -23,7 +23,6 @@ public class OrbitPID {
 	
 	private double previousSetpoint;
 	private int cycleCount;
-	private double doneRange;
 	private int minCycleCount;
 	
 	
@@ -34,7 +33,6 @@ public class OrbitPID {
 		this.D = constantD;
 		this.errorEps = constantEps;
 		this.cycleCount = 0;
-		this.doneRange = constantEps;
 		this.minCycleCount = 5;
 	}
 
@@ -54,11 +52,7 @@ public class OrbitPID {
 	public void SetD(double constantD) { this.D = constantD; }
 	public double GetD() { return D; }
 	
-	public void SetEps(double constantEps) 
-	{
-		this.errorEps = constantEps;
-		this.doneRange = constantEps;
-	}
+	public void SetEps(double constantEps) {  this.errorEps = constantEps;  }
 	public double GetEps() {return errorEps;}
 	
 	public void SetInput(double input) { this.Input = input; }
@@ -117,7 +111,7 @@ public class OrbitPID {
 	public boolean isDone()
 	{
 		double currError = Math.abs(this.previousError);
-		if(currError <= this.doneRange)
+		if(currError <= this.errorEps)
 		{
 			this.cycleCount++;
 		}
@@ -127,7 +121,5 @@ public class OrbitPID {
 		}
 		
 		return this.cycleCount > this.minCycleCount;
-		
-		
 	}
 }
