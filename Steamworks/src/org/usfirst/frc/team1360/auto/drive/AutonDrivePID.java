@@ -52,13 +52,8 @@ public class AutonDrivePID extends AutonCommand {
 		} 
 		else
 		{
-			this.drivePID.SetInput(this.sensorInput.getRightDriveEncoder());
-			this.drivePID.CalculateError();
-			this.robotOutput.setDriveRight(this.drivePID.GetOutput());
-			
-			this.drivePID.SetInput(this.sensorInput.getLeftDriveEncoder());
-			this.drivePID.CalculateError();
-			this.robotOutput.setDriveLeft(this.drivePID.GetOutput());
+			double y = this.drivePID.GetOutput();
+			this.robotOutput.tankDrive(y, y);
 			
 			System.out.println("Auto Done");
 			
