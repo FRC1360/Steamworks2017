@@ -3,6 +3,8 @@ package org.usfirst.frc.team1360.robot.teleop;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class TeleopDrive implements TeleopComponent {
 	
 	private static TeleopDrive instance;
@@ -10,7 +12,7 @@ public class TeleopDrive implements TeleopComponent {
 	private RobotOutput robotOutput;
 	private boolean isShifted = false;
 	
-	TeleopDrive()
+	private TeleopDrive()
 	{
 		humanInput = HumanInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
@@ -24,7 +26,6 @@ public class TeleopDrive implements TeleopComponent {
 		return instance;
 	}
 	
-	@Override
 	public void calculate() {
 		double speed = humanInput.getDriveRight() - humanInput.getDriveLeft();
 		double turn = humanInput.getTurn();
@@ -44,7 +45,6 @@ public class TeleopDrive implements TeleopComponent {
 		robotOutput.arcadeDrive(speed, turn);
 	}
 
-	@Override
 	public void disable() {
 		robotOutput.tankDrive(0, 0);
 		
