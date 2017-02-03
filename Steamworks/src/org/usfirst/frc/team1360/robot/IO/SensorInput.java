@@ -33,9 +33,9 @@ public class SensorInput {
 		return this.PDP.getCurrent(4);					//PDP port 4 for ClimberFront Motor
 	}
 	
-	public double getClimberBackCurrent()				//PDP port 5 for ClimberBack Motor
+	public double getClimberBackCurrent()				
 	{
-		return this.PDP.getCurrent(5);
+		return this.PDP.getCurrent(5);					//PDP port 5 for ClimberBack Motor
 	}
 	
 	public void calculate()
