@@ -4,7 +4,9 @@ package org.usfirst.frc.team1360.robot.IO;
  * Date 30 Jan 2017 - added pdp variable; getClimberFrontCurrent method; getClimberBackCurrent method; removed calculate
  *****/
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class SensorInput {
@@ -12,10 +14,20 @@ public class SensorInput {
 	private static SensorInput instance;				//Fields of class SensorInput
 	
 	private PowerDistributionPanel PDP;
+	private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
+	private Encoder leftDriveEncoder;
+	private Encoder rightDriveEncoder;
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
 		PDP = new PowerDistributionPanel();
+		leftDriveEncoder = new Encoder(2, 3);
+		rightDriveEncoder = new Encoder(0, 1);
+		
+		SmartDashboard.putNumber("Drive Enc P: ", 1.0);
+		SmartDashboard.putNumber("Drive Enc I: ", 0.01);
+		SmartDashboard.putNumber("Drive Enc D: ", 0.1);
+		
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
@@ -38,13 +50,30 @@ public class SensorInput {
 		return this.PDP.getCurrent(5);					//PDP port 5 for ClimberBack Motor
 	}
 	
+	public double getLeftDriveEncoder()
+	{
+		return this.leftDriveEncoder.get() / ticksPerInch;
+	}
+	
+	public double getRightDriveEncoder()
+	{
+		return this.rightDriveEncoder.get() / ticksPerInch;
+	}
+	
+	public double getDriveEncoderAverage()
+	{
+		return (this.getRightDriveEncoder() + this.getLeftDriveEncoder()) / 2;
+	}
+	
 	public void calculate()
 	{
-		
+		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
+		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
 	}
 
 	public void reset()
 	{
-		
+		this.leftDriveEncoder.reset();
+		this.rightDriveEncoder.reset();
 	}
 }

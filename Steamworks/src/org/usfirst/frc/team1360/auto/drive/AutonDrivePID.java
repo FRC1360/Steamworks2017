@@ -45,6 +45,9 @@ public class AutonDrivePID extends AutonCommand {
 
 		}
 		
+		this.drivePID.SetInput(sensorInput.getDriveEncoderAverage());
+		this.drivePID.CalculateError();
+		
 		if(this.drivePID.isDone())
 		{
 			this.robotOutput.tankDrive(0, 0);
@@ -54,10 +57,6 @@ public class AutonDrivePID extends AutonCommand {
 		{
 			double y = this.drivePID.GetOutput();
 			this.robotOutput.tankDrive(y, y);
-			
-			System.out.println("Auto Done");
-			
-			System.out.println("777");
 			
 			return false;
 		}
