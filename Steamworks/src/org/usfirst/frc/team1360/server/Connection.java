@@ -2,9 +2,13 @@ package org.usfirst.frc.team1360.server;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.function.BiConsumer;
 
+import org.usfirst.frc.team1360.server.util.IntermediaryStream;
 import org.usfirst.frc.team1360.server.util.MultiChannelStream;
 
 public class Connection implements Closeable {
@@ -24,7 +28,22 @@ public class Connection implements Closeable {
 				server = new ServerSocket(port);
 				conn = server.accept();
 				System.out.println("Connection open");
-				mcs = new MultiChannelStream(conn.getInputStream(), conn.getOutputStream());
+				IntermediaryStream is = new IntermediaryStream(conn.getInputStream(), conn.getOutputStream(), (Throwable t, BiConsumer<InputStream, OutputStream> consumer) ->
+				{
+					System.out.println("Connection dropped");
+					t.printStackTrace();
+					try
+					{
+						conn = server.accept();
+						System.out.println("Connection regained");
+						consumer.accept(conn.getInputStream(), conn.getOutputStream());
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+				});
+				mcs = new MultiChannelStream(is.getInputStream(), is.getOutputStream());
 				System.out.println("MCS set up");
 				synchronized (this)
 				{
