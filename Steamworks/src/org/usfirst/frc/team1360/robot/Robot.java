@@ -1,8 +1,6 @@
 
 package org.usfirst.frc.team1360.robot;
 
-import java.io.IOException;
-
 import org.usfirst.frc.team1360.auto.AutonControl;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
@@ -40,15 +38,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() 
     {
     	System.out.println("Nick Mertin - GUI Test Code");
-    	try
-    	{
-			this.connection = new Connection(5801);
-		}
-    	catch (IOException e)
-    	{
-			System.err.println("Unable to open connection to driver station!");
-			e.printStackTrace();
-		}
+		this.connection = new Connection(5801);
     	this.robotOutput = RobotOutput.getInstance();
     	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
@@ -79,6 +69,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic()
     {
+    	sensorInput.calculate();
     	autonControl.runCycle();
     }
 
