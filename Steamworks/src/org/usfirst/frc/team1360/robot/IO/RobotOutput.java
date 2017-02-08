@@ -13,8 +13,7 @@ public class RobotOutput {
 	private Victor climberRear;
 	private Victor intake;
 	
-	private Solenoid leftDrive;
-	private Solenoid rightDrive;
+	private Solenoid driveShifter;
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
 	
@@ -30,8 +29,7 @@ public class RobotOutput {
 		climberRear = new Victor(5);
 		intake = new Victor(6);
 		
-		leftDrive = new Solenoid(0);
-		rightDrive = new Solenoid(1);
+		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(2);
 		gearRelease = new Solenoid(3);
 	}
@@ -91,8 +89,7 @@ public class RobotOutput {
 	
 	public void shiftSpeed(boolean shift)
 	{
-		leftDrive.set(shift);
-		rightDrive.set(shift);
+		driveShifter.set(shift);
 	}
 	
 	public void climb(double speed)
