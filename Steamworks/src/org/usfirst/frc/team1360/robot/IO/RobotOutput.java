@@ -12,6 +12,7 @@ public class RobotOutput {
 	private Victor climberFront;
 	private Victor climberRear;
 	private Victor intake;
+	private Victor indexSystem;
 	
 	private Solenoid driveShifter;
 	private Solenoid gearFlap;
@@ -28,6 +29,7 @@ public class RobotOutput {
 		climberFront = new Victor(4);
 		climberRear = new Victor(5);
 		intake = new Victor(6);
+		indexSystem = new Victor(7);
 		
 		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(2);
@@ -66,8 +68,8 @@ public class RobotOutput {
 	
 	public void arcadeDrive(double turn, double speed)
 	{
-		double left = (-turn) - speed;
-		double right = (-turn) + speed;
+		double left = (-speed) - turn;
+		double right = (-speed) + turn;
 		
 		tankDrive(left, right);
 	}
@@ -75,6 +77,7 @@ public class RobotOutput {
 	public void intake(double speed)
 	{
 		intake.set(speed);
+		indexSystem.set(speed);
 	}
 	
 	public void releaseGear(boolean release)
@@ -105,9 +108,11 @@ public class RobotOutput {
 		driveRightForward.set(0);
 		driveRightRear.set(0);
 		intake.set(0);
+		indexSystem.set(0);
 		climberFront.set(0);
 		climberRear.set(0);
 		gearFlap.set(false);
 		gearRelease.set(false);
+		driveShifter.set(false);
 	}
 }

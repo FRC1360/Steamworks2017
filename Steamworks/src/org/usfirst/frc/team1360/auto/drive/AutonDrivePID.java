@@ -18,31 +18,25 @@ public class AutonDrivePID extends AutonCommand {
 	
 	private double target;
 	
-	public AutonDrivePID(double target, long timeout)
-	{
-		this(target, timeout, 5);
-	}
 	
-	public AutonDrivePID(double target, long timeout, double eps) {
+	public AutonDrivePID(double target, long timeout) {
 		super(RobotSubsystems.DRIVE, timeout);
 		
 		double p = SmartDashboard.getNumber("Drive Enc P: ", 0);
 		double i = SmartDashboard.getNumber("Drive Enc I: ", 0);
 		double d = SmartDashboard.getNumber("Drive Enc D: ", 0);
-		this.drivePID = new OrbitPID(p, i, d, eps);
-		this.target = target;
+		this.drivePID = new OrbitPID(p, i, d, 0.5);
 		this.robotOutput = RobotOutput.getInstance();
 		this.sensorInput = SensorInput.getInstance();
+		this.target = target;
 	}
 	
 	@Override
 	public boolean calculate() {
-		if(this.firstCycle)
+		/*if(this.firstCycle)
 		{
 			this.drivePID.SetSetpoint(sensorInput.getDriveEncoderAverage() + this.target);
 			this.firstCycle = false;
-			
-
 		}
 		
 		this.drivePID.SetInput(sensorInput.getDriveEncoderAverage());
@@ -57,7 +51,26 @@ public class AutonDrivePID extends AutonCommand {
 		{
 			double y = this.drivePID.GetOutput();
 			this.robotOutput.tankDrive(y, y);
-			
+			return false;
+		}*/
+		
+		if(this.firstCycle)
+		{
+			this.drivePID.SetSetpoint(0);
+			this.firstCycle = false;
+		}
+		
+		this.drivePID.SetInput(this.sensorInput.getEncoderDifference());
+		this.drivePID.CalculateError();
+		
+		if(this.sensorInput.getLeftDriveEncoder() - target == 0)
+		{
+			this.robotOutput.arcadeDrive(0, 0);
+			return true;
+		}
+		else
+		{
+			this.robotOutput.arcadeDrive(this.drivePID.GetOutput(), 1);
 			return false;
 		}
 		

@@ -13,6 +13,7 @@ public class TeleopControl {
 		this.components.add(TeleopDrive.getInstance());
 		this.components.add(TeleopGear.getInstance());
 		this.components.add(TeleopIntake.getInstance());
+		this.components.add(TeleopClimber.getInstance());
 	}
 	
 	public static TeleopControl getInstance()

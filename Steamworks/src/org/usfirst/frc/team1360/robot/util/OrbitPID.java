@@ -110,16 +110,7 @@ public class OrbitPID {
 	
 	public boolean isDone()
 	{
-		double currError = Math.abs(this.previousError);
-		if(currError <= this.errorEps)
-		{
-			this.cycleCount++;
-		}
-		else 
-		{
-			this.cycleCount = 0;
-		}
 		
-		return this.cycleCount > this.minCycleCount;
+		return false;
 	}
 }

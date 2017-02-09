@@ -2069,3 +2069,57 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/Steamworks/sr
 
 !ENTRY org.eclipse.equinox.ds 1 0 2017-02-08 13:40:36.376
 !MESSAGE Could not bind a reference of component org.eclipse.fx.ide.css.cssext.ui.internal.DefaultCssExtProvider. The reference is: Reference[name = ICSSExtModelProvider, interface = org.eclipse.fx.ide.css.cssext.ICSSExtModelProvider, policy = dynamic, cardinality = 0..n, target = null, bind = bindCssExtensionModelProvider, unbind = unbindCssExtensionModelProvider]
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:00:01.127
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:00:01.127
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:16:16.746
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:16:16.746
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.launchbar.core 2 0 2017-02-08 20:16:16.795
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2017-02-08 20:16:16.797
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:18:35.562
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:18:35.563
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:20:52.241
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:20:52.241
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:22:43.151
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:22:43.152
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:37:48.615
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:37:48.616
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:38:06.594
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:38:06.595
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:38:50.205
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/Steamworks2017/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-08 20:38:50.205
+!MESSAGE Targets: deploy, Mode: run

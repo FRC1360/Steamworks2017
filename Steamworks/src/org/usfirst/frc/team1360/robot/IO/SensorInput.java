@@ -14,7 +14,7 @@ public class SensorInput {
 	private static SensorInput instance;				//Fields of class SensorInput
 	
 	private PowerDistributionPanel PDP;
-	private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
+	//private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
 	
@@ -42,27 +42,33 @@ public class SensorInput {
 	
 	public double getClimberFrontCurrent()				//Method in class SensorInput
 	{
-		return this.PDP.getCurrent(4);					//PDP port 4 for ClimberFront Motor
+		return this.PDP.getCurrent(0);					//PDP port 0 for ClimberFront Motor
 	}
 	
 	public double getClimberBackCurrent()				
 	{
-		return this.PDP.getCurrent(5);					//PDP port 5 for ClimberBack Motor
+		return this.PDP.getCurrent(1);					//PDP port 1 for ClimberBack Motor
 	}
+	
 	
 	public double getLeftDriveEncoder()
 	{
-		return this.leftDriveEncoder.get() / ticksPerInch;
+		return this.leftDriveEncoder.get();// / ticksPerInch;
 	}
 	
 	public double getRightDriveEncoder()
 	{
-		return this.rightDriveEncoder.get() / ticksPerInch;
+		return this.rightDriveEncoder.get();// / ticksPerInch;
 	}
 	
 	public double getDriveEncoderAverage()
 	{
 		return (this.getRightDriveEncoder() + this.getLeftDriveEncoder()) / 2;
+	}
+	
+	public double getEncoderDifference()
+	{
+		return this.getLeftDriveEncoder() - this.getRightDriveEncoder();
 	}
 	
 	public void calculate()
