@@ -1,9 +1,5 @@
 package org.usfirst.frc.team1360.robot.IO;
 
-<<<<<<< HEAD
-public class RobotOutput {
-	
-=======
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 
@@ -22,14 +18,10 @@ public class RobotOutput {
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
 	
->>>>>>> Auto
 	private static  RobotOutput instance;
 	
 	private RobotOutput()
 	{
-<<<<<<< HEAD
-		
-=======
 		driveLeftForward = new Victor(0);
 		driveLeftRear = new Victor(1);
 		driveRightForward = new Victor(2);
@@ -42,7 +34,6 @@ public class RobotOutput {
 		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(2);
 		gearRelease = new Solenoid(3);
->>>>>>> Auto
 	}
 	
 	public static RobotOutput getInstance()
@@ -55,8 +46,7 @@ public class RobotOutput {
 		return instance;
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public void setDriveLeft(double speed)
 	{
 		driveLeftForward.set(-speed);
@@ -112,7 +102,7 @@ public class RobotOutput {
 		climberRear.set(speed);
 	}
 	
->>>>>>> Auto
+
 	public void stopAll()
 	{
 		driveLeftForward.set(0);

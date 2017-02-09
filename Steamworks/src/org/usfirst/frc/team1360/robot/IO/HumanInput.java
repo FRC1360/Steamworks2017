@@ -30,8 +30,6 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-<<<<<<< HEAD
-=======
 	public double getDriveRight()							//Method in class HumanInput
 	{
 		return driver.getRightTrigger();					
@@ -56,8 +54,7 @@ public class HumanInput {
 
 	//Operator Controls
 	
-<<<<<<< HEAD
-=======
+
 	public double getIntake()								
 	{
 		return operator.getRightTrigger();					//Read the value of the Right Trigger on the Operator Controller for Intake
