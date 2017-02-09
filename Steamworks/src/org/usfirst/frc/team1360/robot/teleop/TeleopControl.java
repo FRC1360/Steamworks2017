@@ -9,7 +9,11 @@ public class TeleopControl {
 	
 	private TeleopControl()
 	{
-		this.components = new ArrayList<>();
+		this.components = new ArrayList<TeleopComponent>();
+		this.components.add(TeleopDrive.getInstance());
+		this.components.add(TeleopGear.getInstance());
+		this.components.add(TeleopIntake.getInstance());
+		this.components.add(TeleopClimber.getInstance());
 	}
 	
 	public static TeleopControl getInstance()
