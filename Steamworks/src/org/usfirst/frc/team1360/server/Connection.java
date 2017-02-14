@@ -58,15 +58,18 @@ public class Connection implements Closeable {
 				System.err.println("Unable to open connection to driver station!");
 				e.printStackTrace();
 			}
-		});
-		
+		}).start();
 	}
 	
-	public synchronized void addComponent(Component component, int channel)
+	public void addComponent(Component component, int channel)
 	{
-		components[channel] = component;
-		if (configured)
-			component.initialize(mcs.getInputStream(channel), mcs.getOutputStream(channel));
+		new Thread(() -> {
+			synchronized (this) {
+				components[channel] = component;
+				if (configured)
+					component.initialize(mcs.getInputStream(channel), mcs.getOutputStream(channel));
+			}
+		}).start();
 	}
 
 	@Override

@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public final class IOUtils {
-	private IOUtils() {
+	private IOUtils() {	}
+	
+	public static byte[] Float1360(float value) {
+		return Int32Big(Float.floatToRawIntBits(value));
 	}
 
 	public static byte[] UInt16Big(int value) {

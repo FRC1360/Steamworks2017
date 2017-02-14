@@ -1,16 +1,20 @@
 package org.usfirst.frc.team1360.server.util;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UncheckedIOException;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
 public class IntermediaryStream {
-	InputStream input;
-	OutputStream output;
-	BiConsumer<Throwable, BiConsumer<InputStream, OutputStream>> errorHandler;
+	private InputStream input;
+	private OutputStream output;
+	private BiConsumer<Throwable, BiConsumer<InputStream, OutputStream>> errorHandler;
+	private HashSet<Thread> currentThreads = new HashSet<>();
+	private EventWaitHandle ewh = new EventWaitHandle(true, false);
+	private Object rl = new Object(), wl = new Object();
 	
 	public IntermediaryStream(InputStream input, OutputStream output, BiConsumer<Throwable, BiConsumer<InputStream, OutputStream>> errorHandler)
 	{
@@ -22,40 +26,93 @@ public class IntermediaryStream {
 		this.errorHandler = errorHandler;
 	}
 	
-	private void handleError(Throwable error)
+	private void safe(Object lock, Runnable action)
 	{
 		while (true)
-			try
+		try
+		{
+			synchronized (currentThreads)
 			{
-				errorHandler.accept(error, (InputStream i, OutputStream o) ->
+				currentThreads.add(Thread.currentThread());
+			}
+			ewh.waitOne();
+			synchronized (lock)
+			{
+				try
 				{
-					input = i;
-					output = o;
-				});
-				return;
+					action.run();
+					return;
+				}
+				catch (Throwable t)
+				{
+					ewh.reset();
+					synchronized (currentThreads)
+					{
+						currentThreads.stream().forEach(Thread::interrupt);
+						currentThreads.clear();
+					}
+					Thread.yield();
+					while (true)
+						try
+						{
+							errorHandler.accept(t, (InputStream i, OutputStream o) ->
+							{
+								input = i;
+								output = o;
+							});
+							break;
+						}
+						catch (Throwable _t)
+						{
+							_t.printStackTrace();
+							continue;
+						}
+					ewh.set();
+				}
 			}
-			catch (Throwable t)
+		}
+		catch (InterruptedException e)
+		{
+			continue;
+		}
+		finally
+		{
+			synchronized (currentThreads)
 			{
-				t.printStackTrace();
+				if (currentThreads.contains(Thread.currentThread()))
+					currentThreads.remove(Thread.currentThread());
 			}
+		}
 	}
 	
 	private class InputStreamProxy extends InputStream {
 		@Override
 		public int read() throws IOException
 		{
-			synchronized (IntermediaryStream.this)
+			Container<Integer> result = new Container<Integer>();
+			safe(rl, () ->
 			{
-				while (true)
-					try
-					{
-						return input.read();
-					}
-					catch (Throwable t)
-					{
-						handleError(t);
-					}
-			}
+				try
+				{
+					result.put(input.read());
+				}
+				catch (IOException e)
+				{
+					throw new UncheckedIOException(e);
+				}
+			});
+			return result.get();
+		}
+		
+		private IntermediaryStream getOuter()
+		{
+			return IntermediaryStream.this;
+		}
+		
+		@Override
+		public boolean equals(Object other)
+		{
+			return other instanceof InputStreamProxy && ((InputStreamProxy)other).getOuter() == IntermediaryStream.this;
 		}
 	}
 	
@@ -63,19 +120,28 @@ public class IntermediaryStream {
 		@Override
 		public void write(int b) throws IOException
 		{
-			synchronized (IntermediaryStream.this)
+			safe(wl, () -> 
 			{
-				while (true)
-					try
-					{
-						output.write(b);
-						return;
-					}
-					catch (Throwable t)
-					{
-						handleError(t);
-					}
-			}
+				try
+				{
+					output.write(b);
+				}
+				catch (IOException e)
+				{
+					throw new UncheckedIOException(e);
+				}
+			});
+		}
+		
+		private IntermediaryStream getOuter()
+		{
+			return IntermediaryStream.this;
+		}
+		
+		@Override
+		public boolean equals(Object other)
+		{
+			return other instanceof OutputStreamProxy && ((OutputStreamProxy)other).getOuter() == IntermediaryStream.this;
 		}
 	}
 	
