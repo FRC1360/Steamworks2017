@@ -17,7 +17,7 @@ public class RobotOutput {
 	private Solenoid driveShifter;
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
-	private Solenoid instake;
+	private Solenoid outFlap;
 	
 	private static  RobotOutput instance;
 	
@@ -35,7 +35,7 @@ public class RobotOutput {
 		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(2);
 		gearRelease = new Solenoid(3);
-		instake = new Solenoid (4);
+		outFlap = new Solenoid (4);
 	}
 	
 	public static RobotOutput getInstance()
@@ -97,9 +97,9 @@ public class RobotOutput {
 		driveShifter.set(shift);
 	}
 	
-	public void instake(boolean release)
+	public void outtake(boolean release)
 	{
-		instake.set(release);
+		outFlap.set(release);
 	}
 	
 	public void climb(double speed)
@@ -121,5 +121,6 @@ public class RobotOutput {
 		gearFlap.set(false);
 		gearRelease.set(false);
 		driveShifter.set(false);
+		outFlap.set(false);
 	}
 }

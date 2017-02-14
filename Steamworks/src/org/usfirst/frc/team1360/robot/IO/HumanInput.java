@@ -69,6 +69,11 @@ public class HumanInput {
 		return this.operator.getButtonRB();					//Read the value of the Right Back Button on the Operator Controller
 	}
 	
+	public boolean getOperatorOutake()
+	{
+		return this.operator.getButtonLB();
+	}
+	
 	public boolean getOverride()
 	{
 		return operator.getButtonA();						//Override the value of the A Button on the operator controller

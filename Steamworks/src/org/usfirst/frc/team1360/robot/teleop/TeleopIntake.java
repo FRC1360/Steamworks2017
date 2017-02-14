@@ -29,7 +29,10 @@ public class TeleopIntake implements TeleopComponent {
 	public void calculate() {
 		// TODO Auto-generated method stub
 		double speed = this.humanInput.getIntake();
+		boolean release = this.humanInput.getOperatorOutake();
+		
 		this.robotOutput.intake(speed);
+		this.robotOutput.outtake(release);
 	}
 
 	@Override
