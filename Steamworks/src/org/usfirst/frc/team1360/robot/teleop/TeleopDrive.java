@@ -10,7 +10,7 @@ public class TeleopDrive implements TeleopComponent {
 	private static TeleopDrive instance;
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
-	private boolean isShifted = false;
+	private DriverConfig cfg = DriverConfig.RACING;
 	
 	private TeleopDrive()
 	{
@@ -26,8 +26,9 @@ public class TeleopDrive implements TeleopComponent {
 		return instance;
 	}
 	
-	public void calculate() {
-		
+	public void calculate() 
+	{
+		cfg.calculate(robotOutput, humanInput);
 	}
 
 	public void disable() {
