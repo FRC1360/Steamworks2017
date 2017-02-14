@@ -16,21 +16,16 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Robot extends IterativeRobot {
-	private static Robot instance;
-	
+public class Robot extends IterativeRobot {	
 	private RobotOutput robotOutput;
-	private HumanInput humanInput;
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
 	private AutonControl autonControl;
-	private Connection connection;
 	private OrbitCamera camera;
 	
     public void robotInit() 
     {	
     	this.robotOutput = RobotOutput.getInstance();
-    	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
     	this.autonControl = AutonControl.getInstance();
