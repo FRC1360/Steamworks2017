@@ -70,10 +70,10 @@ public class RobotOutput {
 	
 	public void arcadeDrive(double speed, double turn)
 	{
-		double left = (-speed) - turn;
+		double left = (speed) + turn;
 		double right = (speed) - turn;
 		
-		tankDrive(-left, right);
+		tankDrive(left, right);
 	}
 	
 	public void intake(double speed)

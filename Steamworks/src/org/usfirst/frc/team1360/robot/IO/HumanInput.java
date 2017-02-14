@@ -76,7 +76,7 @@ public class HumanInput {
 	
 	public boolean getOverride()
 	{
-		return operator.getButtonA();						//Override the value of the A Button on the operator controller
+		return operator.getClickLeftStick();						//Override the value of the A Button on the operator controller
 	}
 
 	public double getClimb()
