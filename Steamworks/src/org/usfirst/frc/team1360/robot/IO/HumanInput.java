@@ -30,26 +30,8 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-	/*public double getDriveRight()							//Method in class HumanInput
-	{
-		return driver.getRightTrigger();					
-	}
 	
-	public double getDriveLeft()
-	{
-		return driver.getLeftTrigger();
-	}
-	
-	public double getTurn()
-	{	
-		return driver.getLeftXAxis();						//Get the value of the Axis						
-	}
-	
-	public boolean getShiftSpeed()
-	{
-		return driver.getButtonA();							//Read the value of the A Button on the Driver Controller
-	}*/
-	
+	//---------Racing--------------
 	public double getRacingThrottle()
 	{
 		return this.driver.getRightTrigger() - this.driver.getLeftTrigger();
@@ -63,6 +45,22 @@ public class HumanInput {
 	public boolean getRacingShifter()
 	{
 		return this.driver.getButtonA();
+	}
+	
+	//------------Halo--------------
+	public double getHaloThrottle()
+	{
+		return this.driver.getLeftYAxis();
+	}
+	
+	public double getHaloTurn()
+	{
+		return this.driver.getRightXAxis();
+	}
+	
+	public boolean getHaloShifter()
+	{
+		return this.driver.getButtonRB();
 	}
 	
 
