@@ -7678,3 +7678,115 @@ java.net.SocketException: Connection reset
 	at java.io.BufferedReader.readLine(Unknown Source)
 	at java.io.BufferedReader.readLine(Unknown Source)
 	at org.eclipse.ant.internal.launching.launchConfigurations.RemoteAntBuildListener$ServerConnection.run(RemoteAntBuildListener.java:94)
+!SESSION 2017-02-14 10:46:40.535 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 10:46:51.312
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 10:46:51.377
+!MESSAGE Installedtools
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-02-14 10:46:51.404
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\nmeritn'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 10:46:51.407
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 10:46:51.453
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 10:46:51.455
+!MESSAGE Updating projects
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 10:46:51.464
+!MESSAGE Adding: wpilib to project: Steamworks
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 10:46:51.465
+!MESSAGE Adding: networktables to project: Steamworks
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 10:46:51.466
+!MESSAGE Adding: opencv to project: Steamworks
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 10:46:51.467
+!MESSAGE Adding: cscore to project: Steamworks
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 11:14:17.372
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 11:14:17.375
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.ant.launching 4 120 2017-02-14 11:14:23.313
+!MESSAGE Error logged from Ant UI: 
+!STACK 0
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at sun.nio.cs.StreamDecoder.readBytes(Unknown Source)
+	at sun.nio.cs.StreamDecoder.implRead(Unknown Source)
+	at sun.nio.cs.StreamDecoder.read(Unknown Source)
+	at java.io.InputStreamReader.read(Unknown Source)
+	at java.io.BufferedReader.fill(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at org.eclipse.ant.internal.launching.launchConfigurations.RemoteAntBuildListener$ServerConnection.run(RemoteAntBuildListener.java:94)
+!SESSION 2017-02-14 11:15:18.552 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 11:15:28.484
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 11:15:28.491
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 11:15:28.499
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-14 11:15:28.500
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 11:15:28.501
+!MESSAGE Updating projects
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-02-14 11:15:28.814
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\nmeritn'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 11:16:17.788
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-14 11:16:17.789
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.ant.launching 4 120 2017-02-14 11:16:22.983
+!MESSAGE Error logged from Ant UI: 
+!STACK 0
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at sun.nio.cs.StreamDecoder.readBytes(Unknown Source)
+	at sun.nio.cs.StreamDecoder.implRead(Unknown Source)
+	at sun.nio.cs.StreamDecoder.read(Unknown Source)
+	at java.io.InputStreamReader.read(Unknown Source)
+	at java.io.BufferedReader.fill(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at org.eclipse.ant.internal.launching.launchConfigurations.RemoteAntBuildListener$ServerConnection.run(RemoteAntBuildListener.java:94)
