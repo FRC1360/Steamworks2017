@@ -44,7 +44,7 @@ public class TeleopDrive implements TeleopComponent {
 		
 		if(Math.abs(turn) < 0.2) turn = 0;
 		
-		robotOutput.arcadeDrive(turn, speed);
+		robotOutput.arcadeDrive(speed, turn);
 	}
 
 	public void disable() {

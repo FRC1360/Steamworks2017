@@ -50,8 +50,8 @@ public class RobotOutput {
 	
 	public void setDriveLeft(double speed)
 	{
-		driveLeftForward.set(-speed);
-		driveLeftRear.set(-speed);
+		driveLeftForward.set(speed);
+		driveLeftRear.set(speed);
 	}
 	
 	public void setDriveRight(double speed)
@@ -68,12 +68,12 @@ public class RobotOutput {
 		driveRightRear.set(right);
 	}
 	
-	public void arcadeDrive(double turn, double speed)
+	public void arcadeDrive(double speed, double turn)
 	{
 		double left = (-speed) - turn;
-		double right = (-speed) + turn;
+		double right = (speed) - turn;
 		
-		tankDrive(left, right);
+		tankDrive(-left, right);
 	}
 	
 	public void intake(double speed)
