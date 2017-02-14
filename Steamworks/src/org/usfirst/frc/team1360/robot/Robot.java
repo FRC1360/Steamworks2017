@@ -8,6 +8,7 @@ import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.teleop.TeleopControl;
+import org.usfirst.frc.team1360.robot.util.OrbitCamera;
 import org.usfirst.frc.team1360.server.Connection;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -24,44 +25,19 @@ public class Robot extends IterativeRobot {
 	private TeleopControl teleopControl;
 	private AutonControl autonControl;
 	private Connection connection;
-	
-	/*public Robot()
-	{
-		// Called by WPILib for us
-		instance = this;
-	}
-	
-	public static Robot getInstance()
-	{
-		// Already initialized by WPILib through constructor
-		return instance;
-	}*/
+	private OrbitCamera camera;
 	
     public void robotInit() 
-    {
-    	/*System.out.println("Nick Mertin - GUI Test Code");
-    	try
-    	{
-			this.connection = new Connection(5801);
-		}
-    	catch (IOException e)
-    	{
-			System.err.println("Unable to open connection to driver station!");
-			e.printStackTrace();
-		}*/
-    	
+    {	
     	this.robotOutput = RobotOutput.getInstance();
     	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
     	this.autonControl = AutonControl.getInstance();
     	this.sensorInput.reset();
+    	camera = new OrbitCamera("10.13.60.3", "Axis Camera");
     }
     
-    public Connection getConnection()
-    {
-    	return connection;
-    }
 
     public void autonomousInit() 
     {
