@@ -101,32 +101,32 @@ public class HumanInput {
 	
 	public double getIntake()								
 	{
-		return operator.getRightTrigger();					//Read the value of the Right Trigger on the Operator Controller for Intake
+		return this.operator.getLeftYAxis();				//Read the value of the Right Trigger on the Operator Controller for Intake
 	}
 	
 	public boolean getOperatorGearRelease()
 	{
-		return this.operator.getButtonLB();					//Read the value of the Left Back Button on the Operator Controller
+		return this.operator.getButtonA();				//Read the value of the Left Back Button on the Operator Controller
 	}
 	
 	public boolean getOperatorGearFlap()
 	{
-		return this.operator.getButtonRB();					//Read the value of the Right Back Button on the Operator Controller
+		return this.operator.getButtonB();					//Read the value of the Right Back Button on the Operator Controller
 	}
 	
 	public boolean getOperatorOutake()
 	{
-		return this.operator.getButtonLB();
+		return this.operator.getButtonX();
 	}
 	
 	public boolean getOverride()
 	{
-		return operator.getClickLeftStick();						//Override the value of the A Button on the operator controller
+		return this.operator.getButtonBack() && this.operator.getButtonStart();						//Override the value of the A Button on the operator controller
 	}
 
 	public double getClimb()
 	{
-		return operator.getLeftTrigger();					//Read the value of the Left Trigger on the Operator Controller for Climb
+		return operator.getRightTrigger();					//Read the value of the Left Trigger on the Operator Controller for Climb
 	}
 
 	//Auto Controls
