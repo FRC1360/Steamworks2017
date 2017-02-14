@@ -36,14 +36,16 @@ public class TeleopClimber implements TeleopComponent {
 		double averageCurrent = (this.sensorInput.getClimberBackCurrent() + this.sensorInput.getClimberFrontCurrent()) / 2;
 		double speed = this.humanInput.getClimb();
 		
-		if (averageCurrent > 30 && !this.humanInput.getOverride())
+		/*if (averageCurrent > 30 && !this.humanInput.getOverride())
 		{
 			this.robotOutput.climb(0);
 		}
 		else 
 		{
-			this.robotOutput.climb(speed);
-		}
+			
+		}*/
+		
+		this.robotOutput.climb(speed);
 	}
 
 	@Override

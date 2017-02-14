@@ -1,22 +1,25 @@
 package org.usfirst.frc.team1360.robot.IO;
-
+/*****
+ * Author: Tatiana Tomas Zahhar
+ * Date: 31 Jan 2017 - added comments
+ */
 import org.usfirst.frc.team1360.robot.util.XboxRemote;
 
 public class HumanInput {
 	
-	private static HumanInput instance;
+	private static HumanInput instance;						//Fields of class HumanInput
 	private XboxRemote driver;
 	private XboxRemote operator;
-	private boolean autonIncreaseStepWasPressed = false;
+	private boolean autonIncreaseStepWasPressed = false;	//Confirm that Autonomous Period is done
 	private boolean autonDecreaseStepWasPressed = false;
 	
-	private HumanInput()
+	private HumanInput()									//Constructor to initialize fields
 	{
-		this.driver = new XboxRemote(0);
-		this.operator = new XboxRemote(1);
+		this.driver = new XboxRemote(0);					//Driver Xbox on USB Port 0 on DS
+		this.operator = new XboxRemote(1);					//Operator Xbox on USB Port 1 on DS			
 	}
 	
-	public static HumanInput getInstance()
+	public static HumanInput getInstance()					//Check to make sure that HumanInput exists
 	{
 		if (instance == null)
 		{
@@ -27,69 +30,119 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-	public double getDriveRight()
+	
+	//---------Racing--------------
+	public double getRacingThrottle()
 	{
-		return driver.getRightTrigger();
+		return this.driver.getRightTrigger() - this.driver.getLeftTrigger();
 	}
 	
-	public double getDriveLeft()
+	public double getRacingTurn()
 	{
-		return driver.getLeftTrigger();
+		return this.driver.getLeftXAxis();
 	}
 	
-	public double getTurn()
-	{	
-		return driver.getLeftXAxis();
+	public boolean getRacingShifter()
+	{
+		return this.driver.getButtonA();
 	}
 	
-	public boolean getShiftSpeed()
+	//------------Halo--------------
+	public double getHaloThrottle()
 	{
-		return driver.getButtonA();
+		return this.driver.getLeftYAxis();
+	}
+	
+	public double getHaloTurn()
+	{
+		return this.driver.getRightXAxis();
+	}
+	
+	public boolean getHaloShifter()
+	{
+		return this.driver.getButtonRB();
+	}
+	
+	//-----------Single-Stick Arcade------------
+	public double getArcadeThrottle()
+	{
+		return this.driver.getLeftYAxis();
+	}
+	
+	public double getArcadeTurn()
+	{
+		return this.driver.getLeftXAxis();
+	}
+	
+	public boolean getArcadeShifter()
+	{
+		return this.driver.getButtonA();
+	}
+	
+	//----------Tank Controls---------
+	public double getTankLeft()
+	{
+		return this.driver.getLeftYAxis();
+	}
+	
+	public double getTankRight()
+	{
+		return this.driver.getRightYAxis();
+	}
+	
+	public boolean getTankShifter()
+	{
+		return this.driver.getButtonRB();
 	}
 	
 
 
 	//Operator Controls
 	
-	public double getIntake()
+	public double getIntake()								
 	{
-		return operator.getRightTrigger();
+		return this.operator.getLeftYAxis();				//Read the value of the Right Trigger on the Operator Controller for Intake
 	}
 	
 	public boolean getOperatorGearRelease()
 	{
-		return this.operator.getButtonLB();
+		return this.operator.getButtonA();				//Read the value of the Left Back Button on the Operator Controller
 	}
 	
 	public boolean getOperatorGearFlap()
 	{
-		return this.operator.getButtonRB();
+		return this.operator.getButtonB();					//Read the value of the Right Back Button on the Operator Controller
+	}
+	
+	public boolean getOperatorOutake()
+	{
+		return this.operator.getButtonX();
 	}
 	
 	public boolean getOverride()
 	{
-		return operator.getButtonA();
+		return this.operator.getButtonBack() && this.operator.getButtonStart();						//Override the value of the A Button on the operator controller
 	}
 
 	public double getClimb()
 	{
-		return operator.getLeftTrigger();
+		return operator.getRightTrigger();					//Read the value of the Left Trigger on the Operator Controller for Climb
 	}
 
 	//Auto Controls
 	 public boolean getAutonSetModeButton() 
 	 {
-		 return this.driver.getButtonA();
+		 return this.driver.getButtonA();					//Button A is assigned as the Auto Mode Button 
 	 }
 	    
 	 public boolean getAutonSetDelayButton() 
 	 {
-		 return this.driver.getButtonB();
+		 return this.driver.getButtonB();					//Button B is assigned as the Auto Delay Button
 	 }
 	    
 	 public double getAutonSelectStick() 
 	 {
-		 return this.driver.getLeftYAxis();
+		 return this.driver.getLeftYAxis();					//Left Y Axis is assigned as the Auto Selecting Stick
 	 }
 
 	 public boolean getAutonStepIncrease() 
@@ -109,6 +162,5 @@ public class HumanInput {
 	    return result;
 	}
 	
-	//media is the best job {do memes}
-	//lol media suxs
+
 }

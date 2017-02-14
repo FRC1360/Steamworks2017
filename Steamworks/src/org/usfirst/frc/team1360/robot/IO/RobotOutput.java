@@ -6,34 +6,36 @@ import edu.wpi.first.wpilibj.Victor;
 public class RobotOutput {
 	
 	private Victor driveLeftForward;
-	private Victor driveLeftBackward;
+	private Victor driveLeftRear;
 	private Victor driveRightForward;
-	private Victor driveRightBackward;
+	private Victor driveRightRear;
 	private Victor climberFront;
-	private Victor climberBack;
+	private Victor climberRear;
 	private Victor intake;
+	private Victor indexSystem;
 	
-	private Solenoid leftDrive;
-	private Solenoid rightDrive;
+	private Solenoid driveShifter;
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
+	private Solenoid outFlap;
 	
 	private static  RobotOutput instance;
 	
 	private RobotOutput()
 	{
 		driveLeftForward = new Victor(0);
-		driveLeftBackward = new Victor(1);
+		driveLeftRear = new Victor(1);
 		driveRightForward = new Victor(2);
-		driveRightBackward = new Victor(3);
+		driveRightRear = new Victor(3);
 		climberFront = new Victor(4);
-		climberBack = new Victor(5);
+		climberRear = new Victor(5);
 		intake = new Victor(6);
+		indexSystem = new Victor(7);
 		
-		leftDrive = new Solenoid(0);
-		rightDrive = new Solenoid(1);
+		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(2);
 		gearRelease = new Solenoid(3);
+		outFlap = new Solenoid (4);
 	}
 	
 	public static RobotOutput getInstance()
@@ -46,18 +48,30 @@ public class RobotOutput {
 		return instance;
 	}
 	
+	public void setDriveLeft(double speed)
+	{
+		driveLeftForward.set(speed);
+		driveLeftRear.set(speed);
+	}
+	
+	public void setDriveRight(double speed)
+	{
+		driveRightForward.set(speed);
+		driveRightRear.set(speed);
+	}
+	
 	public void tankDrive(double left, double right)
 	{
 		driveLeftForward.set(-left);
-		driveLeftBackward.set(-left);
+		driveLeftRear.set(-left);
 		driveRightForward.set(right);
-		driveRightBackward.set(right);
+		driveRightRear.set(right);
 	}
 	
-	public void arcadeDrive(double turn, double speed)
+	public void arcadeDrive(double speed, double turn)
 	{
-		double left = (-turn) - speed;
-		double right = (-turn) + speed;
+		double left = (speed) + turn;
+		double right = (speed) - turn;
 		
 		tankDrive(left, right);
 	}
@@ -65,6 +79,7 @@ public class RobotOutput {
 	public void intake(double speed)
 	{
 		intake.set(speed);
+		indexSystem.set(speed);
 	}
 	
 	public void releaseGear(boolean release)
@@ -79,26 +94,33 @@ public class RobotOutput {
 	
 	public void shiftSpeed(boolean shift)
 	{
-		leftDrive.set(shift);
-		rightDrive.set(shift);
+		driveShifter.set(shift);
+	}
+	
+	public void outtake(boolean release)
+	{
+		outFlap.set(release);
 	}
 	
 	public void climb(double speed)
 	{
 		climberFront.set(speed);
-		climberBack.set(speed);
+		climberRear.set(speed);
 	}
 	
 	public void stopAll()
 	{
 		driveLeftForward.set(0);
-		driveLeftBackward.set(0);
+		driveLeftRear.set(0);
 		driveRightForward.set(0);
-		driveRightBackward.set(0);
+		driveRightRear.set(0);
 		intake.set(0);
+		indexSystem.set(0);
 		climberFront.set(0);
-		climberBack.set(0);
+		climberRear.set(0);
 		gearFlap.set(false);
 		gearRelease.set(false);
+		driveShifter.set(false);
+		outFlap.set(false);
 	}
 }
