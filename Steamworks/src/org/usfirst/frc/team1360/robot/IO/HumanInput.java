@@ -63,6 +63,38 @@ public class HumanInput {
 		return this.driver.getButtonRB();
 	}
 	
+	//-----------Single-Stick Arcade------------
+	public double getArcadeThrottle()
+	{
+		return this.driver.getLeftYAxis();
+	}
+	
+	public double getArcadeTurn()
+	{
+		return this.driver.getLeftXAxis();
+	}
+	
+	public boolean getArcadeShifter()
+	{
+		return this.driver.getButtonA();
+	}
+	
+	//----------Tank Controls---------
+	public double getTankLeft()
+	{
+		return this.driver.getLeftYAxis();
+	}
+	
+	public double getTankRight()
+	{
+		return this.driver.getRightYAxis();
+	}
+	
+	public boolean getTankShifter()
+	{
+		return this.driver.getButtonRB();
+	}
+	
 
 
 	//Operator Controls
