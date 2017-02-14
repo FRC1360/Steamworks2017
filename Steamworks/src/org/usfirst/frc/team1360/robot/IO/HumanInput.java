@@ -30,7 +30,7 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-	public double getDriveRight()							//Method in class HumanInput
+	/*public double getDriveRight()							//Method in class HumanInput
 	{
 		return driver.getRightTrigger();					
 	}
@@ -48,6 +48,21 @@ public class HumanInput {
 	public boolean getShiftSpeed()
 	{
 		return driver.getButtonA();							//Read the value of the A Button on the Driver Controller
+	}*/
+	
+	public double getRacingThrottle()
+	{
+		return this.driver.getRightTrigger() - this.driver.getLeftTrigger();
+	}
+	
+	public double getRacingTurn()
+	{
+		return this.driver.getLeftXAxis();
+	}
+	
+	public boolean getRacingShifter()
+	{
+		return this.driver.getButtonA();
 	}
 	
 
