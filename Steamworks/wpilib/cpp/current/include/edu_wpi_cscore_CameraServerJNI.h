@@ -265,6 +265,70 @@ JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_releaseSource
 
 /*
  * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraBrightness
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraBrightness
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    getCameraBrightness
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_edu_wpi_cscore_CameraServerJNI_getCameraBrightness
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraWhiteBalanceAuto
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraWhiteBalanceAuto
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraWhiteBalanceHoldCurrent
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraWhiteBalanceHoldCurrent
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraWhiteBalanceManual
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraWhiteBalanceManual
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraExposureAuto
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraExposureAuto
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraExposureHoldCurrent
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraExposureHoldCurrent
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
+ * Method:    setCameraExposureManual
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_edu_wpi_cscore_CameraServerJNI_setCameraExposureManual
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     edu_wpi_cscore_CameraServerJNI
  * Method:    getUsbCameraPath
  * Signature: (I)Ljava/lang/String;
  */
