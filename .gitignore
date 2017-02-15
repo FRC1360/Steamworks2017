@@ -53,4 +53,3 @@ local.properties
 # Code Recommenders
 .recommenders/
 *.class
-*.jar
