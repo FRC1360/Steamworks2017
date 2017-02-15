@@ -21,12 +21,14 @@ public class SensorInput {
 	//private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
+	private AHRS ahrs;
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
 		PDP = new PowerDistributionPanel();
 		leftDriveEncoder = new Encoder(2, 3);
 		rightDriveEncoder = new Encoder(0, 1);
+		ahrs = new AHRS(SPI.Port.kMXP);
 		
 		SmartDashboard.putNumber("Drive Enc P: ", 1.0);
 		SmartDashboard.putNumber("Drive Enc I: ", 0.01);
@@ -74,6 +76,11 @@ public class SensorInput {
 	public double getEncoderDifference()
 	{
 		return this.getLeftDriveEncoder() - this.getRightDriveEncoder();
+	}
+	
+	public double getAHRSYaw()
+	{
+		return this.ahrs.getYaw();
 	}
 	
 	public void calculate()

@@ -23,7 +23,6 @@ public class AutonDriveNavX extends AutonCommand
 	public AutonDriveNavX(long timeoutLength, double speed) {
 		super(RobotSubsystems.DRIVE, timeoutLength);
 		
-		this.ahrs = new AHRS(SPI.Port.kMXP);
 		this.robotOutput = RobotOutput.getInstance();
 		
 		this.speed = speed;
