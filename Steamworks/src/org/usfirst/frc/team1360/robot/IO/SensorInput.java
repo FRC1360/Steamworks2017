@@ -4,8 +4,12 @@ package org.usfirst.frc.team1360.robot.IO;
  * Date 30 Jan 2017 - added pdp variable; getClimberFrontCurrent method; getClimberBackCurrent method; removed calculate
  *****/
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -26,8 +30,7 @@ public class SensorInput {
 		
 		SmartDashboard.putNumber("Drive Enc P: ", 1.0);
 		SmartDashboard.putNumber("Drive Enc I: ", 0.01);
-		SmartDashboard.putNumber("Drive Enc D: ", 0.1);
-		
+		SmartDashboard.putNumber("Drive Enc D: ", 0.1);		
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
@@ -39,6 +42,8 @@ public class SensorInput {
 		
 		return instance;
 	}
+	
+	
 	
 	public double getClimberFrontCurrent()				//Method in class SensorInput
 	{
