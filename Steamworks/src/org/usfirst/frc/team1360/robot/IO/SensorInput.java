@@ -4,6 +4,8 @@ package org.usfirst.frc.team1360.robot.IO;
  * Date 30 Jan 2017 - added pdp variable; getClimberFrontCurrent method; getClimberBackCurrent method; removed calculate
  *****/
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +19,7 @@ public class SensorInput {
 	//private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
+	private AHRS ahrs;
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{

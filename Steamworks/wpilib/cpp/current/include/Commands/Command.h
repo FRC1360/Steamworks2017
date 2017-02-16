@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST 2011-2016. All Rights Reserved.                        */
+/* Copyright (c) FIRST 2011-2017. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -81,6 +81,7 @@ class Command : public ErrorBase, public NamedSendable, public ITableListener {
   bool IsTimedOut() const;
   bool AssertUnlocked(const std::string& message);
   void SetParent(CommandGroup* parent);
+  void ClearRequirements();
 
   virtual void Initialize();
   virtual void Execute();
@@ -111,6 +112,8 @@ class Command : public ErrorBase, public NamedSendable, public ITableListener {
   virtual void _Execute();
   virtual void _End();
   virtual void _Cancel();
+
+  friend class ConditionalCommand;
 
  private:
   void LockChanges();
