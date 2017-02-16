@@ -64,7 +64,6 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
-        this.sensorInput.reset(); //REMEMBER TO DELETE THIS
     }
  
 }

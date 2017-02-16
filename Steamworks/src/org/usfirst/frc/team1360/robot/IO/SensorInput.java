@@ -7,7 +7,6 @@ package org.usfirst.frc.team1360.robot.IO;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -83,15 +82,22 @@ public class SensorInput {
 		return this.ahrs.getYaw();
 	}
 	
+	public void resetAHRS()
+	{
+		this.ahrs.reset();
+	}
+	
 	public void calculate()
 	{
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
+		SmartDashboard.putNumber("NavX Yaw", this.getAHRSYaw());
 	}
 
 	public void reset()
 	{
 		this.leftDriveEncoder.reset();
 		this.rightDriveEncoder.reset();
+		this.ahrs.reset();
 	}
 }
