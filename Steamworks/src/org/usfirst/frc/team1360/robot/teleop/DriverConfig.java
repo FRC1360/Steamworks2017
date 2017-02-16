@@ -4,7 +4,8 @@ import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 
 public enum DriverConfig {
-	RACING {		
+	RACING 
+	{		
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
 		{
@@ -18,7 +19,8 @@ public enum DriverConfig {
 		}
 	},
 	
-	HALO {
+	HALO 
+	{
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
 		{
@@ -30,6 +32,40 @@ public enum DriverConfig {
 			
 			lastShift = shift;
 		}
+	},
+	
+	TANK 
+	{
+
+		@Override
+		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
+		{
+			robotOutput.tankDrive(humanInput.getTankLeft(), humanInput.getTankRight());
+			boolean shift = humanInput.getTankShifter();
+			
+			if(shift && !lastShift)
+				robotOutput.shiftSpeed(currentState = !currentState);
+			
+			lastShift = shift;
+		}
+		
+	},
+	
+	ARCADE
+	{
+
+		@Override
+		public void calculate(RobotOutput robotOutput, HumanInput humanInput) 
+		{
+			robotOutput.arcadeDrive(humanInput.getArcadeThrottle(), humanInput.getArcadeTurn());
+			boolean shift = humanInput.getArcadeShifter();
+			
+			if(shift && !lastShift)
+				robotOutput.shiftSpeed(currentState = !currentState);
+			
+			lastShift = shift;
+		}
+		
 	};
 	
 	private static boolean lastShift = false;
