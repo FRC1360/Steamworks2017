@@ -1,10 +1,13 @@
 eclipse.preferences.version=1
-org.eclipse.jdt.core.classpathVariable.JRE_LIB=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/rt.jar
-org.eclipse.jdt.core.classpathVariable.JRE_SRC=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip
-org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=src
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Java/jdk1.8.0_92/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/Java/jdk1.8.0_92/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=C\:/Users/nmeritn/.p2/pool/plugins/org.junit_4.12.0.v201504281640
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/nmeritn/.m2/repository
 org.eclipse.jdt.core.classpathVariable.USERLIBS_DIR=C\:/Users/Michael Geddes/wpilib/user/java/lib
 org.eclipse.jdt.core.classpathVariable.cscore=C\:/Users/Michael Geddes/wpilib/java/current/lib/cscore.jar
 org.eclipse.jdt.core.classpathVariable.cscore.sources=C\:/Users/Michael Geddes/wpilib/java/current/lib/cscore-sources.jar
+org.eclipse.jdt.core.classpathVariable.navx-mxp=navx_frc.jar
 org.eclipse.jdt.core.classpathVariable.networktables=C\:/Users/Michael Geddes/wpilib/java/current/lib/NetworkTables.jar
 org.eclipse.jdt.core.classpathVariable.networktables.sources=C\:/Users/Michael Geddes/wpilib/java/current/lib/NetworkTables-sources.jar
 org.eclipse.jdt.core.classpathVariable.opencv=C\:/Users/Michael Geddes/wpilib/java/current/lib/opencv.jar
@@ -18,3 +21,4 @@ org.eclipse.jdt.core.compiler.compliance=1.8
 org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.source=1.8
+org.eclipse.jdt.core.userLibrary.navx-mxp=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="/Steamworks/wpilib/navx-mxp/java/lib/navx_frc.jar"/>\r\n</userlibrary>\r\n
