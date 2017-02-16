@@ -5,6 +5,7 @@ org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=src
 org.eclipse.jdt.core.classpathVariable.USERLIBS_DIR=/Steamworks/wpilib/user/java/lib
 org.eclipse.jdt.core.classpathVariable.cscore=/Steamworks/wpilib/java/current/lib/cscore.jar
 org.eclipse.jdt.core.classpathVariable.cscore.sources=/Steamworks/wpilib/java/current/lib/cscore-sources.jar
+org.eclipse.jdt.core.classpathVariable.navx-mxp=navx_frc.jar
 org.eclipse.jdt.core.classpathVariable.networktables=/Steamworks/wpilib/java/current/lib/NetworkTables.jar
 org.eclipse.jdt.core.classpathVariable.networktables.sources=/Steamworks/wpilib/java/current/lib/NetworkTables-sources.jar
 org.eclipse.jdt.core.classpathVariable.opencv=/Steamworks/wpilib/java/current/lib/opencv.jar
@@ -18,3 +19,4 @@ org.eclipse.jdt.core.compiler.compliance=1.8
 org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.source=1.8
+org.eclipse.jdt.core.userLibrary.navx-mxp=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="/Steamworks/wpilib/navx-mxp/java/lib/navx_frc.jar"/>\r\n</userlibrary>\r\n

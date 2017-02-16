@@ -12,26 +12,29 @@ import edu.wpi.first.wpilibj.SPI;
 
 public class AutonDriveNavX extends AutonCommand
 {
-	private AHRS ahrs;
 	private static final double kOffBalanceAngleThresholdDegrees = 10;
 	private static final double kOnBalanceAngleThresholdDegrees = 5;
 	private RobotOutput robotOutput;
 	private double speed;
 	private boolean autoBalanceMode;
+	private SensorInput sensorInput;
 	
 	
-	public AutonDriveNavX(long timeoutLength, double speed) {
+	public AutonDriveNavX(long timeoutLength, double speed) 
+	{
 		super(RobotSubsystems.DRIVE, timeoutLength);
 		
+		this.sensorInput = SensorInput.getInstance();
 		this.robotOutput = RobotOutput.getInstance();
 		
 		this.speed = speed;
-		
+		this.sensorInput.resetAHRS();
 	}
 
 	@Override
-	public boolean calculate() {
-		double yawAngleDegrees = ahrs.getYaw();
+	public boolean calculate() 
+	{
+		double yawAngleDegrees = this.sensorInput.getAHRSYaw();
 		
 		if(!this.autoBalanceMode && Math.abs(yawAngleDegrees)
 				>= Math.abs(kOffBalanceAngleThresholdDegrees))
