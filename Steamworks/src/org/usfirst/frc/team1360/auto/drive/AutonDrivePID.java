@@ -54,8 +54,6 @@ public class AutonDrivePID extends AutonCommand {
 		this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
 		this.drivePID.CalculateError();
 		
-		
-		
 		this.robotOutput.arcadeDrive(speed, speed * drivePID.GetOutput());
 		
 		return false;

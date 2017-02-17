@@ -1,10 +1,10 @@
 eclipse.preferences.version=1
-org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Java/jdk1.8.0_111/jre/lib/rt.jar
-org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/Java/jdk1.8.0_111/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Java/jdk1.8.0_92/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/Java/jdk1.8.0_92/src.zip
 org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
-org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=C\:/Users/Programming/.p2/pool/plugins/org.junit_4.12.0.v201504281640
-org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/Programming/.m2/repository
-org.eclipse.jdt.core.classpathVariable.USERLIBS_DIR=C\:/Users/Programming/wpilib/user/java/lib
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=C\:/Users/Michael Geddes/.p2/pool/plugins/org.junit_4.12.0.v201504281640/
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/Michael Geddes/.m2/repository
+org.eclipse.jdt.core.classpathVariable.USERLIBS_DIR=C\:/Users/Michael Geddes/wpilib/user/java/lib
 org.eclipse.jdt.core.classpathVariable.cscore=C\:/Users/Programming/wpilib/java/current/lib/cscore.jar
 org.eclipse.jdt.core.classpathVariable.cscore.sources=C\:/Users/Programming/wpilib/java/current/lib/cscore-sources.jar
 org.eclipse.jdt.core.classpathVariable.navx-mxp=C\:/Users/Programming/Documents/GitHub/Steamworks2017/Steamworks/navx_frc.jar

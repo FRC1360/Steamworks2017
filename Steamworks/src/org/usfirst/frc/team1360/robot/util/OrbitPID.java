@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1360.robot.util;
+	package org.usfirst.frc.team1360.robot.util.pid;
 
 public class OrbitPID {
 	
@@ -19,12 +19,8 @@ public class OrbitPID {
 	private double PError;
 	private double IError;
 	private double DError;
-	private double previousError;
 	
 	private double previousSetpoint;
-	private int cycleCount;
-	private int minCycleCount;
-	
 	
 	public OrbitPID(double constantP, double constantI, double constantD, double constantEps)
 	{
@@ -32,8 +28,6 @@ public class OrbitPID {
 		this.I = constantI;
 		this.D = constantD;
 		this.errorEps = constantEps;
-		this.cycleCount = 0;
-		this.minCycleCount = 5;
 	}
 
 	public void SetConstants(double constantP, double constantI, double constantD)
@@ -52,16 +46,13 @@ public class OrbitPID {
 	public void SetD(double constantD) { this.D = constantD; }
 	public double GetD() { return D; }
 	
-	public void SetEps(double constantEps) {  this.errorEps = constantEps;  }
+	public void SetEps(double constantEps) {this.errorEps = constantEps;}
 	public double GetEps() {return errorEps;}
 	
 	public void SetInput(double input) { this.Input = input; }
 	public double GetInput() { return Input; }
 	
 	public double GetOutput() { return Output; }
-	
-	public void SetMinCycleCount(int num) { this.cycleCount = num;}
-	
 	
 	public void SetSetpoint(double setpoint)
 	{ 
@@ -103,14 +94,8 @@ public class OrbitPID {
 		Output = P * PError + I * IError + D * DError;
 		
 		Error = PError;
-		this.previousError = PError;
-		
 		PreviousTime = CurrentTime;
-	}
-	
-	public boolean isDone()
-	{
 		
-		return false;
 	}
 }
+ 
