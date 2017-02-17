@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="wpilib/navx-mxp/java/lib/navx_frc.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/navx-mxp"/>
 	<classpathentry kind="lib" path="navx_frc.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

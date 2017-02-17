@@ -10,10 +10,12 @@ import org.usfirst.frc.team1360.server.util.IOUtils;
 
 public class DriverConfigSelectorComponent extends CommandComponentBase {
 	private Consumer<DriverConfig> updater;
+	private DriverConfig defaultValue;
 	
-	public DriverConfigSelectorComponent(Consumer<DriverConfig> updater)
+	public DriverConfigSelectorComponent(Consumer<DriverConfig> updater, DriverConfig defaultValue)
 	{
 		this.updater = updater;
+		this.defaultValue = defaultValue;
 	}
 	
 	@Override
@@ -23,7 +25,7 @@ public class DriverConfigSelectorComponent extends CommandComponentBase {
 		{
 		case 0:
 			DriverConfig[] options = DriverConfig.values();
-			sendCommand(0, Stream.concat(Stream.of(options.length), Arrays.stream(options).map(DriverConfig::toString).map(IOUtils::String1360)).toArray());
+			sendCommand(0, Stream.concat(Stream.concat(Stream.of(defaultValue.ordinal()), Stream.of(options.length)), Arrays.stream(options).map(DriverConfig::toString).map(IOUtils::String1360)).toArray());
 			break;
 		case 1:
 			updater.accept(DriverConfig.values()[IOUtils.Int32Big(data, 0)]);

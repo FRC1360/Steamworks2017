@@ -25,6 +25,11 @@ public class Robot extends IterativeRobot {
 	private OrbitCamera camera;
 	private Connection connection;
 	
+	public Robot()
+	{
+		instance = this;
+	}
+	
     public void robotInit()
     {
     	System.out.println("Nick Mertin - GUI Test Code");
@@ -40,8 +45,6 @@ public class Robot extends IterativeRobot {
     
     public static Robot getInstance()
     {
-    	if (instance == null)
-    		instance = new Robot();
     	return instance;
     }
     
