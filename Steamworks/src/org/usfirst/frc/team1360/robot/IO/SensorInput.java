@@ -7,7 +7,9 @@ package org.usfirst.frc.team1360.robot.IO;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -31,6 +33,8 @@ public class SensorInput {
 		SmartDashboard.putNumber("Drive Enc I: ", 0.01);
 		SmartDashboard.putNumber("Drive Enc D: ", 0.1);
 		
+		ahrs = new AHRS(I2C.Port.kMXP);
+		
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
@@ -41,6 +45,26 @@ public class SensorInput {
 		}
 		
 		return instance;
+	}
+	
+	public double getAHRSYaw()
+	{
+		return this.ahrs.getYaw();
+	}
+	
+	public double getAHRSPitch()
+	{
+		return this.ahrs.getPitch();
+	}
+	
+	public double getAHRSRoll()
+	{
+		return this.ahrs.getRoll();
+	}
+	
+	public void resetAHRS()
+	{
+		this.ahrs.reset();
 	}
 	
 	public double getClimberFrontCurrent()				//Method in class SensorInput
@@ -78,6 +102,7 @@ public class SensorInput {
 	{
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
+		SmartDashboard.putNumber("NavX Yaw", this.getAHRSYaw());
 	}
 
 	public void reset()
