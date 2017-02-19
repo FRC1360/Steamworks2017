@@ -33,6 +33,7 @@ public class TeleopIntake implements TeleopComponent {
 		
 		this.robotOutput.intake(speed);
 		this.robotOutput.outtake(release);
+		System.out.println(speed);
 	}
 
 	@Override
