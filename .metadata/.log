@@ -5495,3 +5495,158 @@ java.lang.NullPointerException
 	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:112)
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SESSION 2017-02-19 11:12:32.689 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-02-19 11:12:50.097
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jason'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-19 11:12:51.287
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-19 11:12:51.291
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-19 11:12:51.299
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-19 11:12:51.303
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-19 11:12:51.311
+!MESSAGE Updating projects
+
+!ENTRY org.eclipse.jdt.core 4 4 2017-02-19 11:29:28.378
+!MESSAGE Could not retrieve declared methods
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.lookup.TypeSystem.getRawType(TypeSystem.java:336)
+	at org.eclipse.jdt.internal.compiler.lookup.AnnotatableTypeSystem.getRawType(AnnotatableTypeSystem.java:155)
+	at org.eclipse.jdt.internal.compiler.lookup.AnnotatableTypeSystem.getRawType(AnnotatableTypeSystem.java:167)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createRawType(LookupEnvironment.java:1048)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.convertToRawType(LookupEnvironment.java:560)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromTypeSignature(LookupEnvironment.java:1556)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromVariantTypeSignature(LookupEnvironment.java:1627)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeArgumentsFromSignature(LookupEnvironment.java:1293)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromTypeSignature(LookupEnvironment.java:1559)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.createFields(BinaryTypeBinding.java:626)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.cachePartsFrom(BinaryTypeBinding.java:523)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:722)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:705)
+	at org.eclipse.jdt.internal.compiler.Compiler.accept(Compiler.java:301)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:156)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:101)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:212)
+	at org.eclipse.jdt.internal.compiler.lookup.ParameterizedTypeBinding.resolve(ParameterizedTypeBinding.java:1044)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:183)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveTypesFor(BinaryTypeBinding.java:1499)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.availableMethods(BinaryTypeBinding.java:391)
+	at org.eclipse.jdt.core.dom.TypeBinding.getDeclaredMethods(TypeBinding.java:302)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethodInType(Bindings.java:496)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethodInHierarchy(Bindings.java:513)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethods(Bindings.java:569)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethod(Bindings.java:540)
+	at org.eclipse.jdt.ui.OverrideIndicatorLabelDecorator.findInHierarchyWithAST(OverrideIndicatorLabelDecorator.java:184)
+	at org.eclipse.jdt.ui.OverrideIndicatorLabelDecorator.getOverrideIndicators(OverrideIndicatorLabelDecorator.java:159)
+	at org.eclipse.jdt.ui.OverrideIndicatorLabelDecorator.computeAdornmentFlags(OverrideIndicatorLabelDecorator.java:132)
+	at org.eclipse.jdt.ui.OverrideIndicatorLabelDecorator.decorate(OverrideIndicatorLabelDecorator.java:260)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:260)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:100)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:383)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:367)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:327)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.core 4 4 2017-02-19 11:29:32.434
+!MESSAGE Could not retrieve declared methods
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.lookup.TypeSystem.getRawType(TypeSystem.java:336)
+	at org.eclipse.jdt.internal.compiler.lookup.AnnotatableTypeSystem.getRawType(AnnotatableTypeSystem.java:155)
+	at org.eclipse.jdt.internal.compiler.lookup.AnnotatableTypeSystem.getRawType(AnnotatableTypeSystem.java:167)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createRawType(LookupEnvironment.java:1048)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.convertToRawType(LookupEnvironment.java:560)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromTypeSignature(LookupEnvironment.java:1556)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromVariantTypeSignature(LookupEnvironment.java:1627)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeArgumentsFromSignature(LookupEnvironment.java:1293)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromTypeSignature(LookupEnvironment.java:1559)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.createMethod(BinaryTypeBinding.java:802)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.createMethods(BinaryTypeBinding.java:912)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.cachePartsFrom(BinaryTypeBinding.java:524)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:722)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:705)
+	at org.eclipse.jdt.internal.compiler.Compiler.accept(Compiler.java:301)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:156)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:101)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:212)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromTypeSignature(LookupEnvironment.java:1553)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromVariantTypeSignature(LookupEnvironment.java:1627)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeArgumentsFromSignature(LookupEnvironment.java:1293)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromTypeSignature(LookupEnvironment.java:1559)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.createMethod(BinaryTypeBinding.java:802)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.createMethods(BinaryTypeBinding.java:901)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.cachePartsFrom(BinaryTypeBinding.java:524)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:722)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:705)
+	at org.eclipse.jdt.internal.compiler.Compiler.accept(Compiler.java:301)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:156)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:101)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:212)
+	at org.eclipse.jdt.internal.compiler.lookup.ParameterizedTypeBinding.resolve(ParameterizedTypeBinding.java:1044)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:183)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveTypesFor(BinaryTypeBinding.java:1499)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.availableMethods(BinaryTypeBinding.java:391)
+	at org.eclipse.jdt.core.dom.TypeBinding.getDeclaredMethods(TypeBinding.java:302)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethodInType(Bindings.java:496)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethodInHierarchy(Bindings.java:513)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethods(Bindings.java:569)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethod(Bindings.java:540)
+	at org.eclipse.jdt.internal.ui.javaeditor.OverrideIndicatorManager$1.visit(OverrideIndicatorManager.java:184)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:611)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.AnonymousClassDeclaration.accept0(AnonymousClassDeclaration.java:144)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.ClassInstanceCreation.accept0(ClassInstanceCreation.java:314)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.ParenthesizedExpression.accept0(ParenthesizedExpression.java:140)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.MethodInvocation.accept0(MethodInvocation.java:234)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.ExpressionStatement.accept0(ExpressionStatement.java:145)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.Block.accept0(Block.java:137)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:635)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:470)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.CompilationUnit.accept0(CompilationUnit.java:212)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.internal.ui.javaeditor.OverrideIndicatorManager.updateAnnotations(OverrideIndicatorManager.java:176)
+	at org.eclipse.jdt.internal.ui.javaeditor.OverrideIndicatorManager.reconciled(OverrideIndicatorManager.java:258)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.reconciled(CompilationUnitEditor.java:1687)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconciled(JavaReconcilingStrategy.java:219)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconciled(JavaCompositeReconcilingStrategy.java:164)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:112)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
