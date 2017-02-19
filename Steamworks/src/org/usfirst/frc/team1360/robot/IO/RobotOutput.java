@@ -18,6 +18,7 @@ public class RobotOutput {
 	private Solenoid gearFlap;
 	private Solenoid gearRelease;
 	private Solenoid outFlap;
+	private Solenoid intakeSolenoid;
 	
 	private static  RobotOutput instance;
 	
@@ -34,8 +35,9 @@ public class RobotOutput {
 		
 		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(2);
-		gearRelease = new Solenoid(3);
-		outFlap = new Solenoid (4);
+		gearRelease = new Solenoid(1);
+		outFlap = new Solenoid (3);
+		intakeSolenoid = new Solenoid(4);
 	}
 	
 	public static RobotOutput getInstance()
