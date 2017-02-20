@@ -39,7 +39,7 @@ public class TeleopClimber implements TeleopComponent {
 		double speed = this.humanInput.getClimb();
 		boolean override = this.humanInput.getOverride();
 		
-		if(override)
+		/*if(override)
 			overriden = true;
 		
 		if(averageCurrent > 8)
@@ -47,7 +47,7 @@ public class TeleopClimber implements TeleopComponent {
 		
 		if(overCurrent)
 			this.robotOutput.climb(0);
-		else
+		else*/
 			this.robotOutput.climb(speed);
 	}
 

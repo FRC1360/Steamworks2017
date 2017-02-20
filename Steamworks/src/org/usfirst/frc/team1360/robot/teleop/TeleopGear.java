@@ -32,17 +32,17 @@ public class TeleopGear implements TeleopComponent{
 	@Override											
 	public void calculate()								//output for this routine
 	{
-		boolean release = humanInput.getOperatorGearFlap();
-		boolean flap = humanInput.getOperatorGearRelease();
+		boolean flap = humanInput.getOperatorGearFlap();
+		boolean release = humanInput.getOperatorGearRelease();
 		
-		/*if(flap && !lastShift)
+		/*if(flap != lastShift)
 		{
 			robotOutput.flapGear(isOpen = !isOpen);
 			lastShift = !isOpen;
 		}*/
 		
-		robotOutput.flapGear(flap);
-		
+		this.robotOutput.flapGear(flap);
+				
 		this.robotOutput.releaseGear(release);
 
 	}

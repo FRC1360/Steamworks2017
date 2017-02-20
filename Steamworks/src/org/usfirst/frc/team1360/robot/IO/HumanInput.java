@@ -119,6 +119,11 @@ public class HumanInput {
 		return this.operator.getButtonX();
 	}
 	
+	public boolean getOperatorOpenIntake()
+	{
+		return this.operator.getButtonLB();
+	}
+	
 	public boolean getOverride()
 	{
 		return this.operator.getButtonBack() && this.operator.getButtonStart();						//Override the value of the A Button on the operator controller

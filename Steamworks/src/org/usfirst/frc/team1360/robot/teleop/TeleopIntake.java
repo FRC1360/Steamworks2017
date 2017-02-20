@@ -30,9 +30,11 @@ public class TeleopIntake implements TeleopComponent {
 		// TODO Auto-generated method stub
 		double speed = this.humanInput.getIntake();
 		boolean release = this.humanInput.getOperatorOutake();
+		boolean open = this.humanInput.getOperatorOpenIntake();
 		
 		this.robotOutput.intake(speed);
 		this.robotOutput.outtake(release);
+		this.robotOutput.openItake(open);
 		System.out.println(speed);
 	}
 

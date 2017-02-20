@@ -12,7 +12,7 @@ public enum DriverConfig {
 			robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
 			boolean shift = humanInput.getRacingShifter();
 			
-			if (shift && !lastShift)
+			if (shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
 			
 			lastShift = shift;
@@ -27,7 +27,7 @@ public enum DriverConfig {
 			robotOutput.arcadeDrive(humanInput.getHaloThrottle(), humanInput.getHaloTurn());
 			boolean shift = humanInput.getHaloShifter();
 			
-			if (shift && !lastShift)
+			if (shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
 			
 			lastShift = shift;
@@ -43,7 +43,7 @@ public enum DriverConfig {
 			robotOutput.tankDrive(humanInput.getTankLeft(), humanInput.getTankRight());
 			boolean shift = humanInput.getTankShifter();
 			
-			if(shift && !lastShift)
+			if(shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
 			
 			lastShift = shift;
@@ -60,7 +60,7 @@ public enum DriverConfig {
 			robotOutput.arcadeDrive(humanInput.getArcadeThrottle(), humanInput.getArcadeTurn());
 			boolean shift = humanInput.getArcadeShifter();
 			
-			if(shift && !lastShift)
+			if(shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
 			
 			lastShift = shift;
