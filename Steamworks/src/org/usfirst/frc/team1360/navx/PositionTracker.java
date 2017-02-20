@@ -11,7 +11,7 @@ public class PositionTracker {
 	AHRS ahrs;
 	RobotOutput robotOutput;
 	SensorInput sensorInput;
-	float[] position; // First item in array is x value second item in array is y value
+	double[] position; // First item in array is x value second item in array is y value
 	long prevTime;
 	long thisTime;
 	long timeDiff;
@@ -20,14 +20,14 @@ public class PositionTracker {
 	boolean yawTurn; // true is right, false is left
 	float thisYaw;
 	float prevYaw;
-	float theta;
+	double theta;
 	
 	// this constructor must be called in the first few lines of code or else it will not work properly
 	public PositionTracker() {
 		sensorInput = SensorInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
 		ahrs = new AHRS(I2C.Port.kMXP);
-		position = new float[] { 0.0f, 0.0f };
+		position = new double[] { 0.0, 0.0 };
 		prevTime = System.nanoTime();
 		prevYaw = ahrs.getYaw() < 0 ? 360 + ahrs.getYaw() : ahrs.getYaw();
 		
@@ -43,50 +43,23 @@ public class PositionTracker {
 					xDisp = ahrs.getVelocityX() * 1000000000 * timeDiff;
 					yDisp = ahrs.getVelocityY() * 1000000000 * timeDiff;
 					
-					// this if - else statement assumes that forward is x positive and right is y positive, it may have to be changed
-					if (thisYaw >= 0 && thisYaw <= 90) {
-						theta = 90 - thisYaw;
-						position[0] += xDisp * Math.sin(theta) + yDisp * Math.sin(thisYaw);
-						position[1] += xDisp * Math.cos(theta) + yDisp * Math.cos(thisYaw);
-					} else if (thisYaw >= 90 && thisYaw <= 180) {
-						theta = thisYaw - 90;
-						position[0] += xDisp * Math.sin(theta);
-						position[1] += xDisp * Math.cos(theta);
-						
-						theta = 270 - (thisYaw + 90);
-						position[0] += yDisp * Math.sin(theta);
-						position[1] += yDisp * Math.cos(theta);
-						
-					} else if (thisYaw >= 180 && thisYaw <= 270) {
-						theta = 270 - thisYaw;
-						position[0] += xDisp * Math.sin(theta);
-						position[1] += xDisp * Math.cos(theta);
-						
-						theta = (thisYaw + 90) - 270;
-						position[0] += yDisp * Math.sin(theta);
-						position[1] += yDisp * Math.cos(theta);
-					} else {
-						theta = thisYaw - 270;
-						position[0] += xDisp * Math.sin(theta);
-						position[1] += xDisp * Math.cos(theta);
-						
-						theta = 90 - (thisYaw + 90 - 360);
-						position[0] += yDisp * Math.sin(theta);
-						position[1] += yDisp * Math.cos(theta);
-					}
+					theta = Math.toRadians(90 - thisYaw);
+					
+					position[0] = yDisp * Math.cos(theta) + xDisp * Math.sin(theta);
+					position[1] = yDisp * Math.sin(theta) - xDisp * Math.cos(theta);
 				}
 			}
 		}).start();
 	}
 	
-	public float[] getPosition() {
+	public double[] getPosition() {
 		return position;
 	}
 	
-	public void goTo(float[] target) {
-		float xLen = target[0] - position[0];
-		float yLen = target[1] - position[1];
-		float targetLen = (float)Math.sqrt((double)(xLen * xLen + yLen * yLen));
+	public void goTo(double[] target) {
+		double xLen = target[0] - position[0];
+		double yLen = target[1] - position[1];
+		double targetLen = (float)Math.sqrt((double)(xLen * xLen + yLen * yLen));
 		
 		float targetYaw = (float)Math.atan(yLen / xLen);
 		
@@ -103,9 +76,9 @@ public class PositionTracker {
 				
 				while (targetLen > 0.5) {
 					robotOutput.tankDrive(1, 1);
-					float xLen = target[0] - position[0];
-					float yLen = target[1] - position[1];
-					float targetLen = (float)Math.sqrt((double)(xLen * xLen + yLen * yLen));
+					double xLen = target[0] - position[0];
+					double yLen = target[1] - position[1];
+					double targetLen = Math.sqrt(xLen * xLen + yLen * yLen);
 				}
 				robotOutput.tankDrive(0, 0);
 			}
