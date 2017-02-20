@@ -102,7 +102,6 @@ public class SensorInput {
 	{
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
-		SmartDashboard.putNumber("NavX Yaw", this.getAHRSYaw());
 		SmartDashboard.putNumber("VeloX", this.ahrs.getVelocityX());
 		SmartDashboard.putNumber("VeloY", this.ahrs.getVelocityY());
 
