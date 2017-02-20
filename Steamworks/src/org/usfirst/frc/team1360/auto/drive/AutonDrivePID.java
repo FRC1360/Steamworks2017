@@ -32,8 +32,8 @@ public class AutonDrivePID extends AutonCommand {
 		this.target = target;
 		
 		double p = 0.1;//SmartDashboard.getNumber("Drive P:", 0.0);
-		double i = 0;//SmartDashboard.getNumber("Drive I:", 0.0);
-		double d = 0;//SmartDashboard.getNumber("Drive D:", 0.0);
+		double i = 0.00005;//SmartDashboard.getNumber("Drive I:", 0.0);
+		double d = 0.01;//SmartDashboard.getNumber("Drive D:", 0.0);
 		
 		this.drivePID = new OrbitPID(p, i, d, eps);
 		
@@ -51,7 +51,7 @@ public class AutonDrivePID extends AutonCommand {
 			firstCycle = false;
 		}
 		
-		if(this.smallLongout >= 50)
+		if(this.smallLongout >= 5)
 		{
 			this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
 			this.drivePID.CalculateError();

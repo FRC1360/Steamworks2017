@@ -24,7 +24,7 @@ public enum DriverConfig {
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
 		{
-			robotOutput.arcadeDrive(humanInput.getHaloThrottle(), humanInput.getHaloTurn());
+			robotOutput.arcadeDrive(-humanInput.getHaloThrottle(), humanInput.getHaloTurn());
 			boolean shift = humanInput.getHaloShifter();
 			
 			if (shift != lastShift)

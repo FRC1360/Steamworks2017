@@ -86,8 +86,8 @@ public class RobotOutput {
 	
 	public void intake(double speed)
 	{
-		intake.set(speed);
-		indexSystem.set(speed);
+		intake.set(-speed);
+		indexSystem.set(-speed);
 	}
 	
 	public void openItake(boolean shift)
