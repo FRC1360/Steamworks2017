@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
     	this.sensorInput.reset();
     	
     	camera = new OrbitCamera("10.13.60.3", "Axis Camera");
-    	pt = new PositionTracker();
+    	pt = PositionTracker.getInstance();
     	i = 0;
     }
     

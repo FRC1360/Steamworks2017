@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.I2C;
 
 public class PositionTracker {
+	private static PositionTracker instance;
 	AHRS ahrs;
 	RobotOutput robotOutput;
 	SensorInput sensorInput;
@@ -22,19 +23,32 @@ public class PositionTracker {
 	float prevYaw;
 	double theta;
 	
+	public static PositionTracker getInstance() {
+		if (instance == null)
+			instance = new PositionTracker();
+		
+		return instance;
+	}
+	
 	// this constructor must be called in the first few lines of code or else it will not work properly
-	public PositionTracker() {
+	private PositionTracker() {
 		sensorInput = SensorInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
 		ahrs = new AHRS(I2C.Port.kMXP);
 		position = new double[] { 0.0, 0.0 };
 		prevTime = System.nanoTime();
-		prevYaw = ahrs.getYaw() < 0 ? 360 + ahrs.getYaw() : ahrs.getYaw();
+		prevYaw = ahrs.getYaw();
 		
 		(new Thread() {
 			public void run() {
 				while (true) {
-					thisYaw = ahrs.getYaw() < 0 ? 360 + ahrs.getYaw() : ahrs.getYaw();
+					thisYaw = ahrs.getYaw();
+					if (thisYaw > prevYaw)
+						while (thisYaw - prevYaw >= 360.0)
+							thisYaw -= 360.0;
+					else
+						while (prevYaw - thisYaw >= 360.0)
+							thisYaw += 360.0;
 					yawTurn = thisYaw - prevYaw >= 0;
 					thisTime = System.nanoTime();
 					timeDiff = thisTime - prevTime;
@@ -56,33 +70,11 @@ public class PositionTracker {
 		return position;
 	}
 	
-	public void goTo(double[] target) {
-		double xLen = target[0] - position[0];
-		double yLen = target[1] - position[1];
-		double targetLen = (float)Math.sqrt((double)(xLen * xLen + yLen * yLen));
-		
-		float targetYaw = (float)Math.atan(yLen / xLen);
-		
-		(new Thread() {
-			public void run() {
-				while (thisYaw < targetYaw - 0.25 || targetYaw + 0.25 < thisYaw) {
-					if (thisYaw < targetYaw) {
-						robotOutput.tankDrive(0.5, -0.5);
-					} else { 
-						robotOutput.tankDrive(-0.5, 0.5);
-					}
-				}
-				robotOutput.tankDrive(0, 0);
-				
-				while (targetLen > 0.5) {
-					robotOutput.tankDrive(1, 1);
-					double xLen = target[0] - position[0];
-					double yLen = target[1] - position[1];
-					double targetLen = Math.sqrt(xLen * xLen + yLen * yLen);
-				}
-				robotOutput.tankDrive(0, 0);
-			}
-		}).start();
-		
+	public double getCurrentYaw() {
+		return thisYaw;
+	}
+	
+	public double getPreviousYaw() {
+		return prevYaw;
 	}
 }
