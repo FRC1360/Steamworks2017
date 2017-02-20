@@ -101,7 +101,7 @@ public class HumanInput {
 	
 	public double getIntake()								
 	{
-		return this.operator.getLeftYAxis();				//Read the value of the Right Trigger on the Operator Controller for Intake
+		return this.operator.getLeftYAxis(); //Read the value of the Right Trigger on the Operator Controller for Intake
 	}
 	
 	public boolean getOperatorGearRelease()
@@ -117,6 +117,11 @@ public class HumanInput {
 	public boolean getOperatorOutake()
 	{
 		return this.operator.getButtonX();
+	}
+	
+	public boolean getOperatorOpenIntake()
+	{
+		return this.operator.getButtonLB();
 	}
 	
 	public boolean getOverride()

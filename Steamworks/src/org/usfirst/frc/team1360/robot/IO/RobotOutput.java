@@ -30,13 +30,13 @@ public class RobotOutput {
 		driveRightRear = new Victor(3);
 		climberFront = new Victor(4);
 		climberRear = new Victor(5);
-		intake = new Victor(6);
+		intake = new Victor(8);
 		indexSystem = new Victor(7);
 		
 		driveShifter = new Solenoid(0);
-		gearFlap = new Solenoid(2);
+		gearFlap = new Solenoid(3); //We swtiched this port with outFlap
 		gearRelease = new Solenoid(1);
-		outFlap = new Solenoid (3);
+		outFlap = new Solenoid (2);
 		intakeSolenoid = new Solenoid(4);
 	}
 	
@@ -82,6 +82,11 @@ public class RobotOutput {
 	{
 		intake.set(speed);
 		indexSystem.set(speed);
+	}
+	
+	public void openItake(boolean shift)
+	{
+		intakeSolenoid.set(shift);
 	}
 	
 	public void releaseGear(boolean release)

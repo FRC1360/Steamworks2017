@@ -10,7 +10,7 @@ public class TeleopDrive implements TeleopComponent {
 	private static TeleopDrive instance;
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
-	private DriverConfig cfg = DriverConfig.RACING;
+	private DriverConfig cfg = DriverConfig.TANK;
 	
 	private TeleopDrive()
 	{
