@@ -2,6 +2,7 @@
 package org.usfirst.frc.team1360.robot;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.usfirst.frc.team1360.auto.AutonControl;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
@@ -10,6 +11,7 @@ import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.teleop.TeleopControl;
 import org.usfirst.frc.team1360.robot.util.OrbitCamera;
 import org.usfirst.frc.team1360.server.Connection;
+import org.usfirst.frc.team1360.navx.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -22,6 +24,8 @@ public class Robot extends IterativeRobot {
 	private TeleopControl teleopControl;
 	private AutonControl autonControl;
 	private OrbitCamera camera;
+	private PositionTracker pt; 
+	int i;
 	
     public void robotInit() 
     {	
@@ -30,7 +34,10 @@ public class Robot extends IterativeRobot {
     	this.sensorInput = SensorInput.getInstance();
     	this.autonControl = AutonControl.getInstance();
     	this.sensorInput.reset();
+    	
     	camera = new OrbitCamera("10.13.60.3", "Axis Camera");
+    	pt = new PositionTracker();
+    	i = 0;
     }
     
 
@@ -64,7 +71,15 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
-        this.sensorInput.reset(); //REMEMBER TO DELETE THIS
+        
+        if (i == 100)
+        {
+        	System.out.println("X: " + pt.getPosition()[0] + "\nY: " + pt.getPosition()[1] + "\n\n");
+        	i = 0;
+        }
+        
+        i++;
+        
     }
  
 }

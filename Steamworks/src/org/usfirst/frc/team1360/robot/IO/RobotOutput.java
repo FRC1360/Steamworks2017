@@ -38,6 +38,8 @@ public class RobotOutput {
 		gearRelease = new Solenoid(1);
 		outFlap = new Solenoid (2);
 		intakeSolenoid = new Solenoid(4);
+		
+		intakeSolenoid.set(true);
 	}
 	
 	public static RobotOutput getInstance()
