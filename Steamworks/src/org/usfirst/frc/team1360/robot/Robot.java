@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
         
-        if (i == 100)
+        if (i == 50)
         {
         	System.out.println("X: " + pt.getPosition()[0] + "\nY: " + pt.getPosition()[1] + "\n\n");
         	i = 0;
