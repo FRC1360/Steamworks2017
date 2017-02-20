@@ -54,8 +54,8 @@ public class PositionTracker {
 					timeDiff = thisTime - prevTime;
 					prevTime = thisTime;
 				
-					xDisp = ahrs.getVelocityX() * 1000000000 * timeDiff;
-					yDisp = ahrs.getVelocityY() * 1000000000 * timeDiff;
+					xDisp = ahrs.getVelocityX() / 1000000000 * timeDiff;
+					yDisp = ahrs.getVelocityY() / 1000000000 * timeDiff;
 					
 					theta = Math.toRadians(90 - thisYaw);
 					
