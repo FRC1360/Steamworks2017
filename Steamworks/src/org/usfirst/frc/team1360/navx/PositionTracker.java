@@ -13,12 +13,10 @@ public class PositionTracker {
 	RobotOutput robotOutput;
 	SensorInput sensorInput;
 	double[] position; // First item in array is x value second item in array is y value
+	double[] velocity; // X, Y
 	long prevTime;
 	long thisTime;
-	long timeDiff;
-	float xDisp;
-	float yDisp;
-	boolean yawTurn; // true is right, false is left
+	double timeDiff;
 	float thisYaw;
 	float prevYaw;
 	double theta;
@@ -49,18 +47,18 @@ public class PositionTracker {
 					else
 						while (prevYaw - thisYaw >= 360.0)
 							thisYaw += 360.0;
-					yawTurn = thisYaw - prevYaw >= 0;
+					
 					thisTime = System.nanoTime();
-					timeDiff = thisTime - prevTime;
+					timeDiff = (thisTime - prevTime) / 1000000000.0;
 					prevTime = thisTime;
-				
-					xDisp = ahrs.getVelocityX() / 1000000000 * timeDiff;
-					yDisp = ahrs.getVelocityY() / 1000000000 * timeDiff;
 					
-					theta = Math.toRadians(90 - thisYaw);
+					double x = ahrs.getWorldLinearAccelX();
+					double y = ahrs.getWorldLinearAccelY();
+					velocity[0] += x * timeDiff;
+					velocity[1] += y * timeDiff;
+					position[0] += velocity[0] * timeDiff;
+					position[1] += velocity[1] * timeDiff;
 					
-					position[0] += yDisp * Math.cos(theta) + xDisp * Math.sin(theta);
-					position[1] += yDisp * Math.sin(theta) - xDisp * Math.cos(theta);
 					Thread.yield();
 				}
 			}

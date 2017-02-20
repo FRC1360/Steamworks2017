@@ -362,3 +362,35 @@ java.lang.IllegalArgumentException: Cannot set lower sequence number for root (p
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 13:25:16.377
 !MESSAGE Targets: deploy, Mode: run
+!SESSION 2017-02-20 14:06:43.808 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-20 14:07:03.110
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-20 14:07:03.127
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-20 14:07:03.138
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-20 14:07:03.139
+!MESSAGE Install necessary for java
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-02-20 14:07:03.541
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\nmeritn'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-20 14:07:14.230
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:07:14.234
+!MESSAGE Updating projects
