@@ -26,7 +26,7 @@ public class PositionTracker {
 	public PositionTracker() {
 		sensorInput = SensorInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
-		ahrs = new AHRS(I2C.Port.kMXP);
+		ahrs = SensorInput.getInstance().ahrs;
 		position = new double[] { 0.0, 0.0 };
 		prevTime = System.nanoTime();
 		prevYaw = ahrs.getYaw() < 0 ? 360 + ahrs.getYaw() : ahrs.getYaw();
@@ -45,8 +45,9 @@ public class PositionTracker {
 					
 					theta = Math.toRadians(90 - thisYaw);
 					
-					position[0] = yDisp * Math.cos(theta) + xDisp * Math.sin(theta);
-					position[1] = yDisp * Math.sin(theta) - xDisp * Math.cos(theta);
+					position[0] += yDisp * Math.cos(theta) + xDisp * Math.sin(theta);
+					position[1] += yDisp * Math.sin(theta) - xDisp * Math.cos(theta);
+					Thread.yield();
 				}
 			}
 		}).start();

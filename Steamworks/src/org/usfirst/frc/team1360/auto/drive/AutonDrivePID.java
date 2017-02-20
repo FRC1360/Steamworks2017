@@ -31,9 +31,9 @@ public class AutonDrivePID extends AutonCommand {
 		this.speed = speed;
 		this.target = target;
 		
-		double p = SmartDashboard.getNumber("Drive P", 0.1);
-		double i = SmartDashboard.getNumber("Drive I", 0.1);
-		double d = SmartDashboard.getNumber("Drive D", 0.1);
+		double p = SmartDashboard.getNumber("Drive P:", 0.1);
+		double i = SmartDashboard.getNumber("Drive I:", 0.1);
+		double d = SmartDashboard.getNumber("Drive D:", 0.1);
 		
 		this.drivePID = new OrbitPID(p, i, d, eps);
 		

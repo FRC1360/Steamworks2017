@@ -21,7 +21,7 @@ public class SensorInput {
 	//private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
-	private AHRS ahrs;
+	public AHRS ahrs;
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
@@ -29,9 +29,9 @@ public class SensorInput {
 		leftDriveEncoder = new Encoder(2, 3);
 		rightDriveEncoder = new Encoder(0, 1);
 		
-		SmartDashboard.putNumber("Drive Enc P: ", 1.0);
-		SmartDashboard.putNumber("Drive Enc I: ", 0.01);
-		SmartDashboard.putNumber("Drive Enc D: ", 0.1);
+		SmartDashboard.putNumber("Drive P: ", 1.0);
+		SmartDashboard.putNumber("Drive I: ", 0.01);
+		SmartDashboard.putNumber("Drive D: ", 0.1);
 		
 		ahrs = new AHRS(I2C.Port.kMXP);
 		
@@ -103,6 +103,9 @@ public class SensorInput {
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
 		SmartDashboard.putNumber("NavX Yaw", this.getAHRSYaw());
+		SmartDashboard.putNumber("VeloX", this.ahrs.getVelocityX());
+		SmartDashboard.putNumber("VeloY", this.ahrs.getVelocityY());
+
 	}
 
 	public void reset()

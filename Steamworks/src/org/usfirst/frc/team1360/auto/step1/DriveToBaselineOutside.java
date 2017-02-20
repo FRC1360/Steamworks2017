@@ -13,7 +13,7 @@ public class DriveToBaselineOutside implements AutonMode  {
 	@Override
 	public void addToMode(AutonBuilder ab) {
 		// TODO Auto-generated method stub
-		ab.addCommand(new AutonDrive(3000, 0.5, 0.5));
+		ab.addCommand(new AutonDrive(5000, 0.3, 0.3));
 		ab.addCommand(new DriveWait());
 	}
 
