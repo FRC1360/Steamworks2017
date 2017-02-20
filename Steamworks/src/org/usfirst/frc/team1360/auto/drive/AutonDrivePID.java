@@ -19,7 +19,7 @@ public class AutonDrivePID extends AutonCommand {
 	
 	private boolean firstCycle = true;
 	private double target;
-	
+	private long smallLongout = 0;
 	
 	
 	public AutonDrivePID(double target, double speed, double eps, long timeout) {
@@ -31,9 +31,9 @@ public class AutonDrivePID extends AutonCommand {
 		this.speed = speed;
 		this.target = target;
 		
-		double p = SmartDashboard.getNumber("Drive P:", 0.1);
-		double i = SmartDashboard.getNumber("Drive I:", 0.1);
-		double d = SmartDashboard.getNumber("Drive D:", 0.1);
+		double p = 0.1;//SmartDashboard.getNumber("Drive P:", 0.0);
+		double i = 0;//SmartDashboard.getNumber("Drive I:", 0.0);
+		double d = 0;//SmartDashboard.getNumber("Drive D:", 0.0);
 		
 		this.drivePID = new OrbitPID(p, i, d, eps);
 		
@@ -51,12 +51,22 @@ public class AutonDrivePID extends AutonCommand {
 			firstCycle = false;
 		}
 		
-		this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
-		this.drivePID.CalculateError();
-		
-		this.robotOutput.arcadeDrive(speed, speed * drivePID.GetOutput());
-		
+		if(this.smallLongout >= 50)
+		{
+			this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
+			this.drivePID.CalculateError();
+				
+			this.robotOutput.arcadeDrive(speed, speed * drivePID.GetOutput());
+			System.out.println("Hi there");
+		}
+		else
+		{
+			this.robotOutput.tankDrive(speed, speed);
+			this.smallLongout++;
+		}
+				
 		return false;
+		
 		
 	}
 

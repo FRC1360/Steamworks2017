@@ -80,8 +80,8 @@ private static AutonControl instance;
         step1.add(new DropOffBallsRed1());
         step1.add(new DropOffBallsRed2());
         step1.add(new DropOffBallsRed3());*/
-        //step1.add(new DrivePIDTest());
-        step1.add(new NavxTest());
+        step1.add(new DrivePIDTest());
+        //step1.add(new NavxTest());
         
         
         // --- STEP 2 SUBMODES

@@ -2,6 +2,7 @@ package org.usfirst.frc.team1360.robot.IO;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotOutput {
 	
@@ -70,6 +71,9 @@ public class RobotOutput {
 		driveLeftRear.set(-left);
 		driveRightForward.set(right);
 		driveRightRear.set(right);
+		
+		SmartDashboard.putNumber("Left Voltage", left);
+		SmartDashboard.putNumber("Right Voltage", right);
 	}
 	
 	public void arcadeDrive(double speed, double turn)
