@@ -35,12 +35,11 @@ public class RobotOutput {
 		indexSystem = new Victor(7);
 		
 		driveShifter = new Solenoid(0);
-		gearFlap = new Solenoid(3); //We swtiched this port with outFlap
+		gearFlap = new Solenoid(3); //was in 2
 		gearRelease = new Solenoid(1);
-		outFlap = new Solenoid (2);
+		outFlap = new Solenoid(2); //was in three[]\
 		intakeSolenoid = new Solenoid(4);
 		
-		intakeSolenoid.set(true);
 	}
 	
 	public static RobotOutput getInstance()

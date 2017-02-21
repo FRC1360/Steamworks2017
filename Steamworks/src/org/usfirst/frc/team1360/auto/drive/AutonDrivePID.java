@@ -22,6 +22,11 @@ public class AutonDrivePID extends AutonCommand {
 	private long smallLongout = 0;
 	
 	
+	public AutonDrivePID(double target, double speed, long timeout)
+	{
+		this(target, speed, 0.5, timeout);
+	}
+	
 	public AutonDrivePID(double target, double speed, double eps, long timeout) {
 		super(RobotSubsystems.DRIVE, timeout);
 		
@@ -56,7 +61,7 @@ public class AutonDrivePID extends AutonCommand {
 			this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
 			this.drivePID.CalculateError();
 				
-			this.robotOutput.arcadeDrive(speed, speed * drivePID.GetOutput());
+			this.robotOutput.arcadeDrive(speed, Math.abs(speed) * drivePID.GetOutput());
 			System.out.println("Hi there");
 		}
 		else
