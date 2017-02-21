@@ -394,3 +394,45 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:07:14.234
 !MESSAGE Updating projects
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:27:50.267
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:27:50.268
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:40:36.715
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:40:36.718
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:41:48.284
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:41:48.285
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:42:34.027
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:42:34.028
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:43:42.813
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:43:42.813
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:44:39.795
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:44:39.796
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:45:58.657
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-20 14:45:58.658
+!MESSAGE Targets: deploy, Mode: run
