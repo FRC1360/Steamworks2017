@@ -4,7 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public final class IOUtils {
-	private IOUtils() {
+	private IOUtils() {	}
+	
+	public static byte[] String1360(String value) {
+		byte[] r = new byte[value.length() + 4];
+		System.arraycopy(Int32Big(value.length()), 0, r, 0, 4);
+		System.arraycopy(value.getBytes(), 0, r, 4, value.length());
+		return r;
+	}
+	
+	public static byte[] Float1360(float value) {
+		return Int32Big(Float.floatToRawIntBits(value));
 	}
 
 	public static byte[] UInt16Big(int value) {

@@ -4,6 +4,9 @@ package org.usfirst.frc.team1360.robot.IO;
  * Date 30 Jan 2017 - added pdp variable; getClimberFrontCurrent method; getClimberBackCurrent method; removed calculate
  *****/
 
+import org.usfirst.frc.team1360.robot.Robot;
+import org.usfirst.frc.team1360.server.components.ClimberCurrentDisplayComponent;
+
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -18,6 +21,7 @@ public class SensorInput {
 	private static SensorInput instance;				//Fields of class SensorInput
 	
 	private PowerDistributionPanel PDP;
+	private ClimberCurrentDisplayComponent currentDisplay;
 	//private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
@@ -28,13 +32,13 @@ public class SensorInput {
 		PDP = new PowerDistributionPanel();
 		leftDriveEncoder = new Encoder(2, 3);
 		rightDriveEncoder = new Encoder(0, 1);
+		ahrs = new AHRS(SPI.Port.kMXP);
 		
 		SmartDashboard.putNumber("Drive P:", 1.0);
 		SmartDashboard.putNumber("Drive I:", 0.01);
 		SmartDashboard.putNumber("Drive D:", 0.1);
 		
 		ahrs = new AHRS(I2C.Port.kMXP);
-		
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
@@ -100,14 +104,20 @@ public class SensorInput {
 	
 	public void calculate()
 	{
+		if (currentDisplay == null)
+		{
+			currentDisplay = new ClimberCurrentDisplayComponent();
+			Robot.getInstance().getConnection().addComponent(currentDisplay, 1);
+		}
+		currentDisplay.update();
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
-
 	}
 
 	public void reset()
 	{
 		this.leftDriveEncoder.reset();
 		this.rightDriveEncoder.reset();
+		this.ahrs.reset();
 	}
 }

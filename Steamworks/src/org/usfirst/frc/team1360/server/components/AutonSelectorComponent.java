@@ -21,6 +21,7 @@ public class AutonSelectorComponent extends CommandComponentBase {
 	protected void onCommand(int id, byte[] data) throws IOException {
 		switch (id) {
 		case 0:
+			System.out.println("Received auton selector initialize command");
 			sendCommand(0, IOUtils.UInt16Big(modeOptions.size()));
 			for (int i = 0; i < modeOptions.size(); ++i)
 				for (int j = 0; j < modeOptions.get(i).size(); ++j)
