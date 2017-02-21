@@ -29,9 +29,9 @@ public class SensorInput {
 		leftDriveEncoder = new Encoder(2, 3);
 		rightDriveEncoder = new Encoder(0, 1);
 		
-		SmartDashboard.putNumber("Drive P: ", 1.0);
-		SmartDashboard.putNumber("Drive I: ", 0.01);
-		SmartDashboard.putNumber("Drive D: ", 0.1);
+		SmartDashboard.putNumber("Drive P:", 1.0);
+		SmartDashboard.putNumber("Drive I:", 0.01);
+		SmartDashboard.putNumber("Drive D:", 0.1);
 		
 		ahrs = new AHRS(I2C.Port.kMXP);
 		
@@ -74,7 +74,7 @@ public class SensorInput {
 	
 	public double getClimberBackCurrent()				
 	{
-		return this.PDP.getCurrent(1);					//PDP port 1 for ClimberBack Motor
+		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
 	}
 	
 	
@@ -102,8 +102,6 @@ public class SensorInput {
 	{
 		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
-		SmartDashboard.putNumber("VeloX", this.ahrs.getVelocityX());
-		SmartDashboard.putNumber("VeloY", this.ahrs.getVelocityY());
 
 	}
 

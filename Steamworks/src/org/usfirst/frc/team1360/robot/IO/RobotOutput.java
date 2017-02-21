@@ -2,6 +2,7 @@ package org.usfirst.frc.team1360.robot.IO;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotOutput {
 	
@@ -34,12 +35,11 @@ public class RobotOutput {
 		indexSystem = new Victor(7);
 		
 		driveShifter = new Solenoid(0);
-		gearFlap = new Solenoid(3); //We swtiched this port with outFlap
+		gearFlap = new Solenoid(3); //was in 2
 		gearRelease = new Solenoid(1);
-		outFlap = new Solenoid (2);
+		outFlap = new Solenoid(2); //was in three[]\
 		intakeSolenoid = new Solenoid(4);
 		
-		intakeSolenoid.set(true);
 	}
 	
 	public static RobotOutput getInstance()
@@ -70,6 +70,9 @@ public class RobotOutput {
 		driveLeftRear.set(-left);
 		driveRightForward.set(right);
 		driveRightRear.set(right);
+		
+		SmartDashboard.putNumber("Left Voltage", left);
+		SmartDashboard.putNumber("Right Voltage", right);
 	}
 	
 	public void arcadeDrive(double speed, double turn)
@@ -82,8 +85,8 @@ public class RobotOutput {
 	
 	public void intake(double speed)
 	{
-		intake.set(speed);
-		indexSystem.set(speed);
+		intake.set(-speed);
+		indexSystem.set(-speed);
 	}
 	
 	public void openItake(boolean shift)

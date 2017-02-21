@@ -58,6 +58,7 @@ public class Robot extends IterativeRobot {
     {
     	this.sensorInput.calculate();
     	this.autonControl.updateModes();
+    	
     }
 
     public void autonomousPeriodic()
