@@ -34,6 +34,7 @@ public class PositionTracker {
 		robotOutput = RobotOutput.getInstance();
 		ahrs = SensorInput.getInstance().ahrs;
 		position = new double[] { 0.0, 0.0 };
+		velocity = new double[] { 0.0, 0.0 };
 		prevTime = System.nanoTime();
 		prevYaw = ahrs.getYaw();
 		

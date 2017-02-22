@@ -19,17 +19,29 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {	
+	private static Robot instance;
+	
 	private RobotOutput robotOutput;
+	private HumanInput humanInput;
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
 	private AutonControl autonControl;
 	private OrbitCamera camera;
+	private Connection connection;
 	private PositionTracker pt; 
 	int i;
 	
-    public void robotInit() 
-    {	
+	public Robot()
+	{
+		instance = this;
+	}
+	
+    public void robotInit()
+    {
+    	System.out.println("Nick Mertin - GUI Test Code");
+		this.connection = new Connection(5801);
     	this.robotOutput = RobotOutput.getInstance();
+    	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
     	this.autonControl = AutonControl.getInstance();
@@ -40,6 +52,15 @@ public class Robot extends IterativeRobot {
     	i = 0;
     }
     
+    public static Robot getInstance()
+    {
+    	return instance;
+    }
+    
+    public Connection getConnection()
+    {
+    	return connection;
+    }
 
     public void autonomousInit() 
     {
@@ -63,6 +84,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic()
     {
+    	sensorInput.calculate();
     	autonControl.runCycle();
     	this.sensorInput.calculate();
 		SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
@@ -73,7 +95,6 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
-        
         if (i == 50)
         {
         	System.out.println("X: " + pt.getPosition()[0] + "\nY: " + pt.getPosition()[1] + "\n\n");
@@ -81,7 +102,6 @@ public class Robot extends IterativeRobot {
         }
         
         i++;
-        
     }
  
 }
