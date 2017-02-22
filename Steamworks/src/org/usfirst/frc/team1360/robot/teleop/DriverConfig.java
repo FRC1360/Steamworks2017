@@ -2,15 +2,38 @@ package org.usfirst.frc.team1360.robot.teleop;
 
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
+import org.usfirst.frc.team1360.robot.IO.SensorInput;
+import org.usfirst.frc.team1360.robot.util.OrbitPID;
 
 public enum DriverConfig {
 	RACING 
-	{		
+	{
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
 		{
-			robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
 			boolean shift = humanInput.getRacingShifter();
+			
+			boolean deadzone = Math.abs(humanInput.getRacingTurn()) < 0.2;
+			if (deadzone)
+			{
+				double speed = humanInput.getRacingThrottle();
+				
+				if (!lastDeadzone || Math.abs(speed) < 0.01)
+				{
+					driveController.SetSetpoint(SensorInput.getInstance().getAHRSYaw());
+				}
+				
+
+				driveController.SetInput(SensorInput.getInstance().getAHRSYaw());
+				driveController.CalculateError();
+					
+				robotOutput.arcadeDrive(speed, Math.abs(speed) * driveController.GetOutput());
+			}
+			else
+			{
+				robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
+			}
+			lastDeadzone = deadzone;
 			
 			if (shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
@@ -70,6 +93,8 @@ public enum DriverConfig {
 	
 	private static boolean lastShift = false;
 	private static boolean currentState = false;
+	private static OrbitPID driveController = new OrbitPID(0.1, 0.00005, 0.01, 0.5);
+	private static boolean lastDeadzone = false;
 	
 	public abstract void calculate(RobotOutput robotOutput, HumanInput humanInput);
 }

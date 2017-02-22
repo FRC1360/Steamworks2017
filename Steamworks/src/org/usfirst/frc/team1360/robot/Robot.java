@@ -66,7 +66,6 @@ public class Robot extends IterativeRobot {
     	autonControl.runCycle();
     	this.sensorInput.calculate();
 		SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
-
     }
 
 
