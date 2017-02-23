@@ -97,7 +97,7 @@ public class Robot extends IterativeRobot {
         this.teleopControl.runCycle();
         if (i == 50)
         {
-        	System.out.println("X: " + pt.getPosition()[0] + "\nY: " + pt.getPosition()[1] + "\n\n");
+        	System.out.println(pt.getAHRS().getWorldLinearAccelX() + "\n" + pt.getAHRS().getWorldLinearAccelY() + "\n\n\n");
         	i = 0;
         }
         

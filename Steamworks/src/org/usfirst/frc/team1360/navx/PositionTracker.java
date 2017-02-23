@@ -28,6 +28,10 @@ public class PositionTracker {
 		return instance;
 	}
 	
+	public AHRS getAHRS() {
+		return ahrs;
+	}
+	
 	// this constructor must be called in the first few lines of code or else it will not work properly
 	private PositionTracker() {
 		sensorInput = SensorInput.getInstance();
