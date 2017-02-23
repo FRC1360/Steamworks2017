@@ -22,21 +22,19 @@ public class SensorInput {
 	
 	private PowerDistributionPanel PDP;
 	private ClimberCurrentDisplayComponent currentDisplay;
-	//private double ticksPerInch = 1024 * 24.0 / 40.0 * Math.PI * 8;
-	private Encoder leftDriveEncoder;
-	private Encoder rightDriveEncoder;
 	public AHRS ahrs;
+	private Encoder leftDriveEnc;
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
 		PDP = new PowerDistributionPanel();
-		leftDriveEncoder = new Encoder(2, 3);
-		rightDriveEncoder = new Encoder(0, 1);
 		ahrs = new AHRS(SPI.Port.kMXP);
 		
 		SmartDashboard.putNumber("Drive P:", 1.0);
 		SmartDashboard.putNumber("Drive I:", 0.01);
 		SmartDashboard.putNumber("Drive D:", 0.1);
+		
+		leftDriveEnc = new Encoder(1, 0);
 		
 		ahrs = new AHRS(I2C.Port.kMXP);
 	}
@@ -81,25 +79,14 @@ public class SensorInput {
 		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
 	}
 	
-	
-	public double getLeftDriveEncoder()
+	public double getLeftEncoder()
 	{
-		return this.leftDriveEncoder.get();// / ticksPerInch;
+		return this.leftDriveEnc.get();
 	}
 	
-	public double getRightDriveEncoder()
+	public void resetLeftEncoder()
 	{
-		return this.rightDriveEncoder.get();// / ticksPerInch;
-	}
-	
-	public double getDriveEncoderAverage()
-	{
-		return (this.getRightDriveEncoder() + this.getLeftDriveEncoder()) / 2;
-	}
-	
-	public double getEncoderDifference()
-	{
-		return this.getLeftDriveEncoder() - this.getRightDriveEncoder();
+		this.leftDriveEnc.reset();
 	}
 	
 	public void calculate()
@@ -110,14 +97,13 @@ public class SensorInput {
 			Robot.getInstance().getConnection().addComponent(currentDisplay, 1);
 		}
 		currentDisplay.update();
-		SmartDashboard.putNumber("Left Encoder", this.getLeftDriveEncoder());
-		SmartDashboard.putNumber("Right Drive Encoder", this.getRightDriveEncoder());
+		SmartDashboard.putNumber("Left Enc", this.getLeftEncoder());
+
 	}
 
 	public void reset()
 	{
-		this.leftDriveEncoder.reset();
-		this.rightDriveEncoder.reset();
 		this.ahrs.reset();
+		this.leftDriveEnc.reset();
 	}
 }

@@ -12,10 +12,10 @@ public class GearMiddleToBallRed implements AutonMode
 	@Override
 	public void addToMode(AutonBuilder ab)
 	{
-		ab.addCommand(new AutonDrivePID(-80, -0.5, 3000));
+		/*ab.addCommand(new AutonDrivePID(-80, -0.5, 3000));
 		ab.addCommand(new DriveWait());
 		ab.addCommand(new AutonLowGoal(1, 1000));
-		ab.addCommand(new IntakeWait());
+		ab.addCommand(new IntakeWait());*/
 	}
 
 }

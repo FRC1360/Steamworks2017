@@ -20,14 +20,16 @@ public class AutonDrivePID extends AutonCommand {
 	private boolean firstCycle = true;
 	private double target;
 	private long smallLongout = 0;
+	private double ticks;
+	private double distance;
 	
 	
-	public AutonDrivePID(double target, double speed, long timeout)
+	public AutonDrivePID(double target, double speed, double distance, long timeout)
 	{
-		this(target, speed, 0.5, timeout);
+		this(target, speed, 0.5, distance, timeout);
 	}
 	
-	public AutonDrivePID(double target, double speed, double eps, long timeout) {
+	public AutonDrivePID(double target, double speed, double eps, double distance, long timeout) {
 		super(RobotSubsystems.DRIVE, timeout);
 		
 		this.sensorInput = SensorInput.getInstance();
@@ -39,6 +41,8 @@ public class AutonDrivePID extends AutonCommand {
 		double p = 0.1;//SmartDashboard.getNumber("Drive P:", 0.0);
 		double i = 0.00005;//SmartDashboard.getNumber("Drive I:", 0.0);
 		double d = 0.01;//SmartDashboard.getNumber("Drive D:", 0.0);
+		
+		this.distance = distance;
 		
 		this.drivePID = new OrbitPID(p, i, d, eps);
 		
@@ -54,23 +58,32 @@ public class AutonDrivePID extends AutonCommand {
 			this.drivePID.SetSetpoint(target);
 			this.sensorInput.resetAHRS();
 			firstCycle = false;
+			ticks = (1024 * distance) / (4 * Math.PI);
+			this.sensorInput.resetLeftEncoder();
 		}
-		
-		if(this.smallLongout >= 5)
+			
+		if(this.sensorInput.getLeftEncoder() > 1024)
 		{
-			this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
-			this.drivePID.CalculateError();
-				
-			this.robotOutput.arcadeDrive(speed, Math.abs(speed) * drivePID.GetOutput());
-			System.out.println("Hi there");
+			System.out.println("asdf");
+			return true;
 		}
 		else
 		{
-			this.robotOutput.tankDrive(speed, speed);
-			this.smallLongout++;
+			if(this.smallLongout >= 5)
+			{
+				this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
+				this.drivePID.CalculateError();
+					
+				this.robotOutput.arcadeDrive(speed, Math.abs(speed) * drivePID.GetOutput());
+			}
+			else
+			{
+				this.robotOutput.tankDrive(speed, speed);
+				this.smallLongout++;
+			}
+			
+			return false;
 		}
-				
-		return false;
 		
 		
 	}
