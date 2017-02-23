@@ -34,9 +34,14 @@ public enum DriverConfig {
 				robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
 			}
 			lastDeadzone = deadzone;*/
-
 			
-			robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
+			double turn = humanInput.getRacingTurn();
+			
+			if(Math.abs(turn) < 0.2)
+				turn = 0;
+			
+			
+			robotOutput.arcadeDrive(humanInput.getRacingThrottle(), turn);
 			
 			if (shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
@@ -50,7 +55,12 @@ public enum DriverConfig {
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
 		{
-			robotOutput.arcadeDrive(-humanInput.getHaloThrottle(), humanInput.getHaloTurn());
+			double turn = humanInput.getHaloTurn();
+			
+			if(Math.abs(turn) < 0.2)
+				turn = 0;
+			
+			robotOutput.arcadeDrive(-humanInput.getHaloThrottle(), turn);
 			boolean shift = humanInput.getHaloShifter();
 			
 			if (shift != lastShift)
@@ -66,7 +76,16 @@ public enum DriverConfig {
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
 		{
-			robotOutput.tankDrive(humanInput.getTankLeft(), humanInput.getTankRight());
+			double left = humanInput.getTankLeft();
+			double right = humanInput.getTankRight();
+			
+			if(Math.abs(left) < 0.2)
+				left = 0;
+			
+			if(Math.abs(right) < 0.2)
+				right = 0;
+			
+			robotOutput.tankDrive(left, right);
 			boolean shift = humanInput.getTankShifter();
 			
 			if(shift != lastShift)
@@ -83,7 +102,12 @@ public enum DriverConfig {
 		@Override
 		public void calculate(RobotOutput robotOutput, HumanInput humanInput) 
 		{
-			robotOutput.arcadeDrive(humanInput.getArcadeThrottle(), humanInput.getArcadeTurn());
+			double turn = humanInput.getArcadeTurn();
+			
+			if(Math.abs(turn) < 0.2)
+				turn = 0;
+			
+			robotOutput.arcadeDrive(humanInput.getArcadeThrottle(), turn);
 			boolean shift = humanInput.getArcadeShifter();
 			
 			if(shift != lastShift)
