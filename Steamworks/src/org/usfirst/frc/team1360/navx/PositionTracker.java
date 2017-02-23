@@ -12,11 +12,11 @@ public class PositionTracker {
 	AHRS ahrs;
 	RobotOutput robotOutput;
 	SensorInput sensorInput;
-	double[] position; // First item in array is x value second item in array is y value
+	double[] position; // First item in array is x value second item in array is y value in CENTIMETRES
 	double[] velocity; // X, Y
 	long prevTime;
 	long thisTime;
-	double timeDiff;
+	long timeDiff;
 	float thisYaw;
 	float prevYaw;
 	double theta;
@@ -54,7 +54,7 @@ public class PositionTracker {
 							thisYaw += 360.0;
 					
 					thisTime = System.nanoTime();
-					timeDiff = (double)(thisTime - prevTime) / 1000000000.0;
+					timeDiff = (thisTime - prevTime);
 					prevTime = thisTime;
 					
 					double x = ahrs.getWorldLinearAccelX();
@@ -64,7 +64,10 @@ public class PositionTracker {
 					position[0] += velocity[0] * timeDiff;
 					position[1] += velocity[1] * timeDiff;
 					
-					//System.out.println(position[0] + "\n" + position[1] + "\n\n\n");
+					System.out.printf("%f\n%f\n", velocity[0], velocity[1]);
+					System.out.printf("%f\n%f\n", x * timeDiff, y * timeDiff);
+					System.out.printf("%f\n%f\n", SensorInput.getInstance().ahrs.getVelocityX(), SensorInput.getInstance().ahrs.getVelocityY());
+					System.out.println(timeDiff + "\n\n\n");
 					
 					Thread.yield();
 				}
