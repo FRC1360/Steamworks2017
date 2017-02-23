@@ -64,7 +64,7 @@ public class PositionTracker {
 					position[0] += velocity[0] * timeDiff;
 					position[1] += velocity[1] * timeDiff;
 					
-					System.out.println(position[0] + "\n" + position[1] + "\n\n\n");
+					//System.out.println(position[0] + "\n" + position[1] + "\n\n\n");
 					
 					Thread.yield();
 				}
