@@ -1091,3 +1091,27 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/Steamworks/sr
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
 !SUBENTRY 2 org.eclipse.core.filebuffers 4 0 2017-02-22 19:05:29.858
 !MESSAGE Cannot determine URI for '/Steamworks/src/org/usfirst/frc/team1360/server/util/IOUtils.java'.
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:26:25.053
+!MESSAGE Running ant file: C:\Users\Jason\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:26:25.056
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:26:48.858
+!MESSAGE Running ant file: C:\Users\Jason\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:26:48.862
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:27:05.499
+!MESSAGE Last deploy running
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:27:05.504
+!MESSAGE Waiting
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:27:05.509
+!MESSAGE Running ant file: C:\Users\Jason\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-22 19:27:05.512
+!MESSAGE Targets: deploy, Mode: run
