@@ -28,15 +28,7 @@ public class SensorInput {
 	private SensorInput()								//Constructor to initialize fields  
 	{
 		PDP = new PowerDistributionPanel();
-		ahrs = new AHRS(SPI.Port.kMXP);
-		
-		SmartDashboard.putNumber("Drive P:", 1.0);
-		SmartDashboard.putNumber("Drive I:", 0.01);
-		SmartDashboard.putNumber("Drive D:", 0.1);
-		
-		leftDriveEnc = new Encoder(0, 1);
-		
-		ahrs = new AHRS(I2C.Port.kMXP);
+		ahrs = new AHRS(I2C.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
