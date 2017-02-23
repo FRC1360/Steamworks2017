@@ -34,7 +34,7 @@ public class SensorInput {
 		SmartDashboard.putNumber("Drive I:", 0.01);
 		SmartDashboard.putNumber("Drive D:", 0.1);
 		
-		leftDriveEnc = new Encoder(1, 0);
+		leftDriveEnc = new Encoder(0, 1);
 		
 		ahrs = new AHRS(I2C.Port.kMXP);
 	}

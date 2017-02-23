@@ -10,7 +10,7 @@ public class DrivePIDTest implements AutonMode {
 
 	@Override
 	public void addToMode(AutonBuilder ab) {
-		ab.addCommand(new AutonDrivePID(0, 0.5, 10, 3000000));
+		ab.addCommand(new AutonDrivePID(0, 0.5, 100, 3000000));
 		//ab.addCommand(new AutonDrivePID(90, 0.25, 0.25, 2000000));
 		ab.addCommand(new DriveWait());
 	}

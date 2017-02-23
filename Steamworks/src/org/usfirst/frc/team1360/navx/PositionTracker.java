@@ -64,10 +64,10 @@ public class PositionTracker {
 					position[0] += velocity[0] * timeDiff;
 					position[1] += velocity[1] * timeDiff;
 					
-					System.out.printf("%f\n%f\n", velocity[0], velocity[1]);
+					/*System.out.printf("%f\n%f\n", velocity[0], velocity[1]);
 					System.out.printf("%f\n%f\n", x * timeDiff, y * timeDiff);
 					System.out.printf("%f\n%f\n", SensorInput.getInstance().ahrs.getVelocityX(), SensorInput.getInstance().ahrs.getVelocityY());
-					System.out.println(timeDiff + "\n\n\n");
+					System.out.println(timeDiff + "\n\n\n");*/
 					
 					Thread.yield();
 				}

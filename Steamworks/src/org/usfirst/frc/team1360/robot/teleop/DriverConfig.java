@@ -13,7 +13,7 @@ public enum DriverConfig {
 		{
 			boolean shift = humanInput.getRacingShifter();
 			
-			boolean deadzone = Math.abs(humanInput.getRacingTurn()) < 0.2;
+			/*boolean deadzone = Math.abs(humanInput.getRacingTurn()) < 0.2;
 			if (deadzone)
 			{
 				double speed = humanInput.getRacingThrottle();
@@ -33,7 +33,10 @@ public enum DriverConfig {
 			{
 				robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
 			}
-			lastDeadzone = deadzone;
+			lastDeadzone = deadzone;*/
+
+			
+			robotOutput.arcadeDrive(humanInput.getRacingThrottle(), humanInput.getRacingTurn());
 			
 			if (shift != lastShift)
 				robotOutput.shiftSpeed(currentState = !currentState);
