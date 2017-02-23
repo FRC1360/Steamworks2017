@@ -54,7 +54,7 @@ public class PositionTracker {
 							thisYaw += 360.0;
 					
 					thisTime = System.nanoTime();
-					timeDiff = (thisTime - prevTime) / 1000000000.0;
+					timeDiff = (double)(thisTime - prevTime) / 1000000000.0;
 					prevTime = thisTime;
 					
 					double x = ahrs.getWorldLinearAccelX();
@@ -63,6 +63,8 @@ public class PositionTracker {
 					velocity[1] += y * timeDiff;
 					position[0] += velocity[0] * timeDiff;
 					position[1] += velocity[1] * timeDiff;
+					
+					System.out.println(velocity[0] + "\n" + velocity[1] + "\n\n\n");
 					
 					Thread.yield();
 				}
