@@ -23,7 +23,7 @@ public class SensorInput {
 	private PowerDistributionPanel PDP;
 	private ClimberCurrentDisplayComponent currentDisplay;
 	public AHRS ahrs;
-	private Encoder leftDriveEnc;
+	
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
@@ -71,16 +71,6 @@ public class SensorInput {
 		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
 	}
 	
-	public double getLeftEncoder()
-	{
-		return this.leftDriveEnc.get();
-	}
-	
-	public void resetLeftEncoder()
-	{
-		this.leftDriveEnc.reset();
-	}
-	
 	public void calculate()
 	{
 		if (currentDisplay == null)
@@ -89,13 +79,11 @@ public class SensorInput {
 			Robot.getInstance().getConnection().addComponent(currentDisplay, 1);
 		}
 		currentDisplay.update();
-		SmartDashboard.putNumber("Left Enc", this.getLeftEncoder());
 
 	}
 
 	public void reset()
 	{
 		this.ahrs.reset();
-		this.leftDriveEnc.reset();
 	}
 }

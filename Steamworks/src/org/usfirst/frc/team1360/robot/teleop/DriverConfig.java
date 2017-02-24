@@ -116,6 +116,25 @@ public enum DriverConfig {
 			lastShift = shift;
 		}
 		
+	},
+	
+	JOYSTICKTANK
+	{
+		@Override
+		public void calculate(RobotOutput robotOutput, HumanInput humanInput)
+		{
+			double left = humanInput.getLeftJoystickThrottle();
+			
+			double right = humanInput.getRightJoystickThrottle();
+			boolean shift = humanInput.getJoystickShift();
+			
+			robotOutput.tankDrive(left, right);
+			
+			if (shift != lastShift)
+				robotOutput.shiftSpeed(currentState = !currentState);
+			
+			lastShift = shift;
+		}
 	};
 	
 	private static boolean lastShift = false;

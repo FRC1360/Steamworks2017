@@ -59,13 +59,6 @@ public class AutonDrivePID extends AutonCommand {
 			this.sensorInput.resetAHRS();
 			firstCycle = false;
 			ticks = (1024 * distance) / (3.14 * 4 * Math.PI);
-			this.sensorInput.resetLeftEncoder();
-		}
-					
-		if(this.sensorInput.getLeftEncoder() > ticks)
-		{
-			System.out.println("asdf");
-			return true;
 		}
 		else
 		{
@@ -85,7 +78,7 @@ public class AutonDrivePID extends AutonCommand {
 			return false;
 		}
 		
-		
+		return false;
 	}
 
 	@Override

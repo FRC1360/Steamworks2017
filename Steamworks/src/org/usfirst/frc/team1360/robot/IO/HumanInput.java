@@ -1,4 +1,5 @@
 package org.usfirst.frc.team1360.robot.IO;
+import org.usfirst.frc.team1360.robot.util.LogitechExtremeJoystick;
 /*****
  * Author: Tatiana Tomas Zahhar
  * Date: 31 Jan 2017 - added comments
@@ -10,6 +11,8 @@ public class HumanInput {
 	private static HumanInput instance;						//Fields of class HumanInput
 	private XboxRemote driver;
 	private XboxRemote operator;
+	private LogitechExtremeJoystick driver1;
+	private LogitechExtremeJoystick driver2;
 	private boolean autonIncreaseStepWasPressed = false;	//Confirm that Autonomous Period is done
 	private boolean autonDecreaseStepWasPressed = false;
 	
@@ -17,6 +20,8 @@ public class HumanInput {
 	{
 		this.driver = new XboxRemote(0);					//Driver Xbox on USB Port 0 on DS
 		this.operator = new XboxRemote(1);					//Operator Xbox on USB Port 1 on DS			
+		driver1 = new LogitechExtremeJoystick(2);
+		driver2 = new LogitechExtremeJoystick(3);
 	}
 	
 	public static HumanInput getInstance()					//Check to make sure that HumanInput exists
@@ -93,6 +98,21 @@ public class HumanInput {
 	public boolean getTankShifter()
 	{
 		return this.driver.getButtonRB();
+	}
+	
+	public double getLeftJoystickThrottle()
+	{
+		return -driver1.getY();
+	}
+	
+	public double getRightJoystickThrottle()
+	{
+		return -driver2.getY();
+	}
+	
+	public boolean getJoystickShift()
+	{
+		return driver1.getMainTrigger() || driver2.getMainTrigger();
 	}
 	
 

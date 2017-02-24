@@ -12,7 +12,7 @@ public class TeleopDrive implements TeleopComponent {
 	private static TeleopDrive instance;
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
-	private DriverConfig cfg = DriverConfig.HALO;
+	private DriverConfig cfg = DriverConfig.RACING;
 	private DriverConfigSelectorComponent selector;
 	
 	private TeleopDrive()
