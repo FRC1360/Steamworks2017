@@ -21,7 +21,8 @@ public class RobotOutput {
 	private Solenoid outFlap;
 	private Solenoid intakeSolenoid;
 	
-	private final double TURN_WEIGHT_FACTOR = 1.5d;
+	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
+	private final double TURN_WEIGHT_FACTOR = 0.45d;
 	
 	private static  RobotOutput instance;
 	
@@ -80,8 +81,27 @@ public class RobotOutput {
 	
 	public void arcadeDrive(double speed, double turn)
 	{
-		double left = (speed) + (TURN_WEIGHT_FACTOR * turn);
-		double right = (speed) + (TURN_WEIGHT_FACTOR * -turn);
+		//double left = (speed) + (TURN_WEIGHT_FACTOR * turn);
+		//double right = (speed) + (TURN_WEIGHT_FACTOR * -turn);
+		
+		double left;
+		double right;
+		
+		if (turn > 0)
+		{
+			left = (speed) + ((Math.exp(TURN_WEIGHT_FACTOR * -turn) * turn));
+			right = (speed) + ((Math.exp(TURN_WEIGHT_FACTOR * -turn) * -turn));
+		}
+		else if (turn < 0)
+		{
+			left = (speed) + ((Math.exp(TURN_WEIGHT_FACTOR * -turn) * turn));
+			right = (speed) + ((Math.exp(TURN_WEIGHT_FACTOR * -turn) * -turn));
+		}
+		else
+		{
+			left = speed;
+			right = speed;
+		}
 		
 		tankDrive(left, right);
 	}
