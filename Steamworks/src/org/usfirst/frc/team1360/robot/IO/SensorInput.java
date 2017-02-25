@@ -24,6 +24,10 @@ public class SensorInput {
 	private ClimberCurrentDisplayComponent currentDisplay;
 	public AHRS ahrs;
 	
+	public static final double driveP = 0.1;
+	public static final double driveI = 0.00005;
+	public static final double driveD = 0.01;
+	
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
@@ -79,6 +83,8 @@ public class SensorInput {
 			Robot.getInstance().getConnection().addComponent(currentDisplay, 1);
 		}
 		currentDisplay.update();
+		
+		SmartDashboard.putNumber("Climber Average Current", (this.getClimberFrontCurrent() + this.getClimberBackCurrent()) / 2);
 
 	}
 

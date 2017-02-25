@@ -38,9 +38,9 @@ public class AutonDrivePID extends AutonCommand {
 		this.speed = speed;
 		this.target = target;
 		
-		double p = 0.1;//SmartDashboard.getNumber("Drive P:", 0.0);
-		double i = 0.00005;//SmartDashboard.getNumber("Drive I:", 0.0);
-		double d = 0.01;//SmartDashboard.getNumber("Drive D:", 0.0);
+		double p = this.sensorInput.driveP;
+		double i = this.sensorInput.driveI;
+		double d = this.sensorInput.driveD;
 		
 		this.distance = distance;
 		

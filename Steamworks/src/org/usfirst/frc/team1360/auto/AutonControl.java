@@ -8,7 +8,6 @@ import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
 import org.usfirst.frc.team1360.auto.step1.DrivePIDTest;
-import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearBoiler;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearMiddle;
 import org.usfirst.frc.team1360.auto.step2.red.GearMiddleToBallRed;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
@@ -61,7 +60,6 @@ private static AutonControl instance;
         step1.add(new DefaultMode()); //0
         step1.add(new DrivePIDTest());
         step1.add(new DriveToGearMiddle());
-        step1.add(new DriveToGearBoiler());
         
         
         // --- STEP 2 SUBMODES

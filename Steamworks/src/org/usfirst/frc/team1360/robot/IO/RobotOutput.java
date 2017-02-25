@@ -21,6 +21,8 @@ public class RobotOutput {
 	private Solenoid outFlap;
 	private Solenoid intakeSolenoid;
 	
+	private final double TURN_WEIGHT_FACTOR = 1.5d;
+	
 	private static  RobotOutput instance;
 	
 	private RobotOutput()
@@ -37,7 +39,8 @@ public class RobotOutput {
 		driveShifter = new Solenoid(0);
 		gearFlap = new Solenoid(3); //was in 2
 		gearRelease = new Solenoid(1);
-		outFlap = new Solenoid(2); //was in three[]\
+		//outFlap = new Solenoid(2); //was in three[]
+		outFlap = new Solenoid(6); //practice BOT bad
 		intakeSolenoid = new Solenoid(4);
 		
 	}
@@ -77,8 +80,8 @@ public class RobotOutput {
 	
 	public void arcadeDrive(double speed, double turn)
 	{
-		double left = (speed) + turn;
-		double right = (speed) - turn;
+		double left = (speed) + (TURN_WEIGHT_FACTOR * turn);
+		double right = (speed) + (TURN_WEIGHT_FACTOR * -turn);
 		
 		tankDrive(left, right);
 	}
