@@ -134,6 +134,11 @@ public class HumanInput {
 		return this.operator.getButtonB();					//Read the value of the Right Back Button on the Operator Controller
 	}
 	
+	public boolean getOperatorAutoClimb()
+	{
+		return this.operator.getButtonY();
+	}
+	
 	public boolean getOperatorOutake()
 	{
 		return this.operator.getButtonX();

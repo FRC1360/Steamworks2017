@@ -45,7 +45,7 @@ public class AutonDrivePID extends AutonCommand {
 		this.distance = distance;
 		
 		this.drivePID = new OrbitPID(p, i, d, eps);
-		
+		this.sensorInput.resetLeftEncoder();
 
 		
 	}
@@ -60,6 +60,12 @@ public class AutonDrivePID extends AutonCommand {
 			firstCycle = false;
 			ticks = (1024 * distance) / (3.14 * 4 * Math.PI);
 		}
+		
+		
+		if(this.sensorInput.getLeftDriveEncoder() >= Math.abs(ticks))
+		{
+			return true;
+		}
 		else
 		{
 			if(this.smallLongout >= 5)
@@ -67,7 +73,7 @@ public class AutonDrivePID extends AutonCommand {
 				this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
 				this.drivePID.CalculateError();
 					
-				this.robotOutput.arcadeDrive(speed, Math.abs(speed) * drivePID.GetOutput());
+				this.robotOutput.arcadeDrivePID(speed, Math.abs(speed) * drivePID.GetOutput());
 			}
 			else
 			{
@@ -77,8 +83,6 @@ public class AutonDrivePID extends AutonCommand {
 			
 			return false;
 		}
-		
-		return false;
 	}
 
 	@Override

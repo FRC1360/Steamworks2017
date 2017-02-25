@@ -28,9 +28,12 @@ public class SensorInput {
 	public static final double driveI = 0.00005;
 	public static final double driveD = 0.01;
 	
+	private Encoder driveLeftEncoder;
+	
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
+		driveLeftEncoder = new Encoder(0, 1);
 		PDP = new PowerDistributionPanel();
 		ahrs = new AHRS(I2C.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
 	}
@@ -75,6 +78,16 @@ public class SensorInput {
 		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
 	}
 	
+	public double getLeftDriveEncoder()
+	{
+		return this.driveLeftEncoder.get();
+	}
+	
+	public void resetLeftEncoder()
+	{
+		this.driveLeftEncoder.reset();
+	}
+	
 	public void calculate()
 	{
 		if (currentDisplay == null)
@@ -84,6 +97,7 @@ public class SensorInput {
 		}
 		currentDisplay.update();
 		
+		SmartDashboard.putNumber("Left Enc", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Climber Average Current", (this.getClimberFrontCurrent() + this.getClimberBackCurrent()) / 2);
 
 	}

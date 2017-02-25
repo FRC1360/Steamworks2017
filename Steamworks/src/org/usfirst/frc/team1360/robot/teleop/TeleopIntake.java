@@ -32,6 +32,11 @@ public class TeleopIntake implements TeleopComponent {
 		boolean release = this.humanInput.getOperatorOutake();
 		boolean open = this.humanInput.getOperatorOpenIntake();
 		
+		if(Math.abs(speed) < 0.2)
+		{
+			speed = 0;
+		}
+		
 		this.robotOutput.intake(speed);
 		this.robotOutput.outtake(release);
 		this.robotOutput.openItake(open);

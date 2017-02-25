@@ -12,10 +12,10 @@ public class TeleopClimber implements TeleopComponent {
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
 	private SensorInput sensorInput;
-	private boolean overCurrent = false;
-	private boolean overriden = false;
 	
-	private final double currentThreshold = 0; 
+	private double cooldown = 0
+			;
+	private boolean isToggled = false;
 	
 
 	
@@ -37,35 +37,35 @@ public class TeleopClimber implements TeleopComponent {
 	@Override
 	public void calculate() 
 	{
-		double averageCurrent = (this.sensorInput.getClimberBackCurrent() + this.sensorInput.getClimberFrontCurrent()) / 2;
 		double speed = this.humanInput.getClimb();
-		boolean override = this.humanInput.getOverride();
+		boolean toggleButton = this.humanInput.getOperatorAutoClimb();
 		
-		if(speed > 0.001)
-			System.out.println(averageCurrent);
-		
-		
-		if(averageCurrent > this.currentThreshold)
-			this.overCurrent = true;
-		
-		if(this.overCurrent && override)
-			this.overriden = true;
-		
-		if(this.overCurrent && !overriden)
+		if(toggleButton && cooldown >= 25)
 		{
-			this.robotOutput.climb(0.2);
+			cooldown = 0;
+			
+			if(isToggled == false)
+			{
+				isToggled = true;
+			}
+			else
+			{
+				isToggled = false;
+			}
 		}
-		else if(this.overCurrent && overriden)
+		else
 		{
-			this.robotOutput.climb(speed);
+			cooldown++;
+		}
+		
+		if(isToggled)
+		{
+			this.robotOutput.climb(0.25);
 		}
 		else
 		{
 			this.robotOutput.climb(speed);
 		}
-		
-		
-		this.robotOutput.climb(speed);
 	}
 
 	@Override

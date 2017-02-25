@@ -50,7 +50,7 @@ public class AutonDrivePIDTurn extends AutonCommand
 				this.driveController.SetInput(this.sensorInput.getAHRSYaw());
 				this.driveController.CalculateError();
 				
-				this.robotOutput.arcadeDrive(0, 0.5 * this.driveController.GetOutput());
+				this.robotOutput.arcadeDrivePID(0, 0.5 * this.driveController.GetOutput());
 				
 				if(Math.abs(this.sensorInput.getAHRSYaw()) - angle >= 0.5)
 				{

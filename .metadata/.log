@@ -4900,3 +4900,198 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:31:21.655
 !MESSAGE Updating projects
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:50:31.224
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:50:31.229
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:51:49.061
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:51:49.065
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.launchbar.core 2 0 2017-02-25 12:51:49.121
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2017-02-25 12:51:49.128
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:54:20.762
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:54:20.773
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:54:57.317
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:54:57.321
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:57:08.525
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 12:57:08.529
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:10:16.239
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:10:16.243
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:11:05.707
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:11:05.712
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:25:34.323
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:25:34.327
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.ant.launching 4 120 2017-02-25 14:25:54.490
+!MESSAGE Error logged from Ant UI: 
+!STACK 0
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at sun.nio.cs.StreamDecoder.readBytes(Unknown Source)
+	at sun.nio.cs.StreamDecoder.implRead(Unknown Source)
+	at sun.nio.cs.StreamDecoder.read(Unknown Source)
+	at java.io.InputStreamReader.read(Unknown Source)
+	at java.io.BufferedReader.fill(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at org.eclipse.ant.internal.launching.launchConfigurations.RemoteAntBuildListener$ServerConnection.run(RemoteAntBuildListener.java:94)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:26:01.195
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:26:01.204
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:29:06.464
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:29:06.468
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:29:24.857
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:29:24.861
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:31:20.847
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:31:20.851
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:32:07.824
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:32:07.828
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:33:29.010
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:33:29.014
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:42:44.785
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:42:44.789
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:43:04.501
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:43:04.509
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:43:56.467
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 14:43:56.471
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:14:26.456
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:14:26.464
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:15:21.285
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:15:21.289
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:23:08.146
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:23:08.150
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:24:25.386
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:24:25.394
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:27:35.918
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:27:35.922
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:28:51.876
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:28:51.880
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:30:22.711
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:30:22.718
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:32:07.019
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:32:07.023
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:35:08.970
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:35:08.974
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:37:59.261
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:37:59.265
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:39:10.031
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:39:10.035
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:40:21.078
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-25 16:40:21.082
+!MESSAGE Targets: deploy, Mode: run
