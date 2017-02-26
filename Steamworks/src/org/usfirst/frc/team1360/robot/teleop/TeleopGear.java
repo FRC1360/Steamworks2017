@@ -8,6 +8,7 @@ public class TeleopGear implements TeleopComponent{
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
 	private boolean isOpen = false;
+	private boolean lastShift = false;
 	
 	public static TeleopGear getInstance()		
 	{
@@ -30,17 +31,14 @@ public class TeleopGear implements TeleopComponent{
 		boolean flap = humanInput.getOperatorGearFlap();
 		boolean release = humanInput.getOperatorGearRelease();
 		
-		if(flap && this.isOpen)
+		/*if(flap != lastShift)
 		{
-			this.robotOutput.flapGear(false);
-			isOpen = false;
-		} 
-		else if(flap && !this.isOpen)
-		{
-			this.robotOutput.flapGear(true);
-			isOpen = true;
-		}
+			robotOutput.flapGear(isOpen = !isOpen);
+			lastShift = !isOpen;
+		}*/
 		
+		this.robotOutput.flapGear(flap);
+				
 		this.robotOutput.releaseGear(release);
 
 	}

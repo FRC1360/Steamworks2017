@@ -1,7 +1,9 @@
 package org.usfirst.frc.team1360.robot.teleop;
 
+import org.usfirst.frc.team1360.robot.Robot;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
+import org.usfirst.frc.team1360.server.components.DriverConfigSelectorComponent;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -10,12 +12,15 @@ public class TeleopDrive implements TeleopComponent {
 	private static TeleopDrive instance;
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
-	private boolean isShifted = false;
+	private DriverConfig cfg = DriverConfig.RACING;
+	private DriverConfigSelectorComponent selector;
 	
 	private TeleopDrive()
 	{
 		humanInput = HumanInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
+		selector = new DriverConfigSelectorComponent(new_cfg -> cfg = new_cfg, cfg);
+		Robot.getInstance().getConnection().addComponent(selector, 3);
 	}
 
 	public static TeleopDrive getInstance()
@@ -26,25 +31,9 @@ public class TeleopDrive implements TeleopComponent {
 		return instance;
 	}
 	
-	public void calculate() {
-		double speed = humanInput.getDriveRight() - humanInput.getDriveLeft();
-		double turn = humanInput.getTurn();
-		boolean shift = humanInput.getShiftSpeed();
-		
-		if(shift && !isShifted)
-		{
-			isShifted = true;
-			robotOutput.shiftSpeed(true);
-		}
-		else if (shift && isShifted)
-		{
-			isShifted = false;
-			robotOutput.shiftSpeed(false);
-		}
-		
-		if(Math.abs(turn) < 0.2) turn = 0;
-		
-		robotOutput.arcadeDrive(turn, speed);
+	public void calculate() 
+	{
+		cfg.calculate(robotOutput, humanInput);
 	}
 
 	public void disable() {

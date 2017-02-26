@@ -164,7 +164,7 @@ struct CS_Event {
   CS_Source source;
   CS_Sink sink;
 
-  // Source/sink name
+  // Source/sink/property name
   const char *name;
 
   // Fields for CS_SOURCE_VIDEOMODE_CHANGED event
@@ -241,6 +241,20 @@ CS_Sink* CS_EnumerateSourceSinks(CS_Source source, int* count,
                                  CS_Status* status);
 CS_Source CS_CopySource(CS_Source source, CS_Status* status);
 void CS_ReleaseSource(CS_Source source, CS_Status* status);
+
+//
+// Camera Source Common Property Fuctions
+//
+void CS_SetCameraBrightness(CS_Source source, int brightness,
+                            CS_Status* status);
+int CS_GetCameraBrightness(CS_Source source, CS_Status* status);
+void CS_SetCameraWhiteBalanceAuto(CS_Source source, CS_Status* status);
+void CS_SetCameraWhiteBalanceHoldCurrent(CS_Source source, CS_Status* status);
+void CS_SetCameraWhiteBalanceManual(CS_Source source, int value,
+                                    CS_Status* status);
+void CS_SetCameraExposureAuto(CS_Source source, CS_Status* status);
+void CS_SetCameraExposureHoldCurrent(CS_Source source, CS_Status* status);
+void CS_SetCameraExposureManual(CS_Source source, int value, CS_Status* status);
 
 //
 // UsbCamera Source Functions

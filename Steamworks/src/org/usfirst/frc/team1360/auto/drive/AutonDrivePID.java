@@ -14,66 +14,79 @@ public class AutonDrivePID extends AutonCommand {
 	private SensorInput sensorInput;
 	private RobotOutput robotOutput;
 	private OrbitPID drivePID;
-	private boolean firstCycle = true;
 	
+	private double speed;
+	
+	private boolean firstRun = true;
 	private double target;
+	private long smallLongout = 0;
+	private double ticks;
+	private double distance;
 	
 	
-	public AutonDrivePID(double target, long timeout) {
+	public AutonDrivePID(double target, double speed, double distance, long timeout)
+	{
+		this(target, speed, 0.5, distance, timeout);
+	}
+	
+	public AutonDrivePID(double target, double speed, double eps, double distance, long timeout) {
 		super(RobotSubsystems.DRIVE, timeout);
 		
-		double p = SmartDashboard.getNumber("Drive Enc P: ", 0);
-		double i = SmartDashboard.getNumber("Drive Enc I: ", 0);
-		double d = SmartDashboard.getNumber("Drive Enc D: ", 0);
-		this.drivePID = new OrbitPID(p, i, d, 0.5);
-		this.robotOutput = RobotOutput.getInstance();
 		this.sensorInput = SensorInput.getInstance();
+		this.robotOutput = RobotOutput.getInstance();
+		
+		this.speed = speed;
 		this.target = target;
+		
+		/*double p = SensorInput.driveP;
+		double i = SensorInput.driveI;
+		double d = SensorInput.driveD;*/
+		
+		double p = 0.1;
+		double i = 0.00005;
+		double d = 0.01;
+		
+		this.distance = distance;
+		
+		this.drivePID = new OrbitPID(p, i, d, eps);
+		
 	}
 	
 	@Override
-	public boolean calculate() {
-		/*if(this.firstCycle)
+	public boolean calculate()
+	{
+		if(firstRun)
 		{
-			this.drivePID.SetSetpoint(sensorInput.getDriveEncoderAverage() + this.target);
-			this.firstCycle = false;
+			this.drivePID.SetSetpoint(target);
+			this.sensorInput.resetAHRS();
+			this.firstRun = false;
+			this.sensorInput.resetLeftEncoder();
+			this.ticks = (1024 * this.distance) / (3.14 * 4 * Math.PI);
 		}
 		
-		this.drivePID.SetInput(sensorInput.getDriveEncoderAverage());
-		this.drivePID.CalculateError();
 		
-		if(this.drivePID.isDone())
+		if(this.sensorInput.getLeftDriveEncoder() > this.ticks)
 		{
-			this.robotOutput.tankDrive(0, 0);
-			return true;
-		} 
-		else
-		{
-			double y = this.drivePID.GetOutput();
-			this.robotOutput.tankDrive(y, y);
-			return false;
-		}*/
-		
-		if(this.firstCycle)
-		{
-			this.drivePID.SetSetpoint(0);
-			this.firstCycle = false;
-		}
-		
-		this.drivePID.SetInput(this.sensorInput.getEncoderDifference());
-		this.drivePID.CalculateError();
-		
-		if(this.sensorInput.getLeftDriveEncoder() - target == 0)
-		{
-			this.robotOutput.arcadeDrive(0, 0);
+			System.out.println("asdf");
 			return true;
 		}
 		else
 		{
-			this.robotOutput.arcadeDrive(this.drivePID.GetOutput(), 1);
+			if(this.smallLongout >= 5)
+			{
+				this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
+				this.drivePID.CalculateError();
+					
+				this.robotOutput.arcadeDrivePID(speed, Math.abs(speed) * drivePID.GetOutput());
+			}
+			else
+			{
+				this.robotOutput.tankDrive(speed, speed);
+				this.smallLongout++;
+			}
+			
 			return false;
 		}
-		
 	}
 
 	@Override
