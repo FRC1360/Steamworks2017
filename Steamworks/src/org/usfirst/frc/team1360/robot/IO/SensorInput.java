@@ -35,7 +35,7 @@ public class SensorInput {
 	{
 		driveLeftEncoder = new Encoder(0, 1);
 		PDP = new PowerDistributionPanel();
-		ahrs = new AHRS(I2C.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
+		ahrs = new AHRS(SPI.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
@@ -99,7 +99,7 @@ public class SensorInput {
 		
 		SmartDashboard.putNumber("Left Enc", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Climber Average Current", (this.getClimberFrontCurrent() + this.getClimberBackCurrent()) / 2);
-
+		SmartDashboard.putNumber("NavX Yaw ==", this.getAHRSYaw());
 	}
 
 	public void reset()

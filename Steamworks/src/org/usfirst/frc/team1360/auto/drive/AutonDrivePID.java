@@ -17,7 +17,7 @@ public class AutonDrivePID extends AutonCommand {
 	
 	private double speed;
 	
-	private boolean firstCycle = true;
+	private boolean firstRun = true;
 	private double target;
 	private long smallLongout = 0;
 	private double ticks;
@@ -38,32 +38,36 @@ public class AutonDrivePID extends AutonCommand {
 		this.speed = speed;
 		this.target = target;
 		
-		double p = this.sensorInput.driveP;
-		double i = this.sensorInput.driveI;
-		double d = this.sensorInput.driveD;
+		/*double p = SensorInput.driveP;
+		double i = SensorInput.driveI;
+		double d = SensorInput.driveD;*/
+		
+		double p = 0.1;
+		double i = 0.00005;
+		double d = 0.01;
 		
 		this.distance = distance;
 		
 		this.drivePID = new OrbitPID(p, i, d, eps);
-		this.sensorInput.resetLeftEncoder();
-
 		
 	}
 	
 	@Override
 	public boolean calculate()
 	{
-		if(firstCycle)
+		if(firstRun)
 		{
 			this.drivePID.SetSetpoint(target);
 			this.sensorInput.resetAHRS();
-			firstCycle = false;
-			ticks = (1024 * distance) / (3.14 * 4 * Math.PI);
+			this.firstRun = false;
+			this.sensorInput.resetLeftEncoder();
+			this.ticks = (1024 * this.distance) / (3.14 * 4 * Math.PI);
 		}
 		
 		
-		if(this.sensorInput.getLeftDriveEncoder() >= Math.abs(ticks))
+		if(this.sensorInput.getLeftDriveEncoder() > this.ticks)
 		{
+			System.out.println("asdf");
 			return true;
 		}
 		else

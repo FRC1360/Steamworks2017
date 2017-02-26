@@ -14,7 +14,7 @@ public class AutonStop extends AutonCommand {
 	@Override
 	public boolean calculate() {
 		AutonControl.getInstance().stop();
-		return false;
+		return true;
 	}
 
 	@Override
