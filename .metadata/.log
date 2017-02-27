@@ -5999,3 +5999,243 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-02-26 17:00:27.919
 !MESSAGE Updating projects
+
+!ENTRY org.eclipse.jdt.core 4 4 2017-02-27 16:35:02.595
+!MESSAGE Could not retrieve declared methods
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.lookup.TypeSystem.getArrayType(TypeSystem.java:266)
+	at org.eclipse.jdt.internal.compiler.lookup.AnnotatableTypeSystem.getArrayType(AnnotatableTypeSystem.java:90)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.getTypeFromSignature(LookupEnvironment.java:1446)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.createFields(BinaryTypeBinding.java:625)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.cachePartsFrom(BinaryTypeBinding.java:523)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:722)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.createBinaryTypeFrom(LookupEnvironment.java:705)
+	at org.eclipse.jdt.internal.compiler.Compiler.accept(Compiler.java:301)
+	at org.eclipse.jdt.internal.compiler.lookup.LookupEnvironment.askForType(LookupEnvironment.java:156)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:101)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:212)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveTypesFor(BinaryTypeBinding.java:1506)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.availableMethods(BinaryTypeBinding.java:391)
+	at org.eclipse.jdt.core.dom.TypeBinding.getDeclaredMethods(TypeBinding.java:302)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethodInType(Bindings.java:496)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethodInHierarchy(Bindings.java:513)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethods(Bindings.java:569)
+	at org.eclipse.jdt.internal.corext.dom.Bindings.findOverriddenMethod(Bindings.java:540)
+	at org.eclipse.jdt.internal.ui.javaeditor.OverrideIndicatorManager$1.visit(OverrideIndicatorManager.java:184)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:611)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.AnonymousClassDeclaration.accept0(AnonymousClassDeclaration.java:144)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.ClassInstanceCreation.accept0(ClassInstanceCreation.java:314)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.ParenthesizedExpression.accept0(ParenthesizedExpression.java:140)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.MethodInvocation.accept0(MethodInvocation.java:234)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.ExpressionStatement.accept0(ExpressionStatement.java:145)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.Block.accept0(Block.java:137)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChild(ASTNode.java:2759)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:635)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:470)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2782)
+	at org.eclipse.jdt.core.dom.CompilationUnit.accept0(CompilationUnit.java:212)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2711)
+	at org.eclipse.jdt.internal.ui.javaeditor.OverrideIndicatorManager.updateAnnotations(OverrideIndicatorManager.java:176)
+	at org.eclipse.jdt.internal.ui.javaeditor.OverrideIndicatorManager.reconciled(OverrideIndicatorManager.java:258)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.reconciled(CompilationUnitEditor.java:1687)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconciled(JavaReconcilingStrategy.java:219)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconciled(JavaCompositeReconcilingStrategy.java:164)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:112)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:37:36.159
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:37:36.163
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.jdt.core 4 4 2017-02-27 16:37:38.685
+!MESSAGE Background Indexer Crash Recovery
+!STACK 0
+java.lang.OutOfMemoryError: Java heap space
+	at org.eclipse.jdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:38)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:663)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:466)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:458)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:560)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:197)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:905)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:947)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:644)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.run(JobManager.java:377)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:39:14.716
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:39:14.720
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.launchbar.core 2 0 2017-02-27 16:39:14.808
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2017-02-27 16:39:14.821
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:39:33.818
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:39:33.824
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-02-27 16:40:02.086
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 31, new: 27). Location: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1621)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1285)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1277)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1254)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1165)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:41:10.199
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:41:10.206
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:41:37.671
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:41:37.677
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-02-27 16:45:57.691
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 31, new: 27). Location: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1621)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1285)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1277)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1254)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1165)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:46:09.779
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:46:09.783
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:46:56.100
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:46:56.105
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.ant.launching 4 120 2017-02-27 16:47:03.151
+!MESSAGE Error logged from Ant UI: 
+!STACK 0
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at sun.nio.cs.StreamDecoder.readBytes(Unknown Source)
+	at sun.nio.cs.StreamDecoder.implRead(Unknown Source)
+	at sun.nio.cs.StreamDecoder.read(Unknown Source)
+	at java.io.InputStreamReader.read(Unknown Source)
+	at java.io.BufferedReader.fill(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at java.io.BufferedReader.readLine(Unknown Source)
+	at org.eclipse.ant.internal.launching.launchConfigurations.RemoteAntBuildListener$ServerConnection.run(RemoteAntBuildListener.java:94)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:47:06.668
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:47:06.674
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:48:07.185
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:48:07.190
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:49:47.850
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:49:47.855
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-02-27 16:51:25.957
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 31, new: 27). Location: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1621)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1285)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1277)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1254)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1165)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:54:01.072
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:54:01.076
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:55:03.196
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:55:03.203
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:56:04.510
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:56:04.518
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:57:49.372
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:57:49.378
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-02-27 16:59:01.872
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 31, new: 27). Location: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1621)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1285)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1277)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1254)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1165)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:59:56.885
+!MESSAGE Running ant file: C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 16:59:56.890
+!MESSAGE Targets: deploy, Mode: run
