@@ -4,6 +4,8 @@ package org.usfirst.frc.team1360.robot.IO;
  * Date 30 Jan 2017 - added pdp variable; getClimberFrontCurrent method; getClimberBackCurrent method; removed calculate
  *****/
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import org.usfirst.frc.team1360.robot.Robot;
 import org.usfirst.frc.team1360.server.components.ClimberCurrentDisplayComponent;
 
@@ -22,7 +24,7 @@ public class SensorInput {
 	
 	private PowerDistributionPanel PDP;
 	private ClimberCurrentDisplayComponent currentDisplay;
-	public AHRS ahrs;
+	private AHRS ahrs;
 	
 	public static final double driveP = 0.1;
 	public static final double driveI = 0.00005;
@@ -30,12 +32,50 @@ public class SensorInput {
 	
 	private Encoder driveLeftEncoder;
 	
+	private Thread ahrsThread;
+	private double[] ahrsValues = new double[7];
+	private ConcurrentLinkedQueue<Runnable> ahrsThreadDispatchQueue = new ConcurrentLinkedQueue<>();
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
 		driveLeftEncoder = new Encoder(0, 1);
 		PDP = new PowerDistributionPanel();
-		ahrs = new AHRS(SPI.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
+		ahrsThread = new Thread(() ->
+		{
+			ahrs = new AHRS(SPI.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
+			synchronized (this)
+			{
+				notify();
+			}
+			while (true)
+			{
+				synchronized (this)
+				{
+					ahrsValues[0] = ahrs.getYaw();
+					ahrsValues[1] = ahrs.getPitch();
+					ahrsValues[2] = ahrs.getRoll();
+					ahrsValues[3] = ahrs.getWorldLinearAccelX();
+					ahrsValues[4] = ahrs.getWorldLinearAccelY();
+					ahrsValues[5] = ahrs.getVelocityX();
+					ahrsValues[6] = ahrs.getVelocityY();
+					if (!ahrsThreadDispatchQueue.isEmpty())
+						ahrsThreadDispatchQueue.remove().run();
+				}
+				Thread.yield();
+			}
+		});
+		ahrsThread.start();
+		synchronized (this)
+		{
+			try
+			{
+				wait();
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
@@ -48,24 +88,44 @@ public class SensorInput {
 		return instance;
 	}
 	
-	public double getAHRSYaw()
+	public synchronized double getAHRSYaw()
 	{
-		return this.ahrs.getYaw();
+		return ahrsValues[0];
 	}
 	
-	public double getAHRSPitch()
+	public synchronized double getAHRSPitch()
 	{
-		return this.ahrs.getPitch();
+		return ahrsValues[1];
 	}
 	
-	public double getAHRSRoll()
+	public synchronized double getAHRSRoll()
 	{
-		return this.ahrs.getRoll();
+		return ahrsValues[2];
 	}
 	
-	public void resetAHRS()
+	public synchronized double getAHRSWorldLinearAccelX()
 	{
-		this.ahrs.reset();
+		return ahrsValues[3];
+	}
+
+	public synchronized double getAHRSWorldLinearAccelY()
+	{
+		return ahrsValues[4];
+	}
+	
+	public synchronized double getAHRSVelocityX()
+	{
+		return ahrsValues[5];
+	}
+	
+	public synchronized double getAHRSVelocityY()
+	{
+		return ahrsValues[6];
+	}
+	
+	public synchronized void resetAHRS()
+	{
+		ahrsThreadDispatchQueue.add(ahrs::reset);
 	}
 	
 	public double getClimberFrontCurrent()				//Method in class SensorInput
@@ -78,7 +138,7 @@ public class SensorInput {
 		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
 	}
 	
-	public double getLeftDriveEncoder()
+	public int getLeftDriveEncoder()
 	{
 		return this.driveLeftEncoder.get();
 	}
@@ -104,6 +164,6 @@ public class SensorInput {
 
 	public void reset()
 	{
-		this.ahrs.reset();
+		resetAHRS();
 	}
 }

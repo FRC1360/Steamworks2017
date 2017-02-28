@@ -8,8 +8,9 @@ import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
 import org.usfirst.frc.team1360.auto.step1.DrivePIDTest;
-import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearBlueBoiler;
+import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearLeft;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearMiddle;
+import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearRight;
 import org.usfirst.frc.team1360.auto.step2.red.GearMiddleToBallRed;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
@@ -59,15 +60,16 @@ private static AutonControl instance;
         // --- STEP 1 SUBMODES
         ArrayList<AutonMode> step1 = this.autonSteps.get(0);
         step1.add(new DefaultMode()); //0
-        step1.add(new DrivePIDTest());
+        //step1.add(new DrivePIDTest());
         step1.add(new DriveToGearMiddle());
-        step1.add(new DriveToGearBlueBoiler());
+        step1.add(new DriveToGearRight());
+        step1.add(new DriveToGearLeft());
         
         
         // --- STEP 2 SUBMODES
         ArrayList<AutonMode> step2 = this.autonSteps.get(1);
         step2.add(new DefaultMode()); //0
-        step2.add(new GearMiddleToBallRed());
+        //step2.add(new GearMiddleToBallRed());
        
        
         
