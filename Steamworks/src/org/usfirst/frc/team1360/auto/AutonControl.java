@@ -8,6 +8,7 @@ import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
 import org.usfirst.frc.team1360.auto.step1.DrivePIDTest;
+import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearLeft;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearMiddle;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearRight;
 import org.usfirst.frc.team1360.auto.step2.red.GearMiddleToBallRed;
@@ -62,6 +63,7 @@ private static AutonControl instance;
         step1.add(new DrivePIDTest());
         step1.add(new DriveToGearMiddle());
         step1.add(new DriveToGearRight());
+        step1.add(new DriveToGearLeft());
         
         
         // --- STEP 2 SUBMODES
