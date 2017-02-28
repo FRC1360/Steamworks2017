@@ -13,9 +13,10 @@ public class PositionTracker {
 	SensorInput sensorInput;
 	double[] position; // First item in array is x value second item in array is y value in CENTIMETRES
 	double[] velocity; // X, Y
+	double[] acceleration;
 	long prevTime;
 	long thisTime;
-	long timeDiff;
+	public double timeDiff;
 	double thisYaw;
 	double prevYaw;
 	double theta;
@@ -33,11 +34,13 @@ public class PositionTracker {
 		robotOutput = RobotOutput.getInstance();
 		position = new double[] { 0.0, 0.0 };
 		velocity = new double[] { 0.0, 0.0 };
+		acceleration = new double[] { 0.0, 0.0 };
 		prevTime = System.nanoTime();
 		prevYaw = sensorInput.getAHRSYaw();
 		
 		(new Thread() {
 			public void run() {
+				ValueFilter vx = new ValueFilter(10), vy = new ValueFilter(10);
 				while (true) {
 					thisYaw = sensorInput.getAHRSYaw();
 					if (thisYaw > prevYaw)
@@ -48,15 +51,19 @@ public class PositionTracker {
 							thisYaw += 360.0;
 					
 					thisTime = System.nanoTime();
-					timeDiff = (thisTime - prevTime);
+					timeDiff = (thisTime - prevTime) / 1000000000.0;
 					prevTime = thisTime;
 					
-					double x = sensorInput.getAHRSWorldLinearAccelX();
-					double y = sensorInput.getAHRSWorldLinearAccelY();
-					velocity[0] += x * timeDiff;
-					velocity[1] += y * timeDiff;
-					position[0] += velocity[0] * timeDiff;
-					position[1] += velocity[1] * timeDiff;
+					/*acceleration[0] = ax.caluclate(sensorInput.getAHRSWorldLinearAccelX());
+					acceleration[1] = ay.caluclate(sensorInput.getAHRSWorldLinearAccelY());
+					velocity[0] = vx.caluclate(velocity[0] + acceleration[0] * timeDiff);
+					velocity[1] = vy.caluclate(velocity[1] + acceleration[1] * timeDiff);*/
+					Vector v = new Vector(vx.caluclate(sensorInput.getAHRSVelocityX()), vy.caluclate(sensorInput.getAHRSVelocityY()));
+					v.rotate(Math.toRadians(sensorInput.getAHRSYaw()));
+					velocity[0] = v.getX();
+					velocity[1] = v.getY();
+					position[0] += v.getX() * timeDiff;
+					position[1] += v.getY() * timeDiff;
 					
 					//System.out.printf("%f\n%f\n", velocity[0], velocity[1]);
 					//System.out.printf("%f\n%f\n", x * timeDiff, y * timeDiff);
@@ -71,6 +78,14 @@ public class PositionTracker {
 	
 	public double[] getPosition() {
 		return position;
+	}
+	
+	public double[] getVelocity() {
+		return velocity;
+	}
+	
+	public double[] getAcceleration() {
+		return acceleration;
 	}
 	
 	public double getCurrentYaw() {

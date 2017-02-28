@@ -33,7 +33,7 @@ public class SensorInput {
 	private Encoder driveLeftEncoder;
 	
 	private Thread ahrsThread;
-	private double[] ahrsValues = new double[5];
+	private double[] ahrsValues = new double[7];
 	private ConcurrentLinkedQueue<Runnable> ahrsThreadDispatchQueue = new ConcurrentLinkedQueue<>();
 	
 	private SensorInput()								//Constructor to initialize fields  
@@ -56,6 +56,8 @@ public class SensorInput {
 					ahrsValues[2] = ahrs.getRoll();
 					ahrsValues[3] = ahrs.getWorldLinearAccelX();
 					ahrsValues[4] = ahrs.getWorldLinearAccelY();
+					ahrsValues[5] = ahrs.getVelocityX();
+					ahrsValues[6] = ahrs.getVelocityY();
 					if (!ahrsThreadDispatchQueue.isEmpty())
 						ahrsThreadDispatchQueue.remove().run();
 				}
@@ -109,6 +111,16 @@ public class SensorInput {
 	public synchronized double getAHRSWorldLinearAccelY()
 	{
 		return ahrsValues[4];
+	}
+	
+	public synchronized double getAHRSVelocityX()
+	{
+		return ahrsValues[5];
+	}
+	
+	public synchronized double getAHRSVelocityY()
+	{
+		return ahrsValues[6];
 	}
 	
 	public synchronized void resetAHRS()
