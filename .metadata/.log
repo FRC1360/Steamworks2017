@@ -6981,3 +6981,104 @@ java.lang.ClassCastException
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 20:19:07.469
 !MESSAGE Targets: deploy, Mode: run
+!SESSION 2017-02-27 20:44:47.252 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-27 20:46:13.639
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-27 20:46:13.645
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-27 20:46:13.651
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-02-27 20:46:13.652
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 20:46:13.655
+!MESSAGE Updating projects
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-02-27 20:46:14.031
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\nmeritn'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:00:50.565
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:00:50.567
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:02:18.506
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:02:18.507
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:12:15.158
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:12:15.159
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:13:54.012
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:13:54.013
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:17:49.416
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:17:49.417
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:26:23.849
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:26:23.850
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:29:08.499
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:29:08.501
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:31:16.834
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:31:16.834
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:33:22.538
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:33:22.539
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:38:34.998
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:38:34.999
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:40:28.957
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:40:28.958
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:42:01.532
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-02-27 21:42:01.533
+!MESSAGE Targets: deploy, Mode: run

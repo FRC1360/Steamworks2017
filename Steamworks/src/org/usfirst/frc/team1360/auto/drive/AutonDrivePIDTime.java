@@ -19,6 +19,7 @@ public class AutonDrivePIDTime extends AutonCommand {
 	private double target;
 	private long smallLongout = 0;
 	
+	private int encoderStart;
 	
 	public AutonDrivePIDTime(double target, double speed, long timeout)
 	{
@@ -54,6 +55,7 @@ public class AutonDrivePIDTime extends AutonCommand {
 			this.drivePID.SetSetpoint(target);
 			this.sensorInput.resetAHRS();
 			this.firstRun = false;
+			this.encoderStart = sensorInput.getLeftDriveEncoder();
 		}
 		
 		if(this.smallLongout >= 5)
@@ -74,7 +76,7 @@ public class AutonDrivePIDTime extends AutonCommand {
 	@Override
 	public void override() {
 		this.robotOutput.tankDrive(0, 0);
-		
+		System.out.printf("Drive moved %d ticks\n", sensorInput.getLeftDriveEncoder() - encoderStart);
 	}
 
 }

@@ -99,7 +99,7 @@ public class Robot extends IterativeRobot {
         if (i == 10)
         {
         	//System.out.println(pt.getPosition()[0] + "\n" + pt.getPosition()[1] + "\n\n\n");
-        	SmartDashboard.putNumber("Accel X", pt.getAcceleration()[0]);
+        	/*SmartDashboard.putNumber("Accel X", pt.getAcceleration()[0]);
         	SmartDashboard.putNumber("Accel Y", pt.getAcceleration()[1]);
         	SmartDashboard.putNumber("Vel X", pt.getVelocity()[0]);
         	SmartDashboard.putNumber("Vel Y", pt.getVelocity()[1]);
@@ -107,7 +107,7 @@ public class Robot extends IterativeRobot {
         	SmartDashboard.putNumber("Pos Y", pt.getPosition()[1]);
         	SmartDashboard.putNumber("AHRS Vel X", sensorInput.getAHRSVelocityX());
         	SmartDashboard.putNumber("AHRS Vel Y", sensorInput.getAHRSVelocityY());
-        	SmartDashboard.putNumber("PT Update Time", pt.timeDiff);
+        	SmartDashboard.putNumber("PT Update Time", pt.timeDiff);*/
         	i = 0;
         }
         

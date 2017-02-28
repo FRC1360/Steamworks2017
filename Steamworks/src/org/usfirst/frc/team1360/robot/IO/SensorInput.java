@@ -138,7 +138,7 @@ public class SensorInput {
 		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
 	}
 	
-	public double getLeftDriveEncoder()
+	public int getLeftDriveEncoder()
 	{
 		return this.driveLeftEncoder.get();
 	}
