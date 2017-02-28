@@ -59,9 +59,9 @@ private static AutonControl instance;
         
         // --- STEP 1 SUBMODES
         ArrayList<AutonMode> step1 = this.autonSteps.get(0);
-        /*step1.add(new DefaultMode()); //0
-        step1.add(new DrivePIDTest());
-        step1.add(new DriveToGearMiddle());*/
+        step1.add(new DefaultMode()); //0
+        //step1.add(new DrivePIDTest());
+        step1.add(new DriveToGearMiddle());
         step1.add(new DriveToGearRight());
         step1.add(new DriveToGearLeft());
         
@@ -69,7 +69,7 @@ private static AutonControl instance;
         // --- STEP 2 SUBMODES
         ArrayList<AutonMode> step2 = this.autonSteps.get(1);
         step2.add(new DefaultMode()); //0
-        step2.add(new GearMiddleToBallRed());
+        //step2.add(new GearMiddleToBallRed());
        
        
         
