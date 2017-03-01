@@ -31,6 +31,7 @@ public class SensorInput {
 	public static final double driveD = 0.01;
 	
 	private Encoder driveLeftEncoder;
+	private Encoder driveRightEncoder;
 	
 	private Thread ahrsThread;
 	private double[] ahrsValues = new double[7];
@@ -39,6 +40,7 @@ public class SensorInput {
 	private SensorInput()								//Constructor to initialize fields  
 	{
 		driveLeftEncoder = new Encoder(0, 1);
+		driveRightEncoder = new Encoder(2, 3);
 		PDP = new PowerDistributionPanel();
 		ahrsThread = new Thread(() ->
 		{
@@ -141,6 +143,21 @@ public class SensorInput {
 	public int getLeftDriveEncoder()
 	{
 		return this.driveLeftEncoder.get();
+	}
+	
+	public int getRightDriveEncoder()
+	{
+		return this.driveRightEncoder.get();
+	}
+	
+	public double getLeftEncoderVelocity()
+	{
+		return this.driveLeftEncoder.getRate();
+	}
+	
+	public double getRightEncoderVelocity()
+	{
+		return this.driveRightEncoder.getRate();
 	}
 	
 	public void resetLeftEncoder()
