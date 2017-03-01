@@ -12,17 +12,18 @@ public class DriveToGearLeft implements AutonMode {
 	@Override
 	public void addToMode(AutonBuilder ab) {
 		// TODO Auto-generated method stub
-		ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2025));
+		ab.addCommand(new AutonDrivePIDTime(0, 0.5, 1900));
 		ab.addCommand(new DriveWait());
 		ab.addCommand(new AutonWait(500));
-		ab.addCommand(new AutonDrivePIDTime(53, 0.5, 2800));
+		ab.addCommand(new AutonDrivePIDTime(55, 0.5, 2400));
 		ab.addCommand(new DriveWait());
 		ab.addCommand(new AutonWait(500));
-		ab.addCommand(new AutonDrivePIDTime(0, 0.25, 1500));
+		ab.addCommand(new AutonDrivePIDTime(0, 0.25, 1000));
 		ab.addCommand(new DriveWait());
 		ab.addCommand(new AutonGear(true, true));
 		ab.addCommand(new AutonWait(1500));
 		ab.addCommand(new AutonDrivePIDTime(0, -0.5, 2000));
-		ab.addCommand(new DriveWait());	}
+		ab.addCommand(new DriveWait());	
+		}
 
 }
