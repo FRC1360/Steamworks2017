@@ -55,7 +55,7 @@ public class AutonDrivePIDEncoder extends AutonCommand {
 		if(firstRun)
 		{
 			this.drivePID.SetSetpoint(target);
-			this.sensorInput.resetAHRS();
+			//this.sensorInput.resetAHRS();
 			this.firstRun = false;
 			this.encoderStart = sensorInput.getLeftDriveEncoder();
 		}
