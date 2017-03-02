@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1360.auto.step2.red;
 
-import org.usfirst.frc.team1360.auto.drive.AutonDrivePID;
 import org.usfirst.frc.team1360.auto.drive.DriveWait;
 import org.usfirst.frc.team1360.auto.goal.AutonLowGoal;
 import org.usfirst.frc.team1360.auto.goal.IntakeWait;

@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1360.auto.step1;
 
-import org.usfirst.frc.team1360.auto.drive.AutonDrivePID;
 import org.usfirst.frc.team1360.auto.drive.AutonDrivePIDEncoder;
 import org.usfirst.frc.team1360.auto.drive.AutonDrivePIDTime;
 import org.usfirst.frc.team1360.auto.drive.DriveWait;

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
+import org.usfirst.frc.team1360.auto.step1.DriveLikeYouStoleItAndHitTheHopper;
 import org.usfirst.frc.team1360.auto.step1.DrivePIDTest;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearLeft;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearMiddle;
@@ -64,6 +65,7 @@ private static AutonControl instance;
         step1.add(new DriveToGearMiddle()); // working
         step1.add(new DriveToGearRight()); // working
         step1.add(new DriveToGearLeft()); // working
+        step1.add(new DriveLikeYouStoleItAndHitTheHopper());
         
         
         // --- STEP 2 SUBMODES
