@@ -9,13 +9,13 @@ import org.usfirst.frc.team1360.robot.util.OrbitPID;
 
 public class AutonDrivePIDTurn extends AutonCommand
 {
-	private OrbitPID driveController;
+	private OrbitPID drivePID;
 	private double angle;
 	
 	private SensorInput sensorInput;
 	private RobotOutput robotOutput;
 	
-	private boolean firstCycle = true;
+	private boolean firstRun = true;
 	
 	private long smallLongout = 0;
 
@@ -31,42 +31,39 @@ public class AutonDrivePIDTurn extends AutonCommand
 		double i = this.sensorInput.driveI;
 		double d = this.sensorInput.driveD;
 		
-		this.driveController = new OrbitPID(p, i, d, 0.5);
+		this.drivePID = new OrbitPID(p, i, d, 0.5);
 	}
 
 	@Override
 	public boolean calculate() {
-		if(firstCycle)
+		if(firstRun)
 		{
-			this.driveController.SetSetpoint(angle);
-			this.sensorInput.resetAHRS();
-			firstCycle = false;
-			return false;
+			this.drivePID.SetSetpoint(angle);
+			//this.sensorInput.resetAHRS();
+			this.firstRun = false;
 		}
-		else
+		
+		if(smallLongout >= 5)
 		{
-			if(this.smallLongout >= 5)
+			if(Math.abs(this.sensorInput.getAHRSYaw() - angle) > 0.5)
 			{
-				this.driveController.SetInput(this.sensorInput.getAHRSYaw());
-				this.driveController.CalculateError();
-				
-				this.robotOutput.arcadeDrivePID(0, 0.5 * this.driveController.GetOutput());
-				
-				if(Math.abs(this.sensorInput.getAHRSYaw()) - angle <= 0.5)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
+				this.drivePID.CalculateError();
+					
+				this.robotOutput.arcadeDrivePID(0, 0.5 * drivePID.GetOutput());
+				return false;
 			}
 			else
 			{
-				this.robotOutput.arcadeDrive(0, 0);
-				return false;
-			}
+				return true;
+        	}
 		}
+		else
+		{
+			smallLongout++;
+			return false;
+		}
+
 		
 	}
 

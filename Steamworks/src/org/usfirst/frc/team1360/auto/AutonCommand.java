@@ -44,6 +44,7 @@ public abstract class AutonCommand {
 	    		this.override();
 	    		return true;
 	    	} else if(done) {
+	    		this.override();
 	    		return true;  	
 	    	} else {
 	    		return false;

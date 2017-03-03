@@ -2,14 +2,12 @@ package org.usfirst.frc.team1360.auto.drive;
 
 import org.usfirst.frc.team1360.auto.AutonCommand;
 import org.usfirst.frc.team1360.auto.RobotSubsystems;
+import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.util.OrbitPID;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+public class AutonDrivePIDEncoder extends AutonCommand {
 
-import org.usfirst.frc.team1360.robot.IO.RobotOutput;;
-
-public class AutonDrivePID extends AutonCommand {
 
 	private SensorInput sensorInput;
 	private RobotOutput robotOutput;
@@ -20,16 +18,17 @@ public class AutonDrivePID extends AutonCommand {
 	private boolean firstRun = true;
 	private double target;
 	private long smallLongout = 0;
-	private double ticks;
-	private double distance;
 	
+	private int encoderStart;
+    private int encoderLimit;
 	
-	public AutonDrivePID(double target, double speed, double distance, long timeout)
+	public AutonDrivePIDEncoder(double target, double speed, int encoderLimit, long timeout)
 	{
-		this(target, speed, 0.5, distance, timeout);
+		this(target, speed, 0.5, timeout);
+        this.encoderLimit = encoderLimit;
 	}
 	
-	public AutonDrivePID(double target, double speed, double eps, double distance, long timeout) {
+	public AutonDrivePIDEncoder(double target, double speed, double eps, long timeout) {
 		super(RobotSubsystems.DRIVE, timeout);
 		
 		this.sensorInput = SensorInput.getInstance();
@@ -45,9 +44,7 @@ public class AutonDrivePID extends AutonCommand {
 		double p = 0.1;
 		double i = 0.00005;
 		double d = 0.01;
-		
-		this.distance = distance;
-		
+				
 		this.drivePID = new OrbitPID(p, i, d, eps);
 		
 	}
@@ -58,41 +55,31 @@ public class AutonDrivePID extends AutonCommand {
 		if(firstRun)
 		{
 			this.drivePID.SetSetpoint(target);
-			this.sensorInput.resetAHRS();
+			//this.sensorInput.resetAHRS();
 			this.firstRun = false;
-			this.sensorInput.resetLeftEncoder();
-			this.ticks = (1024 * this.distance) / (3.14 * 4 * Math.PI);
+			this.encoderStart = sensorInput.getLeftDriveEncoder();
 		}
 		
-		
-		if(this.sensorInput.getLeftDriveEncoder() > this.ticks)
+		if(this.smallLongout >= 5)
 		{
-			System.out.println("asdf");
-			return true;
+			this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
+			this.drivePID.CalculateError();
+					
+			this.robotOutput.arcadeDrivePID(speed, Math.abs(speed) * drivePID.GetOutput());
 		}
 		else
 		{
-			if(this.smallLongout >= 5)
-			{
-				this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
-				this.drivePID.CalculateError();
-					
-				this.robotOutput.arcadeDrivePID(speed, Math.abs(speed) * drivePID.GetOutput());
-			}
-			else
-			{
-				this.robotOutput.tankDrive(speed, speed);
-				this.smallLongout++;
-			}
-			
-			return false;
-		}
+			this.robotOutput.tankDrive(speed, speed);
+			this.smallLongout++;
+        }
+
+        int diff = sensorInput.getLeftDriveEncoder() - encoderStart;
+        return encoderLimit > 0 ? diff > encoderLimit : encoderLimit > diff;
 	}
 
 	@Override
 	public void override() {
 		this.robotOutput.tankDrive(0, 0);
-		
 	}
 
 }
