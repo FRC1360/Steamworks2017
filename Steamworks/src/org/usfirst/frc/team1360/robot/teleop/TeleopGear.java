@@ -1,9 +1,5 @@
 package org.usfirst.frc.team1360.robot.teleop;
 
-//David Kozma 22 Jan 2017
-//Gear routine to put gear on air ship
-//Class follows structure of TeleopDrive
-
 import org.usfirst.frc.team1360.robot.IO.HumanInput;	//import appropriate classes 
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 
@@ -53,6 +49,5 @@ public class TeleopGear implements TeleopComponent{
 		this.robotOutput.releaseGear(false);
 		this.robotOutput.flapGear(false);
 	}
-	
 
 }

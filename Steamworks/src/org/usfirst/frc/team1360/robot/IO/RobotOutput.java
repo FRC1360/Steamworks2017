@@ -56,6 +56,7 @@ public class RobotOutput {
 		return instance;
 	}
 	
+
 	public void setDriveLeft(double speed)
 	{
 		driveLeftForward.set(speed);
@@ -151,6 +152,7 @@ public class RobotOutput {
 		climberRear.set(speed);
 	}
 	
+
 	public void stopAll()
 	{
 		driveLeftForward.set(0);
