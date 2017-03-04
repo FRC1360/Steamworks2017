@@ -7,7 +7,7 @@ import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.util.OrbitPID;
 
 public class AutonDrivePIDEncoder extends AutonCommand {
-
+	private static double SCALAR = 3.70 / 3.94;
 
 	private SensorInput sensorInput;
 	private RobotOutput robotOutput;
@@ -25,7 +25,7 @@ public class AutonDrivePIDEncoder extends AutonCommand {
 	public AutonDrivePIDEncoder(double target, double speed, int encoderLimit, long timeout)
 	{
 		this(target, speed, 0.5, timeout);
-        this.encoderLimit = encoderLimit;
+        this.encoderLimit = (int)(encoderLimit * SCALAR);
 	}
 	
 	public AutonDrivePIDEncoder(double target, double speed, double eps, long timeout) {
