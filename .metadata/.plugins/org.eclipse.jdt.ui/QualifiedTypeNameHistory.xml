@@ -17,4 +17,8 @@
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonCommand"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.RobotSubsystems"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.DefaultMode"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.AutonDriveShift"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.AutonDrivePIDEncoder"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.DriveWait"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.step1.DriveToBaseline"/>
 </qualifiedTypeNameHistroy>
