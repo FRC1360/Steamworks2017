@@ -8,25 +8,24 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 
 public class TeleopClimber implements TeleopComponent {
 	
-	private static TeleopClimber instance;
+	private static TeleopClimber instance; 
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
 	private SensorInput sensorInput;
 	
-	private double cooldown = 0
-			;
-	private boolean isToggled = false;
+	private double cooldown = 0; //Cooldown for toggle.
+	private boolean isToggled = false; //Toggle value.
 	
 
 	
-	TeleopClimber()
+	TeleopClimber() //Define access to HumanInput, RobotOutput, and SensorInput from TeleopClimber.
 	{
 		this.humanInput = HumanInput.getInstance();
 		this.robotOutput = RobotOutput.getInstance();
 		this.sensorInput = SensorInput.getInstance();
 	}
 	
-	public static TeleopClimber getInstance()
+	public static TeleopClimber getInstance() //Get the current instance of TeleopClimber. If none exists, make one.
 	{
 		if (instance == null)
 			instance = new TeleopClimber();
@@ -35,7 +34,7 @@ public class TeleopClimber implements TeleopComponent {
 	}
 
 	@Override
-	public void calculate() 
+	public void calculate() //Run each tick to process data for TeleopClimber.
 	{
 		double speed = this.humanInput.getClimb();
 		boolean toggleButton = this.humanInput.getOperatorAutoClimb();
@@ -69,7 +68,7 @@ public class TeleopClimber implements TeleopComponent {
 	}
 
 	@Override
-	public void disable() 
+	public void disable() //Run when robot is disabled.
 	{
 		this.robotOutput.climb(0);
 	}
