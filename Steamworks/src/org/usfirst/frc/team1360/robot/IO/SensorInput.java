@@ -39,7 +39,7 @@ public class SensorInput {
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
-		driveLeftEncoder = new Encoder(0, 1);
+		driveLeftEncoder = new Encoder(1, 0);
 		driveRightEncoder = new Encoder(2, 3);
 		PDP = new PowerDistributionPanel();
 		ahrsThread = new Thread(() ->
@@ -181,6 +181,7 @@ public class SensorInput {
 
 	public void reset()
 	{
-		resetAHRS();
+		this.resetAHRS();
+		this.resetLeftEncoder();
 	}
 }

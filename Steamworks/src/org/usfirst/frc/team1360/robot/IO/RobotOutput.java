@@ -11,7 +11,6 @@ public class RobotOutput {
 	private Victor driveRightForward;
 	private Victor driveRightRear;
 	private Victor climberFront;
-	private Victor climberRear;
 	private Victor intake;
 	private Victor indexSystem;
 	
@@ -33,16 +32,14 @@ public class RobotOutput {
 		driveRightForward = new Victor(2);
 		driveRightRear = new Victor(3);
 		climberFront = new Victor(4);
-		climberRear = new Victor(5);
-		intake = new Victor(8);
-		indexSystem = new Victor(7);
+		intake = new Victor(5);
+		indexSystem = new Victor(6);
 		
-		driveShifter = new Solenoid(0);
-		gearFlap = new Solenoid(3); //was in 2
-		gearRelease = new Solenoid(1);
-		//outFlap = new Solenoid(2); //was in three[]
-		outFlap = new Solenoid(6); //practice BOT bad
-		intakeSolenoid = new Solenoid(4);
+		driveShifter = new Solenoid(1);
+		gearFlap = new Solenoid(3);
+		gearRelease = new Solenoid(2);
+		outFlap = new Solenoid(4);
+		intakeSolenoid = new Solenoid(5);
 		
 	}
 	
@@ -149,7 +146,6 @@ public class RobotOutput {
 	public void climb(double speed)
 	{
 		climberFront.set(speed);
-		climberRear.set(speed);
 	}
 	
 
@@ -162,7 +158,6 @@ public class RobotOutput {
 		intake.set(0);
 		indexSystem.set(0);
 		climberFront.set(0);
-		climberRear.set(0);
 		gearFlap.set(false);
 		gearRelease.set(false);
 		driveShifter.set(false);
