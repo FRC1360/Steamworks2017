@@ -5,20 +5,20 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotOutput {
+	// Victors
+	private Victor vicDriveLeftForward;
+	private Victor vicDriveLeftRear;
+	private Victor vicDriveRightForward;
+	private Victor vicDriveRightRear;
+	private Victor vicClimberFront;
+	private Victor vicIntake;
+	private Victor vicIndexSystem;
 	
-	private Victor driveLeftForward;
-	private Victor driveLeftRear;
-	private Victor driveRightForward;
-	private Victor driveRightRear;
-	private Victor climberFront;
-	private Victor intake;
-	private Victor indexSystem;
-	
-	private Solenoid driveShifter;
-	private Solenoid gearFlap;
-	private Solenoid gearRelease;
-	private Solenoid outFlap;
-	private Solenoid intakeSolenoid;
+	private Solenoid solDriveShifter;
+	private Solenoid solGearFlap;
+	private Solenoid solGearRelease;
+	private Solenoid solOutFlap;
+	private Solenoid solIntake;
 	
 	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
 	private final double TURN_WEIGHT_FACTOR = 0.4d;
@@ -27,23 +27,23 @@ public class RobotOutput {
 	
 	private RobotOutput()
 	{
-		driveLeftForward = new Victor(0);
-		driveLeftRear = new Victor(1);
-		driveRightForward = new Victor(2);
-		driveRightRear = new Victor(3);
-		climberFront = new Victor(4);
-		intake = new Victor(5);
-		indexSystem = new Victor(6);
+		vicDriveLeftForward = new Victor(0);
+		vicDriveLeftRear = new Victor(1);
+		vicDriveRightForward = new Victor(2);
+		vicDriveRightRear = new Victor(3);
+		vicClimberFront = new Victor(4);
+		vicIntake = new Victor(5);
+		vicIndexSystem = new Victor(6);
 		
-		driveShifter = new Solenoid(1);
-		gearFlap = new Solenoid(3);
-		gearRelease = new Solenoid(2);
-		outFlap = new Solenoid(4);
-		intakeSolenoid = new Solenoid(5);
+		solDriveShifter = new Solenoid(1);
+		solGearFlap = new Solenoid(3);
+		solGearRelease = new Solenoid(2);
+		solOutFlap = new Solenoid(4);
+		solIntake = new Solenoid(5);
 		
 	}
 	
-	public static RobotOutput getInstance()
+	public static RobotOutput getInstance() // Return instance of RobotOutpu; create if it doesn't exist
 	{
 		if (instance == null)
 		{
@@ -52,32 +52,30 @@ public class RobotOutput {
 		
 		return instance;
 	}
-	
 
 	public void setDriveLeft(double speed)
 	{
-		driveLeftForward.set(speed);
-		driveLeftRear.set(speed);
+		vicDriveLeftForward.set(-speed);
+		vicDriveLeftRear.set(-speed);
+		
+		SmartDashboard.putNumber("Left Voltage", -speed);
 	}
 	
 	public void setDriveRight(double speed)
 	{
-		driveRightForward.set(speed);
-		driveRightRear.set(speed);
-	}
-	
-	public void tankDrive(double left, double right)
-	{
-		driveLeftForward.set(-left);
-		driveLeftRear.set(-left);
-		driveRightForward.set(right);
-		driveRightRear.set(right);
+		vicDriveRightForward.set(speed);
+		vicDriveRightRear.set(speed);
 		
-		SmartDashboard.putNumber("Left Voltage", left);
-		SmartDashboard.putNumber("Right Voltage", right);
+		SmartDashboard.putNumber("Right Voltage", speed);
 	}
 	
-	public void arcadeDrive(double speed, double turn)
+	public void tankDrive(double left, double right) // Basic tank drive helper
+	{
+		setDriveLeft(left);
+		setDriveLeft(right);
+	}
+	
+	public void arcadeDrive(double speed, double turn) // Arcade drive algorithm that filters turn
 	{
 		//double left = (speed) + (TURN_WEIGHT_FACTOR * turn);
 		//double right = (speed) + (TURN_WEIGHT_FACTOR * -turn);
@@ -101,10 +99,11 @@ public class RobotOutput {
 			right = speed;
 		}
 		
-		tankDrive(left, right);
+		setDriveLeft(left);
+		setDriveRight(right);
 	}
 	
-	public void arcadeDrivePID(double speed, double turn)
+	public void arcadeDrivePID(double speed, double turn) // Non-filtering arcade drive algorithm for use in PID-based autos
 	{
 		double left = (speed) + turn;
 		double right = (speed) - turn;
@@ -112,55 +111,54 @@ public class RobotOutput {
 		tankDrive(left, right);
 	}
 	
-	public void intake(double speed)
+	public void intake(double speed) // Sets intake/index motors
 	{
-		intake.set(-speed);
-		indexSystem.set(-speed);
+		vicIntake.set(-speed);
+		vicIndexSystem.set(-speed);
 	}
 	
-	public void openItake(boolean shift)
+	public void openItake(boolean shift) // Sets intake position
 	{
-		intakeSolenoid.set(shift);
+		solIntake.set(shift);
 	}
 	
-	public void releaseGear(boolean release)
+	public void releaseGear(boolean release) // Sets gear release position
 	{
-		gearRelease.set(release);
+		solGearRelease.set(release);
 	}
 	
-	public void flapGear(boolean release)
+	public void flapGear(boolean release) // Sets gear flap position
 	{
-		gearFlap.set(release);
+		solGearFlap.set(release);
 	}
 	
-	public void shiftSpeed(boolean shift)
+	public void shiftSpeed(boolean shift) // Sets drive shifter position
 	{
-		driveShifter.set(shift);
+		solDriveShifter.set(shift);
 	}
 	
-	public void outtake(boolean release)
+	public void outtake(boolean release) // Sets outtake flap position
 	{
-		outFlap.set(release);
+		solOutFlap.set(release);
 	}
 	
-	public void climb(double speed)
+	public void climb(double speed) // Runs climber at given speed
 	{
-		climberFront.set(speed);
+		vicClimberFront.set(speed);
 	}
-	
 
-	public void stopAll()
+	public void stopAll() // Stops all motors and resets all solenoids
 	{
-		driveLeftForward.set(0);
-		driveLeftRear.set(0);
-		driveRightForward.set(0);
-		driveRightRear.set(0);
-		intake.set(0);
-		indexSystem.set(0);
-		climberFront.set(0);
-		gearFlap.set(false);
-		gearRelease.set(false);
-		driveShifter.set(false);
-		outFlap.set(false);
+		vicDriveLeftForward.set(0);
+		vicDriveLeftRear.set(0);
+		vicDriveRightForward.set(0);
+		vicDriveRightRear.set(0);
+		vicIntake.set(0);
+		vicIndexSystem.set(0);
+		vicClimberFront.set(0);
+		solGearFlap.set(false);
+		solGearRelease.set(false);
+		solDriveShifter.set(false);
+		solOutFlap.set(false);
 	}
 }

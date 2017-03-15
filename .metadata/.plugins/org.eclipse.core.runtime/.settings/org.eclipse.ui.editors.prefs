@@ -1,13 +1,2 @@
-AbstractTextEditor.Color.Background=0,0,0
-AbstractTextEditor.Color.Background.SystemDefault=false
-AbstractTextEditor.Color.FindScope=255,255,255
-AbstractTextEditor.Color.Foreground=255,255,255
-AbstractTextEditor.Color.Foreground.SystemDefault=false
-AbstractTextEditor.Color.SelectionBackground=0,255,0
-AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
-AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
-currentLineColor=0,128,0
 eclipse.preferences.version=1
-hoverReplaceMode=2
-lineNumberColor=255,255,255
 overviewRuler_migration=migrated_3.1
