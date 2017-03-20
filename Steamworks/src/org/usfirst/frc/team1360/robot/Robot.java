@@ -1,17 +1,18 @@
 
 package org.usfirst.frc.team1360.robot;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
 import org.usfirst.frc.team1360.auto.AutonControl;
+import org.usfirst.frc.team1360.auto.tracking.PositionTracker;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.teleop.TeleopControl;
 import org.usfirst.frc.team1360.robot.util.OrbitCamera;
 import org.usfirst.frc.team1360.server.Connection;
-import org.usfirst.frc.team1360.navx.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -28,8 +29,7 @@ public class Robot extends IterativeRobot {
 	private AutonControl autonControl;
 	private OrbitCamera camera;
 	private Connection connection;
-	private PositionTracker pt; 
-	int i;
+	private PositionTracker pt;
 	
 	public Robot()
 	{
@@ -49,7 +49,8 @@ public class Robot extends IterativeRobot {
     	
     	camera = new OrbitCamera("10.13.60.3", "Axis Camera");
     	pt = PositionTracker.getInstance();
-    	i = 0;
+    	pt.start();
+    	pt.startLogging(new File("/tmp/pt.csv"));
     }
     
     public static Robot getInstance()
@@ -79,8 +80,6 @@ public class Robot extends IterativeRobot {
     {
     	this.sensorInput.calculate();
     	this.autonControl.updateModes();
-    	
-    	
     }
 
     public void autonomousPeriodic()
@@ -91,27 +90,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
     }
 
-
     public void teleopPeriodic()
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
-        if (i == 10)
-        {
-        	//System.out.println(pt.getPosition()[0] + "\n" + pt.getPosition()[1] + "\n\n\n");
-        	/*SmartDashboard.putNumber("Accel X", pt.getAcceleration()[0]);
-        	SmartDashboard.putNumber("Accel Y", pt.getAcceleration()[1]);
-        	SmartDashboard.putNumber("Vel X", pt.getVelocity()[0]);
-        	SmartDashboard.putNumber("Vel Y", pt.getVelocity()[1]);
-        	SmartDashboard.putNumber("Pos X", pt.getPosition()[0]);
-        	SmartDashboard.putNumber("Pos Y", pt.getPosition()[1]);
-        	SmartDashboard.putNumber("AHRS Vel X", sensorInput.getAHRSVelocityX());
-        	SmartDashboard.putNumber("AHRS Vel Y", sensorInput.getAHRSVelocityY());
-        	SmartDashboard.putNumber("PT Update Time", pt.timeDiff);*/
-        	i = 0;
-        }
-        
-        i++;
     }
  
 }

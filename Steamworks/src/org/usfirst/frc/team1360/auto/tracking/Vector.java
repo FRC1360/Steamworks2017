@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1360.navx;
+package org.usfirst.frc.team1360.auto.tracking;
 
 public class Vector {
 	private double x, y;
@@ -36,5 +36,34 @@ public class Vector {
 		p += theta;
 		x = m * Math.cos(p);
 		y = m * Math.sin(p);
+	}
+	
+	public void update(double x, double y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void addFrom(Vector other)
+	{
+		x += other.x;
+		y += other.y;
+	}
+	
+	public void addFrom(Vector other, double scalar)
+	{
+		x += other.x * scalar;
+		y += other.y * scalar;
+	}
+	
+	public void addFrom(double x, double y)
+	{
+		this.x += x;
+		this.y += y;
+	}
+	
+	public Vector copy()
+	{
+		return new Vector(x, y);
 	}
 }

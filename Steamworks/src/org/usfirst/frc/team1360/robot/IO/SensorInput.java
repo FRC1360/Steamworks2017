@@ -36,7 +36,7 @@ public class SensorInput {
 	private Encoder driveRightEncoder;
 	
 	private Thread ahrsThread; // Thread that controls NavX; this is to avoid multiple threads accessing AHRS object, which has caused issues in the past
-	private double[] ahrsValues = new double[7]; // Array to store data from NavX: yaw, pitch, roll, x acceleration (world frame), y acceleration (world frame), x velocity (local frame), y velocity (local frame)
+	private double[] ahrsValues = new double[8]; // Array to store data from NavX: continuous yaw, pitch, roll, x acceleration (world frame), y acceleration (world frame), x velocity (local frame), y velocity (local frame), yaw rate
 	private ConcurrentLinkedQueue<Runnable> ahrsThreadDispatchQueue = new ConcurrentLinkedQueue<>(); // Queue code to be run on ahrsThread
 	
 	private SensorInput()								//Constructor to initialize fields  
@@ -53,18 +53,24 @@ public class SensorInput {
 			{
 				notify(); // Inform main thread that this thread has started, and that the AHRS object has been initialized
 			}
+			double[] values = new double[8]; // Local array of values
 			while (true)
 			{
+				// Get values from AHRS
+				ahrsValues[0] = ahrs.getAngle();
+				ahrsValues[1] = ahrs.getPitch();
+				ahrsValues[2] = ahrs.getRoll();
+				ahrsValues[3] = ahrs.getWorldLinearAccelX();
+				ahrsValues[4] = ahrs.getWorldLinearAccelY();
+				ahrsValues[5] = ahrs.getVelocityX();
+				ahrsValues[6] = ahrs.getVelocityY();
+				ahrsValues[7] = ahrs.getRate();
+				
 				synchronized (this)
 				{
-					// Get values from AHRS
-					ahrsValues[0] = ahrs.getYaw();
-					ahrsValues[1] = ahrs.getPitch();
-					ahrsValues[2] = ahrs.getRoll();
-					ahrsValues[3] = ahrs.getWorldLinearAccelX();
-					ahrsValues[4] = ahrs.getWorldLinearAccelY();
-					ahrsValues[5] = ahrs.getVelocityX();
-					ahrsValues[6] = ahrs.getVelocityY();
+					// Copy values to global array
+					for (int i = 0; i < values.length; ++i)
+						ahrsValues[i] = values[i];
 
 					// Run code from queue, if it exists
 					if (!ahrsThreadDispatchQueue.isEmpty())
@@ -136,6 +142,11 @@ public class SensorInput {
 		return ahrsValues[6];
 	}
 	
+	public synchronized double getAHRSYawRate() // Get yaw rate
+	{
+		return ahrsValues[7];
+	}
+	
 	public synchronized void resetAHRS() // Queue operation to reset NavX
 	{
 		ahrsThreadDispatchQueue.add(ahrs::reset);
@@ -149,6 +160,21 @@ public class SensorInput {
 	public double getClimberBackCurrent()				// ONLY EXISTS SO THAT OLD CODE THAT HAS NOT BEEN UPDATED DOES NOT BREAK
 	{
 		return 0.0;
+	}
+	
+	public double getLeftDriveCurrent() // Get the total current draw of left drive motors
+	{
+		return PDP.getCurrent(1) + PDP.getCurrent(2);
+	}
+	
+	public double getRightDriveCurrent() // Get the total current draw of right drive motors
+	{
+		return PDP.getCurrent(3) + PDP.getCurrent(4);
+	}
+	
+	public double getVoltage() // Get the battery voltage
+	{
+		return PDP.getVoltage();
 	}
 	
 	public int getLeftDriveEncoder() // Get position of left drive encoder

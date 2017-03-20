@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.util.XboxRemote"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.SensorInput"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.teleop.TeleopControl"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.AutonMode"/>
@@ -21,4 +20,15 @@
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.AutonDrivePIDEncoder"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.DriveWait"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.step1.DriveToBaseline"/>
+<fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ConcurrentLinkedQueue"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.PrintStream"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.tracking.Vector"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.SensorInput"/>
 </qualifiedTypeNameHistroy>

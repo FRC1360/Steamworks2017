@@ -20,6 +20,9 @@ public class RobotOutput {
 	private Solenoid solOutFlap;
 	private Solenoid solIntake;
 	
+	public double leftDrivePower = 0;
+	public double rightDrivePower = 0;
+	
 	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
 	private final double TURN_WEIGHT_FACTOR = 0.4d;
 	
@@ -58,6 +61,8 @@ public class RobotOutput {
 		vicDriveLeftForward.set(-speed);
 		vicDriveLeftRear.set(-speed);
 		
+		leftDrivePower = speed;
+		
 		SmartDashboard.putNumber("Left Voltage", -speed);
 	}
 	
@@ -65,6 +70,8 @@ public class RobotOutput {
 	{
 		vicDriveRightForward.set(speed);
 		vicDriveRightRear.set(speed);
+		
+		rightDrivePower = speed;
 		
 		SmartDashboard.putNumber("Right Voltage", speed);
 	}
