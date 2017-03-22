@@ -49,8 +49,6 @@ public class Robot extends IterativeRobot {
     	
     	camera = new OrbitCamera("10.13.60.3", "Axis Camera");
     	pt = PositionTracker.getInstance();
-    	pt.start();
-    	pt.startLogging(new File("/tmp/pt.csv"));
     }
     
     public static Robot getInstance()
@@ -74,6 +72,13 @@ public class Robot extends IterativeRobot {
     	this.robotOutput.stopAll();
     	this.teleopControl.disable();
     	this.sensorInput.calculate();
+    	try {
+        	pt.stop();
+			pt.stopLogging();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public void disabledPeriodic()
@@ -88,6 +93,12 @@ public class Robot extends IterativeRobot {
     	autonControl.runCycle();
     	this.sensorInput.calculate();
 		SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
+    }
+    
+    public void teleopInit()
+    {
+    	pt.start();
+    	pt.startLogging(new File("/tmp/pt.csv"));
     }
 
     public void teleopPeriodic()

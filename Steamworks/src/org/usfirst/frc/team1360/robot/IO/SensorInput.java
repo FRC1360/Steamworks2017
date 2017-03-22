@@ -164,12 +164,12 @@ public class SensorInput {
 	
 	public double getLeftDriveCurrent() // Get the total current draw of left drive motors
 	{
-		return PDP.getCurrent(1) + PDP.getCurrent(2);
+		return PDP.getCurrent(12) + PDP.getCurrent(13);
 	}
 	
 	public double getRightDriveCurrent() // Get the total current draw of right drive motors
 	{
-		return PDP.getCurrent(3) + PDP.getCurrent(4);
+		return PDP.getCurrent(2) + PDP.getCurrent(3);
 	}
 	
 	public double getVoltage() // Get the battery voltage

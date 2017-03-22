@@ -51,6 +51,8 @@ public final class PositionTracker {
 	private void run() {
 		System.out.println("Position tracking started");
 		
+		logQueue.add(new Object[] { "Time", "Battery Voltage", "Left Voltage", "Right Voltage", "Left Current", "Right Current", "Left Velocity", "Right Velocity", "Left Expected Acceleration", "Right Expected Acceleration", "Left Measured Acceleration", "Right Measured Acceleration", "Left Slip", "Right Slip" });
+		
 		double lastLeftVel = 0;
 		double lastRightVel = 0;
 		
@@ -94,9 +96,10 @@ public final class PositionTracker {
 			if (leftSlip && rightSlip)
 			{
 				// This is bad
-				System.err.println("Both drive sides slipped!");
-				work = false;
-				break;
+				//System.err.println("Both drive sides slipped!");
+				/*work = false;
+				break;*/
+				continue;
 			}
 			else if (leftSlip)
 			{
@@ -116,9 +119,10 @@ public final class PositionTracker {
 				if (Math.abs(wheelsAngularVel - ahrsAngularVel) > ANGULAR_VEL_DIFF_THRESHOLD)
 				{
 					// This is also bad
-					System.err.println("Drive angular velocity does not match NavX angular velocity!");
-					work = false;
-					break;
+					//System.err.println("Drive angular velocity does not match NavX angular velocity!");
+					/*work = false;
+					break;*/
+					continue;
 				}
 				// Here we assume that our range for angular velocity is "good enough";
 				// if it isn't, then we shouldn't be trusting our encoder data anyway. 
@@ -140,10 +144,7 @@ public final class PositionTracker {
 	
 	private void log()
 	{
-		synchronized (logQueue)
-		{
-			logQueue.clear();
-		}
+		logQueue.clear();
 		try (FileOutputStream fos = new FileOutputStream(logFile); PrintStream w = new PrintStream(fos))
 		{
 			System.out.println("Position tracking logger started");
@@ -179,10 +180,13 @@ public final class PositionTracker {
 	
 	public void stop() throws InterruptedException // Call this to stop position tracking
 	{
-		work = false;
-		thread.join();
-		thread = null;
-		System.out.println("Position tracking stopped");
+		if (work)
+		{
+			work = false;
+			thread.join();
+			thread = null;
+			System.out.println("Position tracking stopped");
+		}
 	}
 	
 	public void startLogging(File file)
@@ -195,10 +199,13 @@ public final class PositionTracker {
 	
 	public void stopLogging() throws InterruptedException
 	{
-		logging = false;
-		logThread.join();
-		logThread = null;
-		System.out.println("Position tracker logging stopped");
+		if (logging)
+		{
+			logging = false;
+			logThread.join();
+			logThread = null;
+			System.out.println("Position tracker logging stopped");
+		}
 	}
 	
 	public boolean isRunning()
