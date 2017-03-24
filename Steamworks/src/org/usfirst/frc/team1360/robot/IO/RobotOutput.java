@@ -13,10 +13,13 @@ public class RobotOutput {
 	private Victor vicClimberFront;
 	private Victor vicIntake;
 	private Victor vicIndexSystem;
+	private Victor vicGearMech;
 	
 	private Solenoid solDriveShifter;
-	private Solenoid solGearFlap;
-	private Solenoid solGearRelease;
+	//private Solenoid solGearFlap;
+	private Solenoid solPivotPiston;
+	private Solenoid solFineAdjustment;
+	//private Solenoid solGearRelease;
 	private Solenoid solOutFlap;
 	private Solenoid solIntake;
 	
@@ -36,8 +39,10 @@ public class RobotOutput {
 		vicIndexSystem = new Victor(6);
 		
 		solDriveShifter = new Solenoid(1);
-		solGearFlap = new Solenoid(3);
-		solGearRelease = new Solenoid(2);
+		//solGearFlap = new Solenoid(3);
+		//solGearRelease = new Solenoid(2);
+		solFineAdjustment = new Solenoid(3);
+		solPivotPiston = new Solenoid(2);
 		solOutFlap = new Solenoid(4);
 		solIntake = new Solenoid(5);
 		
@@ -117,19 +122,34 @@ public class RobotOutput {
 		vicIndexSystem.set(-speed);
 	}
 	
-	public void openItake(boolean shift) // Sets intake position
+	/*public void openItake(boolean shift) // Sets intake position
 	{
 		solIntake.set(shift);
-	}
+	}*/
 	
-	public void releaseGear(boolean release) // Sets gear release position
+	/*public void releaseGear(boolean release) // Sets gear release position
 	{
 		solGearRelease.set(release);
+	}*/
+	
+	public void pivotGearMech(boolean pivot)
+	{
+		solPivotPiston.set(pivot);
 	}
 	
-	public void flapGear(boolean release) // Sets gear flap position
+	/*public void flapGear(boolean release) // Sets gear flap position
 	{
 		solGearFlap.set(release);
+	}*/
+	
+	public void fineAdjustGearMech(boolean pivot)
+	{
+		solFineAdjustment.set(pivot);
+	}
+	
+	public void intakeGear(double speed)
+	{
+		vicGearMech.set(speed);
 	}
 	
 	public void shiftSpeed(boolean shift) // Sets drive shifter position
@@ -156,8 +176,10 @@ public class RobotOutput {
 		vicIntake.set(0);
 		vicIndexSystem.set(0);
 		vicClimberFront.set(0);
-		solGearFlap.set(false);
-		solGearRelease.set(false);
+		//solGearFlap.set(false);
+		//solGearRelease.set(false);
+		solPivotPiston.set(false);
+		solFineAdjustment.set(false);
 		solDriveShifter.set(false);
 		solOutFlap.set(false);
 	}

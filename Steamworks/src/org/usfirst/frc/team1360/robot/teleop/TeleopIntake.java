@@ -29,7 +29,7 @@ public class TeleopIntake implements TeleopComponent {
 	public void calculate() { //Run every tick to process data for TelopIntake.
 		double speed = this.humanInput.getIntake();
 		boolean release = this.humanInput.getOperatorOutake();
-		boolean open = this.humanInput.getOperatorOpenIntake();
+		//boolean open = this.humanInput.getOperatorOpenIntake();
 		
 		if(Math.abs(speed) < 0.2)
 		{
@@ -38,7 +38,7 @@ public class TeleopIntake implements TeleopComponent {
 		
 		this.robotOutput.intake(speed);
 		this.robotOutput.outtake(release);
-		this.robotOutput.openItake(open);
+		//this.robotOutput.openItake(open);
 	}
 
 	@Override

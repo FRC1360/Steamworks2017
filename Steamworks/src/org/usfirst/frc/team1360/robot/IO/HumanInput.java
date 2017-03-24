@@ -128,14 +128,29 @@ public class HumanInput {
 		return this.operator.getLeftYAxis(); //Read the value of the Right Trigger on the Operator Controller for Intake
 	}
 	
-	public boolean getOperatorGearRelease()
+	/*public boolean getOperatorGearRelease()
 	{
 		return this.operator.getButtonA();				//Read the value of the Left Back Button on the Operator Controller
-	}
+	}*/
 	
-	public boolean getOperatorGearFlap()
+	/*public boolean getOperatorGearFlap()
 	{
 		return this.operator.getButtonB();					//Read the value of the Right Back Button on the Operator Controller
+	}*/
+	
+	public boolean getOperatorPivotGear()
+	{
+		return this.operator.getButtonA();
+	}
+	
+	public boolean getOperatorFineAdjustGear()
+	{
+		return this.operator.getButtonB();
+	}
+	
+	public double getOperatorEatGear()
+	{
+		return this.operator.getRightYAxis();
 	}
 	
 	public boolean getOperatorAutoClimb()
@@ -148,10 +163,10 @@ public class HumanInput {
 		return this.operator.getButtonX();
 	}
 	
-	public boolean getOperatorOpenIntake()
+	/*public boolean getOperatorOpenIntake()
 	{
 		return this.operator.getButtonLB();
-	}
+	}*/
 	
 	public boolean getOverride()
 	{

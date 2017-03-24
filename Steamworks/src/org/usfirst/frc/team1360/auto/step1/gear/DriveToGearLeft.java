@@ -31,7 +31,7 @@ public class DriveToGearLeft implements AutonMode {
 		// Copy-pasted from DriveToGearRight
 		
 		//Try these time values if those dont work: 2025, 2800, 750, 2000
-		//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2375)); // 1776
+		/*//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2375)); // 1776
 		ab.addCommand(new AutonDrivePIDEncoder(0, 0.5, 1750, 6000));
 		//ab.addCommand(new DriveWait());
 		//ab.addCommand(new AutonWait(500));
@@ -48,7 +48,7 @@ public class DriveToGearLeft implements AutonMode {
 		//ab.addCommand(new AutonDrivePIDTime(0, -0.5, 2000)); // -1508
 		ab.addCommand(new AutonDrivePIDEncoder(52, -0.5, -1508, 4000));
 		ab.addCommand(new DriveWait());
-		//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2000));
+		//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2000));*/
 	}
 
 }

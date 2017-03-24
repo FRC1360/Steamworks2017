@@ -96,6 +96,7 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
+        this.camera.updateCamera();
         if (i == 10)
         {
         	//System.out.println(pt.getPosition()[0] + "\n" + pt.getPosition()[1] + "\n\n\n");

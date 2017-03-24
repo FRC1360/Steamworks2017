@@ -28,8 +28,8 @@ public class TeleopGear implements TeleopComponent{
 	@Override											
 	public void calculate() //Run every tick to process data for TeleopGear.
 	{
-		boolean flap = humanInput.getOperatorGearFlap();
-		boolean release = humanInput.getOperatorGearRelease();
+		//boolean flap = humanInput.getOperatorGearFlap();
+		//boolean release = humanInput.getOperatorGearRelease();
 		
 		/*if(flap != lastShift)
 		{
@@ -37,17 +37,28 @@ public class TeleopGear implements TeleopComponent{
 			lastShift = !isOpen;
 		}*/
 		
-		this.robotOutput.flapGear(flap);
+		//this.robotOutput.flapGear(flap);
 				
-		this.robotOutput.releaseGear(release);
-
+		//this.robotOutput.releaseGear(release);
+		
+		boolean fine = humanInput.getOperatorFineAdjustGear();
+		boolean pivot = humanInput.getOperatorPivotGear();
+		double speed = humanInput.getOperatorEatGear();
+		
+		this.robotOutput.pivotGearMech(pivot);
+		this.robotOutput.fineAdjustGearMech(fine);
+		this.robotOutput.intakeGear(speed);
 	}
 	
 	@Override
 	public void disable() //Run when robot is disabled.
 	{
-		this.robotOutput.releaseGear(false);
-		this.robotOutput.flapGear(false);
+		//this.robotOutput.releaseGear(false);
+		//this.robotOutput.flapGear(false);
+		
+		this.robotOutput.pivotGearMech(false);
+		this.robotOutput.fineAdjustGearMech(false);
+		this.robotOutput.intakeGear(0);
 	}
 
 }
