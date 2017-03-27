@@ -24,7 +24,7 @@ public class RobotOutput {
 	private Solenoid solIntake;
 	
 	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
-	private final double TURN_WEIGHT_FACTOR = 0.4d;
+	private final double TURN_WEIGHT_FACTOR = 0.1;
 	
 	private static  RobotOutput instance;
 	
