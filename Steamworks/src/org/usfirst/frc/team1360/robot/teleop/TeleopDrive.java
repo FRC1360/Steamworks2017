@@ -20,7 +20,7 @@ public class TeleopDrive implements TeleopComponent {
 		humanInput = HumanInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
 		selector = new DriverConfigSelectorComponent(new_cfg -> cfg = new_cfg, cfg);
-		Robot.getInstance().getConnection().addComponent(selector, 3);
+		//Robot.getInstance().getConnection().addComponent(selector, 3);
 	}
 
 	public static TeleopDrive getInstance() //Get the current instance of TeleopDrive. If none exists, make one.
