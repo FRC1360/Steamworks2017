@@ -12,8 +12,8 @@ public class AutonGear extends AutonCommand {
 	private boolean fine;
 	private double speed;
 	
-	public AutonGear(boolean piston, boolean fineAdjust, double intakeSpeed) {
-		super(RobotSubsystems.GEAR);
+	public AutonGear(boolean piston, boolean fineAdjust, double intakeSpeed, long timeout) {
+		super(RobotSubsystems.GEAR, timeout);
 
 		this.robotOutput = RobotOutput.getInstance();
 		this.piston = piston;

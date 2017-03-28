@@ -66,7 +66,7 @@ private static AutonControl instance;
         //step1.add(new DrivePIDTest());
         //step1.add(new DriveToGearRight()); // working
         //step1.add(new DriveToGearLeft()); // working
-        step1.add(new DriveToBaseline());
+        //step1.add(new DriveToBaseline());
         step1.add(new DriveToGearMiddle()); // working
         //step1.add(new DriveLikeYouStoleItAndHitTheHopper());
         

@@ -32,6 +32,11 @@ public class DriveToGearMiddle implements AutonMode
 		ab.addCommand(new AutonWait(500));
 		ab.addCommand(new AutonDrivePIDEncoder(0, -0.5, -1600, 4000));
 		ab.addCommand(new DriveWait());*/
+		
+		//ab.addCommand(new AutonGear(true, false, 0, 4000));
+		//ab.addCommand(new AutonDrivePIDEncoder(-74, 0.75, 1000, 4000));
+		ab.addCommand(new AutonDrive(4000, 0.5, 0.5));
+		ab.addCommand(new DriveWait());
 	}
 
 }

@@ -140,12 +140,12 @@ public class HumanInput {
 	
 	public boolean getOperatorPivotGear()
 	{
-		return this.operator.getButtonA();
+		return this.operator.getButtonRB();
 	}
 	
 	public boolean getOperatorFineAdjustGear()
 	{
-		return this.operator.getButtonB();
+		return this.operator.getButtonLB();
 	}
 	
 	public double getOperatorEatGear()

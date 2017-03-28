@@ -31,10 +31,10 @@ public class Robot extends IterativeRobot {
 	private PositionTracker pt; 
 	int i;
 	
-	/*public Robot()
+	public Robot()
 	{
 		instance = this;
-	}*/
+	}
 	
     public void robotInit()
     {
@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
     	i = 0;
     }
     
-    /*public static Robot getInstance()
+    public static Robot getInstance()
     {
     	return instance;
     }
@@ -60,12 +60,13 @@ public class Robot extends IterativeRobot {
     public Connection getConnection()
     {
     	return connection;
-    }*/
+    }
 
     public void autonomousInit() 
     {
     	this.autonControl.initialize();
     	this.sensorInput.reset();
+    	this.sensorInput.resetAHRS();
     }
 
     public void disabledInit()
@@ -97,7 +98,6 @@ public class Robot extends IterativeRobot {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
         //this.camera.updateCamera();
-        System.out.println("Hi thewefouhsdn/jlgsnkl;");
         if (i == 10)
         {
         	//System.out.println(pt.getPosition()[0] + "\n" + pt.getPosition()[1] + "\n\n\n");

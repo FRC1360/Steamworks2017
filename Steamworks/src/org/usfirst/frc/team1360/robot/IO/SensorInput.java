@@ -186,7 +186,7 @@ public class SensorInput {
 		if (currentDisplay == null)
 		{
 			currentDisplay = new ClimberCurrentDisplayComponent();
-			//Robot.getInstance().getConnection().addComponent(currentDisplay, 1);
+			Robot.getInstance().getConnection().addComponent(currentDisplay, 1);
 		}
 		currentDisplay.update();
 		
