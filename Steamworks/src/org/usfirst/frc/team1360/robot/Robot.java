@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
 	private AutonControl autonControl;
-	private OrbitCamera camera;
+	//private OrbitCamera camera;
 	private Connection connection;
 	private PositionTracker pt;
 	
@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
     	this.autonControl = AutonControl.getInstance();
     	this.sensorInput.reset();
     	
-    	camera = new OrbitCamera("10.13.60.3", "Axis Camera");
+    	//camera = new OrbitCamera("10.13.60.3", "Axis Camera");
     	pt = PositionTracker.getInstance();
     }
     
@@ -105,6 +105,8 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
+		SmartDashboard.putNumber("Pos X", pt.getPosition().getX());
+		SmartDashboard.putNumber("Pos Y", pt.getPosition().getY());
     }
  
 }
