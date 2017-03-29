@@ -7,7 +7,7 @@ import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.util.OrbitPID;
 
 public class AutonDrivePIDEncoder extends AutonCommand {
-	private static double SCALAR = 3.70 / 3.94;
+	private static double SCALAR = 1;
 	//private static double SCALAR = 0.75;
 
 	private SensorInput sensorInput;
@@ -61,7 +61,7 @@ public class AutonDrivePIDEncoder extends AutonCommand {
 			this.encoderStart = sensorInput.getLeftDriveEncoder();
 		}
 		
-		if(this.smallLongout >= 5)
+		if(this.smallLongout >= 2)
 		{
 			this.drivePID.SetInput(this.sensorInput.getAHRSYaw());
 			this.drivePID.CalculateError();

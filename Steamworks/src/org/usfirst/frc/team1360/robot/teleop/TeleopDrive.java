@@ -12,10 +12,10 @@ public class TeleopDrive implements TeleopComponent {
 	private static TeleopDrive instance;
 	private HumanInput humanInput;
 	private RobotOutput robotOutput;
-	private DriverConfig cfg = DriverConfig.RACING;
+	private DriverConfig cfg = DriverConfig.RACING; //RACING MODE. 
 	private DriverConfigSelectorComponent selector;
 	
-	private TeleopDrive()
+	private TeleopDrive() //Define access to HumanInput and RobotOutput from TeleopDrive. Also determine what the driver selection is and add it to Robot.
 	{
 		humanInput = HumanInput.getInstance();
 		robotOutput = RobotOutput.getInstance();
@@ -23,7 +23,7 @@ public class TeleopDrive implements TeleopComponent {
 		Robot.getInstance().getConnection().addComponent(selector, 3);
 	}
 
-	public static TeleopDrive getInstance()
+	public static TeleopDrive getInstance() //Get the current instance of TeleopDrive. If none exists, make one.
 	{
 		if (instance == null)
 			instance = new TeleopDrive();

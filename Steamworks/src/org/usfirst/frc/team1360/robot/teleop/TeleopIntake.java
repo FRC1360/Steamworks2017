@@ -9,7 +9,7 @@ public class TeleopIntake implements TeleopComponent {
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
 	
-	public static TeleopIntake getInstance()
+	public static TeleopIntake getInstance() //Get the current instance of TeleopIntake. If none exists, make one.
 	{
 		if (instance == null)
 		{
@@ -19,18 +19,17 @@ public class TeleopIntake implements TeleopComponent {
 		return instance;
 	}
 	
-	private TeleopIntake()
+	private TeleopIntake() //Define access to HumanInput and RobotOutput from TeleopIntake.
 	{
 		this.robotOutput = RobotOutput.getInstance();
 		this.humanInput = HumanInput.getInstance();
 	}
 	
 	@Override
-	public void calculate() {
-		// TODO Auto-generated method stub
+	public void calculate() { //Run every tick to process data for TelopIntake.
 		double speed = this.humanInput.getIntake();
 		boolean release = this.humanInput.getOperatorOutake();
-		boolean open = this.humanInput.getOperatorOpenIntake();
+		//boolean open = this.humanInput.getOperatorOpenIntake();
 		
 		if(Math.abs(speed) < 0.2)
 		{
@@ -39,12 +38,11 @@ public class TeleopIntake implements TeleopComponent {
 		
 		this.robotOutput.intake(speed);
 		this.robotOutput.outtake(release);
-		this.robotOutput.openItake(open);
+		//this.robotOutput.openItake(open);
 	}
 
 	@Override
-	public void disable() {
-		// TODO Auto-generated method stub
+	public void disable() { //Run when the robot is disabled.
 		this.robotOutput.intake(0);
 	}
 
