@@ -24,7 +24,7 @@ public class RobotOutput {
 	private Solenoid solIntake;
 	
 	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
-	private final double TURN_WEIGHT_FACTOR = 0.4d;
+	private final double TURN_WEIGHT_FACTOR = 0.1;
 	
 	private static  RobotOutput instance;
 	
@@ -36,8 +36,8 @@ public class RobotOutput {
 		vicDriveRightRear = new Victor(3);
 		vicClimberFront = new Victor(4);
 		vicIntake = new Victor(5);
-		vicIndexSystem = new Victor(6);
-		vicGearMech = new Victor(9);
+		vicIndexSystem = new Victor(9);
+		vicGearMech = new Victor(6);
 		
 		solDriveShifter = new Solenoid(1);
 		//solGearFlap = new Solenoid(3);
@@ -77,8 +77,12 @@ public class RobotOutput {
 	
 	public void tankDrive(double left, double right) // Basic tank drive helper
 	{
-		setDriveLeft(left);
-		setDriveLeft(right);
+		//setDriveLeft(left);
+		//setDriveLeft(right);
+		vicDriveLeftForward.set(-left);
+		vicDriveLeftRear.set(-left);
+		vicDriveRightForward.set(right);
+		vicDriveRightRear.set(right);
 	}
 	
 	public void arcadeDrive(double speed, double turn) // Arcade drive algorithm that filters turn
