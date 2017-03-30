@@ -58,7 +58,7 @@ public class AutonDrivePIDEncoder extends AutonCommand {
 			this.drivePID.SetSetpoint(target);
 			//this.sensorInput.resetAHRS();
 			this.firstRun = false;
-			this.encoderStart = sensorInput.getLeftDriveEncoder();
+			this.encoderStart = sensorInput.getRightDriveEncoder();
 		}
 		
 		if(this.smallLongout >= 2)
@@ -74,7 +74,7 @@ public class AutonDrivePIDEncoder extends AutonCommand {
 			this.smallLongout++;
         }
 
-        int diff = sensorInput.getLeftDriveEncoder() - encoderStart;
+        int diff = sensorInput.getRightDriveEncoder() - encoderStart;
         
         return encoderLimit > 0 ? diff > encoderLimit : encoderLimit > diff;
 	}

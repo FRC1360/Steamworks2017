@@ -193,6 +193,7 @@ public class SensorInput {
 		SmartDashboard.putNumber("Left Enc", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Climber Average Current", (this.getClimberFrontCurrent() + this.getClimberBackCurrent()) / 2);
 		SmartDashboard.putNumber("NavX Yaw ==", this.getAHRSYaw());
+		SmartDashboard.putNumber("Right Enc", this.getRightDriveEncoder());
 	}
 
 	public void reset() // Reset NavX and encoders

@@ -24,7 +24,7 @@ public class RobotOutput {
 	private Solenoid solIntake;
 	
 	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
-	private final double TURN_WEIGHT_FACTOR = 0.1;
+	private final double TURN_WEIGHT_FACTOR = 0.2; //0.1
 	
 	private static  RobotOutput instance;
 	
@@ -36,7 +36,7 @@ public class RobotOutput {
 		vicDriveRightRear = new Victor(3);
 		vicClimberFront = new Victor(4);
 		vicIntake = new Victor(5);
-		vicIndexSystem = new Victor(9);
+		vicIndexSystem = new Victor(7);
 		vicGearMech = new Victor(6);
 		
 		solDriveShifter = new Solenoid(1);

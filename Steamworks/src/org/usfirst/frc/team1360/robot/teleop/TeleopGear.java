@@ -45,9 +45,20 @@ public class TeleopGear implements TeleopComponent{
 		boolean pivot = humanInput.getOperatorPivotGear();
 		double speed = humanInput.getOperatorEatGear();
 		
+		
+		
 		this.robotOutput.pivotGearMech(pivot);
 		this.robotOutput.fineAdjustGearMech(fine);
 		this.robotOutput.intakeGear(speed);
+		
+		/*if (pivot && speed > 0.2 && speed < -0.2)
+		{
+			this.robotOutput.intakeGear(0.75);	
+		}
+		else
+		{
+			this.robotOutput.intakeGear(speed);
+		}*/
 	}
 	
 	@Override
