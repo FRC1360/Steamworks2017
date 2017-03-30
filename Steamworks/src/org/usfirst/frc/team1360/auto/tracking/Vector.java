@@ -31,11 +31,10 @@ public class Vector {
 	
 	public void rotate(double theta)
 	{
-		double m = getMagnitude();
-		double p = getPhase();
-		p += theta;
-		x = m * Math.cos(p);
-		y = m * Math.sin(p);
+		double sin = Math.sin(theta);
+		double cos = Math.cos(theta);
+		x *= cos + sin;
+		y *= cos - sin;
 	}
 	
 	public void update(double x, double y)
@@ -60,6 +59,12 @@ public class Vector {
 	{
 		this.x += x;
 		this.y += y;
+	}
+	
+	public void scale(double scalar)
+	{
+		x *= scalar;
+		y *= scalar;
 	}
 	
 	public Vector copy()

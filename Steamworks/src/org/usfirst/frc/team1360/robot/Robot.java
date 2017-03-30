@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import org.usfirst.frc.team1360.auto.AutonControl;
 import org.usfirst.frc.team1360.auto.tracking.PositionTracker;
+import org.usfirst.frc.team1360.auto.tracking.Vector;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
@@ -105,8 +106,13 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
-		SmartDashboard.putNumber("Pos X", pt.getPosition().getX());
-		SmartDashboard.putNumber("Pos Y", pt.getPosition().getY());
+		try {
+			Vector v = pt.getPosition();
+			SmartDashboard.putNumber("Pos X", v.getX());
+			SmartDashboard.putNumber("Pos Y", v.getY());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
  
 }

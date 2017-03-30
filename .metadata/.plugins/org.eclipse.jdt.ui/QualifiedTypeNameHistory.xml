@@ -28,10 +28,10 @@
 <fullyQualifiedTypeName name="java.io.PrintStream"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.tracking.Vector"/>
 <fullyQualifiedTypeName name="java.util.concurrent.ScheduledThreadPoolExecutor"/>
 <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
 <fullyQualifiedTypeName name="java.util.concurrent.ScheduledFuture"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.SensorInput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.tracking.Vector"/>
 </qualifiedTypeNameHistroy>
