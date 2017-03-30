@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+INDEX VERSION 1.129+C:\Users\Programming\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.jdt.core
+1031062034.index
+3609743817.index
+1927192158.index
+3028879811.index
+2866154576.index
+4169219086.index
+3482600188.index
+2483765885.index
+2997081707.index
+1260374096.index
+3816164716.index
+996170980.index
+3023681961.index
+927654412.index
+685495921.index
+662129271.index
+1901452023.index
+211808235.index
+2920302435.index
+2873934814.index
+3305734410.index
+1297580988.index
+493040035.index
+2700873215.index
+=======
 INDEX VERSION 1.129+C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\.metadata\.plugins\org.eclipse.jdt.core
 1999974966.index
 1270729843.index
@@ -26,5 +53,10 @@ INDEX VERSION 1.129+C:\Users\Michael Geddes\Documents\GitHub\Steamworks2017\.met
 3482600188.index
 4075460390.index
 3000235622.index
+<<<<<<< HEAD
 1423536152.index
 1258605954.index
+=======
+2821131430.index
+>>>>>>> origin/Auto
+>>>>>>> origin/Auto
