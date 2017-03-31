@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.HumanInput"/>
 <fullyQualifiedTypeName name="java.io.StringWriter"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonStop"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonControl"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonCommand"/>
@@ -34,4 +33,5 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.SensorInput"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.tracking.Vector"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 </qualifiedTypeNameHistroy>

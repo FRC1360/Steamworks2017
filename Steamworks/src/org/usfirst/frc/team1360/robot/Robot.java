@@ -110,6 +110,11 @@ public class Robot extends IterativeRobot {
 			Vector v = pt.getPosition();
 			SmartDashboard.putNumber("Pos X", v.getX());
 			SmartDashboard.putNumber("Pos Y", v.getY());
+			v = pt.getVelocity();
+			SmartDashboard.putNumber("Vel X", v.getX());
+			SmartDashboard.putNumber("Vel Y", v.getY());
+			SmartDashboard.putNumber("Left Rate", sensorInput.getLeftEncoderVelocity());
+			SmartDashboard.putNumber("Right Rate", sensorInput.getRightEncoderVelocity());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

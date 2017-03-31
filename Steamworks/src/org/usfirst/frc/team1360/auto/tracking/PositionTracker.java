@@ -114,13 +114,12 @@ public final class PositionTracker {
 			rightActualDisp = (right - lastRight) * RADIANS_PER_TICK * WHEEL_RADIUS;
 			double offset = ROBOT_RADIUS * ahrsDelta + (rightActualDisp - leftActualDisp) * 0.5;
 			leftActualDisp += offset;
-			rightActualDisp += offset; 
+			rightActualDisp -= offset; 
 		}
 		
 		if (leftActualDisp == rightActualDisp)
 		{
 			velocity.update(0, leftActualDisp);
-			velocity.rotate(thisYaw);
 		}
 		else
 		{
@@ -129,6 +128,10 @@ public final class PositionTracker {
 			velocity.scale(radius);
 		}
 		
+		lastLeft = left;
+		lastRight = right;
+		
+		velocity.rotate(thisYaw);
 		position.addFrom(velocity);
 		velocity.scale(1.0 / timeDiff);
 		

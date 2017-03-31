@@ -32,7 +32,12 @@ public class GoToPosition extends AutonCommand {
 	public boolean calculate()
 	{
 		Vector relTarget = target.copy();
-		relTarget.addFrom(pt.getPosition(), -1);
+		try {
+			relTarget.addFrom(pt.getPosition(), -1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			return false;
+		}
 		double targetLen = relTarget.getMagnitude();
 		if (targetLen <= range)
 			return true;
