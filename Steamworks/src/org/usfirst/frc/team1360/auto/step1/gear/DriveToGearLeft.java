@@ -49,6 +49,18 @@ public class DriveToGearLeft implements AutonMode {
 		ab.addCommand(new AutonDrivePIDEncoder(52, -0.5, -1508, 4000));
 		ab.addCommand(new DriveWait());
 		//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2000));*/
+		
+		ab.addCommand(new AutonGear(true, false, 1));
+		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1700, 6000));
+		//ab.addCommand(new AutonDrivePIDTurn(-45, 1500));
+		ab.addCommand(new AutonDrivePIDEncoder(50, 0.25, 1100, 4000));
+		ab.addCommand(new DriveWait());
+		ab.addCommand(new AutonWait(500));
+		ab.addCommand(new AutonGear(true, false, -1));
+		ab.addCommand(new AutonWait(500));
+		ab.addCommand(new AutonDrivePIDEncoder(52, -0.5, -600, 4000));
+		ab.addCommand(new AutonGear(false, false, 0));
+		ab.addCommand(new DriveWait());
 	}
 
 }

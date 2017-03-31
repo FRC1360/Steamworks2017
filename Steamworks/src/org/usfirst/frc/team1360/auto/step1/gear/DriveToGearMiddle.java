@@ -14,33 +14,15 @@ public class DriveToGearMiddle implements AutonMode
 
 	@Override
 	public void addToMode(AutonBuilder ab)
-	{
-		/*ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2300));
-		ab.addCommand(new DriveWait());
-		ab.addCommand(new AutonDrivePIDTime(0, 0.25, 1600));
-		ab.addCommand(new DriveWait());
-		ab.addCommand(new AutonWait(2000));
-		ab.addCommand(new AutonGear(false, true));
-		ab.addCommand(new AutonWait(1000));
-		ab.addCommand(new AutonDrivePIDTime(0, -0.5, 1500));
-		ab.addCommand(new DriveWait());*/
-		
-		/*ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1600, 4000)); //4000
-		ab.addCommand(new AutonDrivePIDEncoder(0, 0.25, 900, 3000)); //4000
-		ab.addCommand(new DriveWait());
-		ab.addCommand(new AutonGear(false, true));
-		ab.addCommand(new AutonWait(500));
-		ab.addCommand(new AutonDrivePIDEncoder(0, -0.5, -1600, 4000));
-		ab.addCommand(new DriveWait());*/
-		
+	{		
 		ab.addCommand(new AutonGear(true, false, 1));
-		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 600, 4000));
-		ab.addCommand(new AutonDrivePIDEncoder(0, 0.25, 200, 4000));
+		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1000, 4000));
+		ab.addCommand(new AutonDrivePIDEncoder(0, 0.25, 750, 4000));
 		ab.addCommand(new DriveWait());
 		ab.addCommand(new AutonWait(500));
 		ab.addCommand(new AutonGear(true, false, -1));
-		ab.addCommand(new AutonWait(3000));
-		ab.addCommand(new AutonDrivePIDEncoder(0, -0.5, -600, 1000));
+		ab.addCommand(new AutonWait(500));
+		ab.addCommand(new AutonDrivePIDEncoder(0, -0.5, -600, 3000));
 		ab.addCommand(new AutonGear(false, false, 0));
 		ab.addCommand(new DriveWait());
 	}
