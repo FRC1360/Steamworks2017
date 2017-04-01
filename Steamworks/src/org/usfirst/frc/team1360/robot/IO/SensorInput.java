@@ -57,14 +57,14 @@ public class SensorInput {
 			while (true)
 			{
 				// Get values from AHRS
-				ahrsValues[0] = ahrs.getAngle();
-				ahrsValues[1] = ahrs.getPitch();
-				ahrsValues[2] = ahrs.getRoll();
-				ahrsValues[3] = ahrs.getWorldLinearAccelX();
-				ahrsValues[4] = ahrs.getWorldLinearAccelY();
-				ahrsValues[5] = ahrs.getVelocityX();
-				ahrsValues[6] = ahrs.getVelocityY();
-				ahrsValues[7] = ahrs.getRate();
+				values[0] = ahrs.getAngle();
+				values[1] = ahrs.getPitch();
+				values[2] = ahrs.getRoll();
+				values[3] = ahrs.getWorldLinearAccelX();
+				values[4] = ahrs.getWorldLinearAccelY();
+				values[5] = ahrs.getVelocityX();
+				values[6] = ahrs.getVelocityY();
+				values[7] = ahrs.getRate();
 				
 				synchronized (this)
 				{

@@ -11251,3 +11251,131 @@ java.net.SocketException: Connection reset
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-03-30 21:33:09.159
 !MESSAGE Targets: deploy, Mode: run
+!SESSION 2017-04-01 08:46:30.105 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-04-01 08:46:55.054
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-04-01 08:46:55.070
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-04-01 08:46:55.070
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-04-01 08:46:55.070
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 08:46:55.070
+!MESSAGE Updating projects
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-04-01 08:46:55.518
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\nmeritn'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-04-01 08:46:56.927
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.3.v20161205-0933
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:102)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:111)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:121)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 08:48:21.198
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 08:48:21.199
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 08:58:44.463
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 08:58:44.464
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:02:45.312
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:02:45.314
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:17:50.048
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:17:50.050
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:19:30.775
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:19:30.777
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:21:24.577
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 09:21:24.579
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:06:49.307
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:06:49.308
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:08:46.612
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:08:46.614
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:10:50.345
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:10:50.347
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:12:50.292
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:12:50.293
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:15:16.206
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:15:16.207
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:26:29.761
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:26:29.762
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:33:59.833
+!MESSAGE Running ant file: C:\Users\nmeritn\Documents\FRC 1360\Code\CurrentCode\Steamworks2017\Steamworks\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-04-01 10:33:59.834
+!MESSAGE Targets: deploy, Mode: run

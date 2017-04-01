@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public final class PositionTracker {
 	private static PositionTracker instance;
 	private ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1);
@@ -112,9 +114,9 @@ public final class PositionTracker {
 		{
 			leftActualDisp = (left - lastLeft) * RADIANS_PER_TICK * WHEEL_RADIUS;
 			rightActualDisp = (right - lastRight) * RADIANS_PER_TICK * WHEEL_RADIUS;
-			double offset = ROBOT_RADIUS * ahrsDelta + (rightActualDisp - leftActualDisp) * 0.5;
+			/*double offset = ROBOT_RADIUS * ahrsDelta + (rightActualDisp - leftActualDisp) * 0.5;
 			leftActualDisp += offset;
-			rightActualDisp -= offset; 
+			rightActualDisp -= offset;*/
 		}
 		
 		if (leftActualDisp == rightActualDisp)
@@ -127,13 +129,22 @@ public final class PositionTracker {
 			velocity.update(1.0 - Math.cos(ahrsDelta), Math.sin(ahrsDelta));
 			velocity.scale(radius);
 		}
+
+		SmartDashboard.putNumber("LocalDisplacement X", velocity.getX());
+		SmartDashboard.putNumber("LocalDisplacement Y", velocity.getY());
+		SmartDashboard.putNumber("Left Encoder", left);
+		SmartDashboard.putNumber("Right Encoder", right);
+		SmartDashboard.putNumber("Left Diff", left - lastLeft);
+		SmartDashboard.putNumber("Right Diff", right - lastRight);
 		
 		lastLeft = left;
 		lastRight = right;
 		
-		velocity.rotate(thisYaw);
+		velocity.rotate(Math.toRadians(-lastYaw));
 		position.addFrom(velocity);
 		velocity.scale(1.0 / timeDiff);
+		
+		SmartDashboard.putNumber("Yaw", thisYaw);
 		
 		if (logging && thisTime - lastLog >= 1000000)
 		{
@@ -187,7 +198,7 @@ public final class PositionTracker {
 			lastRight = sensorInput.getRightDriveEncoder();
 			lastYaw = sensorInput.getAHRSYaw();
 			
-			future = scheduler.scheduleAtFixedRate(this::run, 500, 500, TimeUnit.MICROSECONDS);
+			future = scheduler.scheduleAtFixedRate(this::run, 20, 20, TimeUnit.MILLISECONDS);
 			System.out.println("Position tracking started");
 		}
 	}
