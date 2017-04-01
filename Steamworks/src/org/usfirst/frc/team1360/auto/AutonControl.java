@@ -73,7 +73,7 @@ private static AutonControl instance;
         // --- STEP 2 SUBMODES
         ArrayList<AutonMode> step2 = this.autonSteps.get(1);
         step2.add(new DefaultMode()); //0
-        //step2.add(new NeutralZoneAfterSideGear());
+        step2.add(new NeutralZoneAfterSideGear());
         //step2.add(new GearMiddleToBallRed());
        
        

@@ -42,7 +42,7 @@ public class AutonDrivePIDEncoder extends AutonCommand {
 		double i = SensorInput.driveI;
 		double d = SensorInput.driveD;*/
 		
-		double p = 0.1;
+		double p = 0.1; //0.1
 		double i = 0.00005;
 		double d = 0.01;
 				

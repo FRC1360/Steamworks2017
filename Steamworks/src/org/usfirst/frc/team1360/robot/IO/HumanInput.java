@@ -23,8 +23,8 @@ public class HumanInput {
 	{
 		this.driver = new XboxRemote(0);					//Driver Xbox on USB Port 0 on DS
 		this.operator = new XboxRemote(1);					//Operator Xbox on USB Port 1 on DS
-		driver1 = new LogitechExtremeJoystick(2);
-		driver2 = new LogitechExtremeJoystick(3);
+		this.driver1 = new LogitechExtremeJoystick(2);
+		this.driver2 = new LogitechExtremeJoystick(3);
 	}
 	
 	public static HumanInput getInstance()					//Return intance of HumanInput; create if it doesn't exist
@@ -53,6 +53,11 @@ public class HumanInput {
 	public boolean getRacingShifter()
 	{
 		return this.driver.getButtonA();
+	}
+	
+	public boolean getRacingDampen()
+	{
+		return this.driver.getButtonX();
 	}
 	
 	//------------Halo--------------
