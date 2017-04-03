@@ -8,19 +8,22 @@ public class AutonLowGoal extends AutonCommand {
 
 	private RobotOutput robotOutput;
 	private double speed;
+	private boolean open;
 	
-	public AutonLowGoal(long timeout, double speed) {
-		super(RobotSubsystems.INTAKE, timeout);
+	public AutonLowGoal(double speed, boolean open) {
+		super(RobotSubsystems.INTAKE);
 		// TODO Auto-generated constructor stub
 		
 		this.robotOutput = RobotOutput.getInstance();
 		this.speed = speed;
+		this.open = open;
 	}
 
 	@Override
 	public boolean calculate() {
 		this.robotOutput.intake(speed);
-		return false;
+		this.robotOutput.outtake(open);
+		return true;
 	}
 
 	@Override

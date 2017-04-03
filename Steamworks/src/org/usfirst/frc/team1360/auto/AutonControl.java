@@ -15,6 +15,7 @@ import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearMiddle;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearRight;
 import org.usfirst.frc.team1360.auto.step2.red.GearMiddleToBallRed;
 import org.usfirst.frc.team1360.auto.step2.NeutralZoneAfterSideGear;
+import org.usfirst.frc.team1360.auto.step2.ToBoilerFromRight;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.util.Debugger;
@@ -74,6 +75,7 @@ private static AutonControl instance;
         ArrayList<AutonMode> step2 = this.autonSteps.get(1);
         step2.add(new DefaultMode()); //0
         step2.add(new NeutralZoneAfterSideGear());
+        step2.add(new ToBoilerFromRight());
         //step2.add(new GearMiddleToBallRed());
        
        

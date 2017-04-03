@@ -16,12 +16,12 @@ public class DriveToGearRight implements AutonMode
 	public void addToMode(AutonBuilder ab)
 	{	
 		ab.addCommand(new AutonGear(true, false, 1));
-		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1300, 6000)); //1700 (1950 also worked)
+		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1250, 6000)); //1700, speed = 0.75
 		//ab.addCommand(new AutonDrivePIDTurn(-45, 1500));
-		ab.addCommand(new AutonDrivePIDEncoder(-50, 0.35, 900, 2500)); //-45, 0.25, 1100
+		ab.addCommand(new AutonDrivePIDEncoder(-52, 0.35, 900, 1500)); //-45, 0.25, 1100, 2500
 		ab.addCommand(new DriveWait());
-		ab.addCommand(new AutonGear(true, false, -1));
-		ab.addCommand(new AutonWait(500));
+		ab.addCommand(new AutonGear(false, false, -1));
+		ab.addCommand(new AutonWait(250));
 		ab.addCommand(new AutonDrivePIDEncoder(-49, -0.5, -200, 4000)); //this is new
 		ab.addCommand(new AutonGear(false, false, 0)); //new
 		ab.addCommand(new DriveWait()); //this is new
