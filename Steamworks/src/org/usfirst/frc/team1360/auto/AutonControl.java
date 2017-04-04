@@ -15,10 +15,7 @@ import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearMiddle;
 import org.usfirst.frc.team1360.auto.step1.gear.DriveToGearRight;
 import org.usfirst.frc.team1360.auto.step2.red.GearMiddleToBallRed;
 import org.usfirst.frc.team1360.auto.step2.NeutralZoneAfterSideGear;
-<<<<<<< HEAD
-=======
 import org.usfirst.frc.team1360.auto.step2.ToBoilerFromRight;
->>>>>>> Auto
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.util.Debugger;
@@ -68,29 +65,17 @@ private static AutonControl instance;
         ArrayList<AutonMode> step1 = this.autonSteps.get(0);
         step1.add(new DefaultMode()); //0
         //step1.add(new DrivePIDTest());
-<<<<<<< HEAD
-        //step1.add(new DriveToGearRight()); // working
-        //step1.add(new DriveToGearLeft()); // working
-        step1.add(new DriveToBaseline());
-        step1.add(new DriveToGearMiddle()); // working
-        //step1.add(new DriveLikeYouStoleItAndHitTheHopper());
-=======
         step1.add(new DriveToGearRight()); 
         step1.add(new DriveToGearLeft());
         //step1.add(new DriveToBaseline());
         step1.add(new DriveToGearMiddle()); 
->>>>>>> Auto
         
         
         // --- STEP 2 SUBMODES
         ArrayList<AutonMode> step2 = this.autonSteps.get(1);
         step2.add(new DefaultMode()); //0
-<<<<<<< HEAD
-        //step2.add(new NeutralZoneAfterSideGear());
-=======
         step2.add(new NeutralZoneAfterSideGear());
         step2.add(new ToBoilerFromRight());
->>>>>>> Auto
         //step2.add(new GearMiddleToBallRed());
        
        

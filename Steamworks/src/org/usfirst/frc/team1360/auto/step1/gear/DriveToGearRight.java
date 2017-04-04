@@ -14,29 +14,7 @@ public class DriveToGearRight implements AutonMode
 
 	@Override
 	public void addToMode(AutonBuilder ab)
-<<<<<<< HEAD
 	{
-		//Try these time values if those dont work: 2025, 2800, 750, 2000
-		//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2375)); // 1776
-		ab.addCommand(new AutonDrivePIDEncoder(0, 0.5, 1710, 6000));
-		//ab.addCommand(new DriveWait());
-		//ab.addCommand(new AutonWait(500));
-		//ab.addCommand(new AutonDrivePIDTime(-53, 0.5, 3200)); // 1177
-		ab.addCommand(new AutonDrivePIDTurn(-52, 1500));
-		ab.addCommand(new AutonDrivePIDEncoder(-52, 0.5, 1900, 6000));
-		ab.addCommand(new DriveWait());
-		//ab.addCommand(new AutonWait(500));
-		//ab.addCommand(new AutonDrivePIDTime(0, 0.25, 1000)); // 310
-		ab.addCommand(new AutonDrivePIDEncoder(-52, 0.25, 450, 5000));
-		ab.addCommand(new DriveWait());
-		ab.addCommand(new AutonGear(true, true));
-		ab.addCommand(new AutonWait(1500));
-		//ab.addCommand(new AutonDrivePIDTime(0, -0.5, 2000)); // -1508
-		ab.addCommand(new AutonDrivePIDEncoder(-52, -0.5, -1508, 4000));
-		ab.addCommand(new DriveWait());
-		//ab.addCommand(new AutonDrivePIDTime(0, 0.5, 2000));
-=======
-	{	
 		ab.addCommand(new AutonGear(true, false, 1));
 		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1250, 6000)); //1700, speed = 0.75
 		//ab.addCommand(new AutonDrivePIDTurn(-45, 1500));
@@ -53,7 +31,6 @@ public class DriveToGearRight implements AutonMode
 		ab.addCommand(new AutonDrivePIDEncoder(-52, -0.5, -600, 4000));
 		ab.addCommand(new AutonGear(false, false, 0));
 		ab.addCommand(new DriveWait());
->>>>>>> Auto
 	}
 
 }

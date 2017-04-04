@@ -5,22 +5,6 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotOutput {
-<<<<<<< HEAD
-	
-	private Victor driveLeftForward;
-	private Victor driveLeftRear;
-	private Victor driveRightForward;
-	private Victor driveRightRear;
-	private Victor climberFront;
-	private Victor intake;
-	private Victor indexSystem;
-	
-	private Solenoid driveShifter;
-	private Solenoid gearFlap;
-	private Solenoid gearRelease;
-	private Solenoid outFlap;
-	private Solenoid intakeSolenoid;
-=======
 	// Victors
 	private Victor vicDriveLeftForward;
 	private Victor vicDriveLeftRear;
@@ -38,7 +22,6 @@ public class RobotOutput {
 	//private Solenoid solGearRelease;
 	private Solenoid solOutFlap;
 	private Solenoid solIntake;
->>>>>>> Auto
 	
 	//private final double TURN_WEIGHT_FACTOR = 1.5d; This is the constant for the drive without the Math.exp
 	private final double TURN_WEIGHT_FACTOR = 0.2; //0.1
@@ -47,21 +30,6 @@ public class RobotOutput {
 	
 	private RobotOutput()
 	{
-<<<<<<< HEAD
-		driveLeftForward = new Victor(0);
-		driveLeftRear = new Victor(1);
-		driveRightForward = new Victor(2);
-		driveRightRear = new Victor(3);
-		climberFront = new Victor(4);
-		intake = new Victor(5);
-		indexSystem = new Victor(6);
-		
-		driveShifter = new Solenoid(1);
-		gearFlap = new Solenoid(3);
-		gearRelease = new Solenoid(2);
-		outFlap = new Solenoid(4);
-		intakeSolenoid = new Solenoid(5);
-=======
 		vicDriveLeftForward = new Victor(0);
 		vicDriveLeftRear = new Victor(1);
 		vicDriveRightForward = new Victor(2);
@@ -78,7 +46,6 @@ public class RobotOutput {
 		solPivotPiston = new Solenoid(2);
 		solOutFlap = new Solenoid(4);
 		//solIntake = new Solenoid(5);
->>>>>>> Auto
 		
 	}
 	
@@ -197,11 +164,7 @@ public class RobotOutput {
 	
 	public void outtake(boolean release) // Sets outtake flap position
 	{
-<<<<<<< HEAD
-		climberFront.set(speed);
-=======
 		solOutFlap.set(release);
->>>>>>> Auto
 	}
 	
 	public void climb(double speed) // Runs climber at given speed
@@ -209,21 +172,6 @@ public class RobotOutput {
 		vicClimberFront.set(speed);
 	}
 
-<<<<<<< HEAD
-	public void stopAll()
-	{
-		driveLeftForward.set(0);
-		driveLeftRear.set(0);
-		driveRightForward.set(0);
-		driveRightRear.set(0);
-		intake.set(0);
-		indexSystem.set(0);
-		climberFront.set(0);
-		gearFlap.set(false);
-		gearRelease.set(false);
-		driveShifter.set(false);
-		outFlap.set(false);
-=======
 	public void stopAll() // Stops all motors and resets all solenoids
 	{
 		vicDriveLeftForward.set(0);
@@ -239,6 +187,5 @@ public class RobotOutput {
 		solFineAdjustment.set(false);
 		solDriveShifter.set(false);
 		solOutFlap.set(false);
->>>>>>> Auto
 	}
 }

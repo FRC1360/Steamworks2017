@@ -41,14 +41,9 @@ public class SensorInput {
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
-<<<<<<< HEAD
-		driveLeftEncoder = new Encoder(1, 0);
-		driveRightEncoder = new Encoder(2, 3);
-=======
 		// Initialize fields
 		driveLeftEncoder = new Encoder(1, 0);
 		driveRightEncoder = new Encoder(4, 5);
->>>>>>> Auto
 		PDP = new PowerDistributionPanel();
 
 		ahrsThread = new Thread(() ->
@@ -161,38 +156,22 @@ public class SensorInput {
 		return this.driveLeftEncoder.get();
 	}
 	
-<<<<<<< HEAD
-	public int getRightDriveEncoder()
-=======
 	public int getRightDriveEncoder() // Get position of right drive encoder
->>>>>>> Auto
 	{
 		return this.driveRightEncoder.get();
 	}
 	
-<<<<<<< HEAD
-	public double getLeftEncoderVelocity()
-=======
 	public double getLeftEncoderVelocity() // Get velocity of left drive encoder
->>>>>>> Auto
 	{
 		return this.driveLeftEncoder.getRate();
 	}
 	
-<<<<<<< HEAD
-	public double getRightEncoderVelocity()
-=======
 	public double getRightEncoderVelocity() // Get velocity of right drive encoder
->>>>>>> Auto
 	{
 		return this.driveRightEncoder.getRate();
 	}
 	
-<<<<<<< HEAD
-	public void resetLeftEncoder()
-=======
 	public void resetLeftEncoder() // Reset left drive encoder
->>>>>>> Auto
 	{
 		this.driveLeftEncoder.reset();
 	}
@@ -221,9 +200,6 @@ public class SensorInput {
 	{
 		this.resetAHRS();
 		this.resetLeftEncoder();
-<<<<<<< HEAD
-=======
 		this.resetRightEncoder();
->>>>>>> Auto
 	}
 }
