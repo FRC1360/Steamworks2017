@@ -13,7 +13,11 @@ public class DriveLikeYouStoleItAndHitTheHopper implements AutonMode{
 	@Override
 	public void addToMode(AutonBuilder ab)
 	{
+<<<<<<< HEAD
 		ab.addCommand(new AutonDriveShift(true));
+=======
+		/*ab.addCommand(new AutonDriveShift(true));
+>>>>>>> Auto
 		ab.addCommand(new AutonLowGoal(-1, true, 100000));
 		ab.addCommand(new AutonDrivePIDEncoder(0, -1, -7000, 10000));
 		//ab.addCommand(new DriveWait());
@@ -22,7 +26,11 @@ public class DriveLikeYouStoleItAndHitTheHopper implements AutonMode{
 		//ab.addCommand(new AutonDrivePIDTurn(0, 1000));
 		ab.addCommand(new DriveWait());
 		ab.addCommand(new AutonDrivePIDEncoder(40, 0.5, 2000, 100000));
+<<<<<<< HEAD
 		ab.addCommand(new DriveWait());
+=======
+		ab.addCommand(new DriveWait());*/
+>>>>>>> Auto
 	}
 
 }
