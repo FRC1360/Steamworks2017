@@ -22,37 +22,47 @@ public class SensorInput {
 
 	private static SensorInput instance;				//Fields of class SensorInput
 	
-	private PowerDistributionPanel PDP;
-	private ClimberCurrentDisplayComponent currentDisplay;
-	private AHRS ahrs;
+	private PowerDistributionPanel PDP; // PDP interface for accessing current draw
+	private ClimberCurrentDisplayComponent currentDisplay; // Component for feeding climber current draw values to driver station GUI
+	private AHRS ahrs; // NavX interface
 	
+	// Drive PID values
 	public static final double driveP = 0.1;
 	public static final double driveI = 0.00005;
 	public static final double driveD = 0.01;
 	
+	// Drive encoders
 	private Encoder driveLeftEncoder;
 	private Encoder driveRightEncoder;
 	
-	private Thread ahrsThread;
-	private double[] ahrsValues = new double[7];
-	private ConcurrentLinkedQueue<Runnable> ahrsThreadDispatchQueue = new ConcurrentLinkedQueue<>();
+	private Thread ahrsThread; // Thread that controls NavX; this is to avoid multiple threads accessing AHRS object, which has caused issues in the past
+	private double[] ahrsValues = new double[7]; // Array to store data from NavX: yaw, pitch, roll, x acceleration (world frame), y acceleration (world frame), x velocity (local frame), y velocity (local frame)
+	private ConcurrentLinkedQueue<Runnable> ahrsThreadDispatchQueue = new ConcurrentLinkedQueue<>(); // Queue code to be run on ahrsThread
 	
 	private SensorInput()								//Constructor to initialize fields  
 	{
+<<<<<<< HEAD
 		driveLeftEncoder = new Encoder(1, 0);
 		driveRightEncoder = new Encoder(2, 3);
+=======
+		// Initialize fields
+		driveLeftEncoder = new Encoder(1, 0);
+		driveRightEncoder = new Encoder(4, 5);
+>>>>>>> Auto
 		PDP = new PowerDistributionPanel();
+
 		ahrsThread = new Thread(() ->
 		{
 			ahrs = new AHRS(SPI.Port.kMXP); // THIS SHOULD BE THE ONLY AHRS CONSTRUCTOR BEING CALLED, IF IT IS NOT, DELETE THE OTHER ONE
 			synchronized (this)
 			{
-				notify();
+				notify(); // Inform main thread that this thread has started, and that the AHRS object has been initialized
 			}
 			while (true)
 			{
 				synchronized (this)
 				{
+					// Get values from AHRS
 					ahrsValues[0] = ahrs.getYaw();
 					ahrsValues[1] = ahrs.getPitch();
 					ahrsValues[2] = ahrs.getRoll();
@@ -60,14 +70,20 @@ public class SensorInput {
 					ahrsValues[4] = ahrs.getWorldLinearAccelY();
 					ahrsValues[5] = ahrs.getVelocityX();
 					ahrsValues[6] = ahrs.getVelocityY();
+
+					// Run code from queue, if it exists
 					if (!ahrsThreadDispatchQueue.isEmpty())
 						ahrsThreadDispatchQueue.remove().run();
 				}
+
+				// Let other code run, but do not limit rate at which data is pulled
 				Thread.yield();
 			}
 		});
-		ahrsThread.start();
-		synchronized (this)
+
+		ahrsThread.start(); // Start ahrs thread
+
+		synchronized (this) // Wait for message from AHRS thread
 		{
 			try
 			{
@@ -80,7 +96,7 @@ public class SensorInput {
 		}
 	}
 	
-	public static SensorInput getInstance()				//Check to make sure that SensorInput exists
+	public static SensorInput getInstance()				// Return SensorInput instance; create if it does not exist
 	{
 		if (instance == null)
 		{
@@ -90,42 +106,42 @@ public class SensorInput {
 		return instance;
 	}
 	
-	public synchronized double getAHRSYaw()
+	public synchronized double getAHRSYaw() // Get yaw from NavX
 	{
 		return ahrsValues[0];
 	}
 	
-	public synchronized double getAHRSPitch()
+	public synchronized double getAHRSPitch() // Gen pitch from NavX
 	{
 		return ahrsValues[1];
 	}
 	
-	public synchronized double getAHRSRoll()
+	public synchronized double getAHRSRoll() // Get roll from NavX
 	{
 		return ahrsValues[2];
 	}
 	
-	public synchronized double getAHRSWorldLinearAccelX()
+	public synchronized double getAHRSWorldLinearAccelX() // Get world-frame X acceleration from NavX
 	{
 		return ahrsValues[3];
 	}
 
-	public synchronized double getAHRSWorldLinearAccelY()
+	public synchronized double getAHRSWorldLinearAccelY() // Get world-frame Y acceleration from NavX
 	{
 		return ahrsValues[4];
 	}
 	
-	public synchronized double getAHRSVelocityX()
+	public synchronized double getAHRSVelocityX() // Get local-frame X velocity
 	{
 		return ahrsValues[5];
 	}
 	
-	public synchronized double getAHRSVelocityY()
+	public synchronized double getAHRSVelocityY() // Get local-frame Y velocity
 	{
 		return ahrsValues[6];
 	}
 	
-	public synchronized void resetAHRS()
+	public synchronized void resetAHRS() // Queue operation to reset NavX
 	{
 		ahrsThreadDispatchQueue.add(ahrs::reset);
 	}
@@ -135,37 +151,58 @@ public class SensorInput {
 		return this.PDP.getCurrent(0);					//PDP port 0 for ClimberFront Motor
 	}
 	
-	public double getClimberBackCurrent()				
+	public double getClimberBackCurrent()				// ONLY EXISTS SO THAT OLD CODE THAT HAS NOT BEEN UPDATED DOES NOT BREAK
 	{
-		return this.PDP.getCurrent(1);	//PDP port 1 for ClimberBack Motor
+		return 0.0;
 	}
 	
-	public int getLeftDriveEncoder()
+	public int getLeftDriveEncoder() // Get position of left drive encoder
 	{
 		return this.driveLeftEncoder.get();
 	}
 	
+<<<<<<< HEAD
 	public int getRightDriveEncoder()
+=======
+	public int getRightDriveEncoder() // Get position of right drive encoder
+>>>>>>> Auto
 	{
 		return this.driveRightEncoder.get();
 	}
 	
+<<<<<<< HEAD
 	public double getLeftEncoderVelocity()
+=======
+	public double getLeftEncoderVelocity() // Get velocity of left drive encoder
+>>>>>>> Auto
 	{
 		return this.driveLeftEncoder.getRate();
 	}
 	
+<<<<<<< HEAD
 	public double getRightEncoderVelocity()
+=======
+	public double getRightEncoderVelocity() // Get velocity of right drive encoder
+>>>>>>> Auto
 	{
 		return this.driveRightEncoder.getRate();
 	}
 	
+<<<<<<< HEAD
 	public void resetLeftEncoder()
+=======
+	public void resetLeftEncoder() // Reset left drive encoder
+>>>>>>> Auto
 	{
 		this.driveLeftEncoder.reset();
 	}
 	
-	public void calculate()
+	public void resetRightEncoder() // Reset right drive encoder
+	{
+		this.driveRightEncoder.reset();
+	}
+	
+	public void calculate() // To be run every cycle - updates values
 	{
 		if (currentDisplay == null)
 		{
@@ -177,11 +214,16 @@ public class SensorInput {
 		SmartDashboard.putNumber("Left Enc", this.getLeftDriveEncoder());
 		SmartDashboard.putNumber("Climber Average Current", (this.getClimberFrontCurrent() + this.getClimberBackCurrent()) / 2);
 		SmartDashboard.putNumber("NavX Yaw ==", this.getAHRSYaw());
+		SmartDashboard.putNumber("Right Enc", this.getRightDriveEncoder());
 	}
 
-	public void reset()
+	public void reset() // Reset NavX and encoders
 	{
 		this.resetAHRS();
 		this.resetLeftEncoder();
+<<<<<<< HEAD
+=======
+		this.resetRightEncoder();
+>>>>>>> Auto
 	}
 }
