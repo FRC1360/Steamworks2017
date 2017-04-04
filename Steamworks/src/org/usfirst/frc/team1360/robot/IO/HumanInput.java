@@ -7,27 +7,24 @@ import org.usfirst.frc.team1360.robot.util.LogitechExtremeJoystick;
 import org.usfirst.frc.team1360.robot.util.XboxRemote;
 
 public class HumanInput {
-	private static HumanInput instance;
-
-	// Joysticks
+	
+	private static HumanInput instance;						//Fields of class HumanInput
 	private XboxRemote driver;
 	private XboxRemote operator;
 	private LogitechExtremeJoystick driver1;
 	private LogitechExtremeJoystick driver2;
-
-	// Used for joystick-based autonomous selector
-	private boolean autonIncreaseStepWasPressed = false;
+	private boolean autonIncreaseStepWasPressed = false;	//Confirm that Autonomous Period is done
 	private boolean autonDecreaseStepWasPressed = false;
 	
 	private HumanInput()									//Constructor to initialize fields
 	{
 		this.driver = new XboxRemote(0);					//Driver Xbox on USB Port 0 on DS
-		this.operator = new XboxRemote(1);					//Operator Xbox on USB Port 1 on DS
-		this.driver1 = new LogitechExtremeJoystick(2);
-		this.driver2 = new LogitechExtremeJoystick(3);
+		this.operator = new XboxRemote(1);					//Operator Xbox on USB Port 1 on DS			
+		driver1 = new LogitechExtremeJoystick(2);
+		driver2 = new LogitechExtremeJoystick(3);
 	}
 	
-	public static HumanInput getInstance()					//Return intance of HumanInput; create if it doesn't exist
+	public static HumanInput getInstance()					//Check to make sure that HumanInput exists
 	{
 		if (instance == null)
 		{
@@ -53,11 +50,6 @@ public class HumanInput {
 	public boolean getRacingShifter()
 	{
 		return this.driver.getButtonA();
-	}
-	
-	public boolean getRacingDampen()
-	{
-		return this.driver.getButtonX();
 	}
 	
 	//------------Halo--------------
@@ -133,29 +125,14 @@ public class HumanInput {
 		return this.operator.getLeftYAxis(); //Read the value of the Right Trigger on the Operator Controller for Intake
 	}
 	
-	/*public boolean getOperatorGearRelease()
+	public boolean getOperatorGearRelease()
 	{
 		return this.operator.getButtonA();				//Read the value of the Left Back Button on the Operator Controller
-	}*/
+	}
 	
-	/*public boolean getOperatorGearFlap()
+	public boolean getOperatorGearFlap()
 	{
 		return this.operator.getButtonB();					//Read the value of the Right Back Button on the Operator Controller
-	}*/
-	
-	public boolean getOperatorPivotGear()
-	{
-		return this.operator.getButtonRB();
-	}
-	
-	public boolean getOperatorFineAdjustGear()
-	{
-		return this.operator.getButtonLB();
-	}
-	
-	public double getOperatorEatGear()
-	{
-		return this.operator.getRightYAxis();
 	}
 	
 	public boolean getOperatorAutoClimb()
@@ -168,10 +145,10 @@ public class HumanInput {
 		return this.operator.getButtonX();
 	}
 	
-	/*public boolean getOperatorOpenIntake()
+	public boolean getOperatorOpenIntake()
 	{
 		return this.operator.getButtonLB();
-	}*/
+	}
 	
 	public boolean getOverride()
 	{
@@ -183,7 +160,7 @@ public class HumanInput {
 		return operator.getRightTrigger();					//Read the value of the Left Trigger on the Operator Controller for Climb
 	}
 
-	//Auto Selector Controls
+	//Auto Controls
 	 public boolean getAutonSetModeButton() 
 	 {
 		 return this.driver.getButtonA();					//Button A is assigned as the Auto Mode Button 

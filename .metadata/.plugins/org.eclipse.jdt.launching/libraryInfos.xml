@@ -61,25 +61,6 @@
 <entry path="C:\Program Files\Java\jdk1.8.0_111\jre\lib\endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre" version="1.8.0_91">
-<bootpath>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\resources.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\rt.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\sunrsasign.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\jsse.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\jce.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\charsets.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\jfr.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\classes"/>
-</bootpath>
-<extensionDirs>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\ext"/>
-<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
-</extensionDirs>
-<endorsedDirs>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\endorsed"/>
-</endorsedDirs>
-</libraryInfo>
 <libraryInfo home="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home" version="1.8.0_66">
 <bootpath>
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/resources.jar"/>
@@ -139,25 +120,6 @@
 </extensionDirs>
 <endorsedDirs>
 <entry path="C:\Program Files\Java\jdk1.8.0_92\jre\lib\endorsed"/>
-</endorsedDirs>
-</libraryInfo>
-<libraryInfo home="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse" version="1.8.0_91">
-<bootpath>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\resources.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\rt.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\sunrsasign.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\jsse.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\jce.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\charsets.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\jfr.jar"/>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\classes"/>
-</bootpath>
-<extensionDirs>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\ext"/>
-<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
-</extensionDirs>
-<endorsedDirs>
-<entry path="C:\Users\Prof_enderboss\eclipse\java-neon\eclipse\jre\lib\endorsed"/>
 </endorsedDirs>
 </libraryInfo>
 <libraryInfo home="C:\Program Files\Java\jre1.8.0_111" version="1.8.0_111">

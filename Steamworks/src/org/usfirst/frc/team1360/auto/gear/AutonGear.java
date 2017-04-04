@@ -8,26 +8,21 @@ import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 public class AutonGear extends AutonCommand {
 
 	private RobotOutput robotOutput;
-	private boolean piston;
-	private boolean fine;
-	private double speed;
+	private boolean release;
+	private boolean flap;
 	
-	public AutonGear(boolean piston, boolean fineAdjust, double intakeSpeed) {
+	public AutonGear(boolean release, boolean flap) {
 		super(RobotSubsystems.GEAR);
 
 		this.robotOutput = RobotOutput.getInstance();
-		this.piston = piston;
-		this.fine = fineAdjust;
-		this.speed = intakeSpeed;
+		this.flap = flap;
+		this.release = release;
 	}
 
 	@Override
 	public boolean calculate() {
-		//this.robotOutput.flapGear(flap);
-		//this.robotOutput.releaseGear(release);
-		this.robotOutput.fineAdjustGearMech(fine);
-		this.robotOutput.pivotGearMech(piston);
-		this.robotOutput.intakeGear(speed);
+		this.robotOutput.flapGear(flap);
+		this.robotOutput.releaseGear(release);
 		return true;
 	}
 

@@ -1,0 +1,54 @@
+﻿Revert "Final commit before Mac"
+
+This reverts commit 3364fcf062a9b960acf3784223ab339a2186e81b, reversing
+changes made to 0f3d7ff34d4f44a1bf42d7ee75c95ca99407ffe8.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .metadata/.log
+#	modified:   .metadata/.plugins/org.eclipse.cdt.core/.log
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/Steamworks/org.eclipse.egit.core/GitProjectData.properties
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.variables.prefs
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.recommenders.completion.rcp.prefs
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs
+#	modified:   .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+#	modified:   .metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
+#	modified:   .metadata/.plugins/org.eclipse.jdt.launching/libraryInfos.xml
+#	modified:   .metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml
+#	modified:   .metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+#	modified:   .metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+#	modified:   .metadata/.plugins/org.eclipse.wst.sse.core/task-tags.properties
+#	modified:   .metadata/version.ini
+#	modified:   .recommenders/index/http___download_eclipse_org_recommenders_models_neon_/segments.gen
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/AutonControl.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/drive/AutonDrivePIDEncoder.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/gear/AutonGear.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/goal/AutonLowGoal.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/step1/DriveLikeYouStoleItAndHitTheHopper.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/step1/gear/DriveToGearLeft.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/step1/gear/DriveToGearMiddle.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/step1/gear/DriveToGearRight.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/auto/step2/NeutralZoneAfterSideGear.java
+#	deleted:    Steamworks/src/org/usfirst/frc/team1360/auto/step2/ToBoilerFromRight.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/IO/HumanInput.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/IO/RobotOutput.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/IO/SensorInput.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/Robot.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/DriverConfig.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/TeleopClimber.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/TeleopComponent.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/TeleopControl.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/TeleopDrive.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/TeleopGear.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/teleop/TeleopIntake.java
+#	modified:   Steamworks/src/org/usfirst/frc/team1360/robot/util/OrbitCamera.java
+#	modified:   Steamworks/sysProps.xml
+#
+
