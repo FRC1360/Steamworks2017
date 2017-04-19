@@ -7,7 +7,7 @@ import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.util.AutonWait;
 
-public class ToBoilerFromRight implements AutonMode {
+public class ToBoilerFromRed implements AutonMode {
 
 	@Override
 	public void addToMode(AutonBuilder ab)

@@ -18,7 +18,7 @@ public class NeutralZoneAfterSideGear implements AutonMode
 	{
 		// Go to middle of field
 		ab.addCommand(new AutonDriveShift(true));
-		ab.addCommand(new AutonDrivePIDEncoder(0, 1, 4000, 10000));
+		ab.addCommand(new AutonDrivePIDEncoder(0, 1, 2000, 4000));
         ab.addCommand(new AutonDriveShift(false));
         ab.addCommand(new DriveWait());
 	}

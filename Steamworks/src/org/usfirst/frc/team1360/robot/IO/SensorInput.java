@@ -43,7 +43,7 @@ public class SensorInput {
 	{
 		// Initialize fields
 		driveLeftEncoder = new Encoder(1, 0);
-		driveRightEncoder = new Encoder(4, 5);
+		driveRightEncoder = new Encoder(2, 3);
 		PDP = new PowerDistributionPanel();
 
 		ahrsThread = new Thread(() ->
