@@ -14,7 +14,7 @@ public class DriveToGearRight implements AutonMode
 
 	@Override
 	public void addToMode(AutonBuilder ab)
-	{	
+	{
 		ab.addCommand(new AutonGear(true, false, 0));
 		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1250, 6000)); //1700, speed = 0.75
 		//ab.addCommand(new AutonDrivePIDTurn(-45, 1500));

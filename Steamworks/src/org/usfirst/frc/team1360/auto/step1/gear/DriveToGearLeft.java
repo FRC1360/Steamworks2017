@@ -12,7 +12,7 @@ import org.usfirst.frc.team1360.auto.util.AutonWait;
 public class DriveToGearLeft implements AutonMode {
 
 	@Override
-	public void addToMode(AutonBuilder ab) {	
+	public void addToMode(AutonBuilder ab) {
 		
 		ab.addCommand(new AutonGear(true, false, 0));
 		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 1210, 6600)); //1700 (1950 also worked)
@@ -30,6 +30,6 @@ public class DriveToGearLeft implements AutonMode {
 		ab.addCommand(new AutonDrivePIDEncoder(52, -0.5, -600, 4000));
 		ab.addCommand(new AutonGear(false, false, 0));
 		ab.addCommand(new DriveWait());
-	}
+}
 
 }

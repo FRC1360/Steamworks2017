@@ -14,7 +14,7 @@ public class DriveToGearMiddle implements AutonMode
 
 	@Override
 	public void addToMode(AutonBuilder ab)
-	{		
+	{
 		ab.addCommand(new AutonGear(true, false, 0));
 		ab.addCommand(new AutonDrivePIDEncoder(0, 0.75, 850, 4000)); //1400
 		ab.addCommand(new AutonDrivePIDEncoder(0, 0.25, 700, 2000)); //750
