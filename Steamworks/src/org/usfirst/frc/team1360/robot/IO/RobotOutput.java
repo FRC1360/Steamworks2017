@@ -36,14 +36,14 @@ public class RobotOutput {
 		vicDriveRightRear = new Victor(3);
 		vicClimberFront = new Victor(4);
 		vicIntake = new Victor(5);
-		vicIndexSystem = new Victor(7);
-		vicGearMech = new Victor(6);
+		vicIndexSystem = new Victor(6);
+		vicGearMech = new Victor(7);
 		
 		solDriveShifter = new Solenoid(1);
 		//solGearFlap = new Solenoid(3);
 		//solGearRelease = new Solenoid(2);
 		solFineAdjustment = new Solenoid(3);
-		solPivotPiston = new Solenoid(2);
+		solPivotPiston = new Solenoid(5);
 		solOutFlap = new Solenoid(4);
 		//solIntake = new Solenoid(5);
 		
