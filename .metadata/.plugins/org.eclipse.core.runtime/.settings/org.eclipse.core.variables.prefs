@@ -1,6 +1,2 @@
 eclipse.preferences.version=1
-<<<<<<< HEAD
-org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<valueVariables>\r\n<valueVariable description\="user.home directory" name\="USER_HOME" readOnly\="false" value\="C\:\\Users\\Programming"/>\r\n</valueVariables>\r\n
-=======
-org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<valueVariables>\r\n<valueVariable description\="user.home directory" name\="USER_HOME" readOnly\="false" value\="C\:\\Users\\Michael Geddes"/>\r\n</valueVariables>\r\n
->>>>>>> Auto
+org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<valueVariables>\n<valueVariable description\="user.home directory" name\="USER_HOME" readOnly\="false" value\="/Users/michaelgeddes"/>\n</valueVariables>\n
