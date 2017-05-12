@@ -1,5 +1,5 @@
 
-.metadata
+.metadata/
 bin/
 tmp/
 *.tmp
@@ -16,6 +16,10 @@ local.properties
 
 # Eclipse Core
 .project
+
+# IntelliJ IDEA project files
+/.idea/
+*.iml
 
 # External tool builders
 .externalToolBuilders/
@@ -52,11 +56,3 @@ local.properties
 # Code Recommenders
 .recommenders/
 *.class
-<<<<<<< HEAD
-=======
-
-.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
-.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache
-.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
-.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache
->>>>>>> Auto
