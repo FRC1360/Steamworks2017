@@ -13,5 +13,5 @@ git clone https://github.com/FRC1360/Steamworks2017.git
 1. WPILib - https://wpilib.screenstepslive.com/s/4485/m/13809/l/599681-installing-eclipse-c-java
 1. navx - http://www.pdocs.kauailabs.com/navx-mxp/software/roborio-libraries/java/
 
-Note: after the intallation you should see *navx_frc.jar* file in *&lt;user home&gt;/wpilib/user/java/lib* directory
+Note: If you followed installation instructions for navx correctly you should see *navx_frc.jar* file in *&lt;user home&gt;/wpilib/user/java/lib* directory
 
