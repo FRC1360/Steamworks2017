@@ -56,3 +56,6 @@ local.properties
 # Code Recommenders
 .recommenders/
 *.class
+Steamworks/Steamworks.ipr
+Steamworks/Steamworks.iws
+Steamworks/.gradle
