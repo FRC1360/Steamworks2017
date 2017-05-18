@@ -59,3 +59,4 @@ local.properties
 Steamworks/Steamworks.ipr
 Steamworks/Steamworks.iws
 Steamworks/.gradle
+.classpath
