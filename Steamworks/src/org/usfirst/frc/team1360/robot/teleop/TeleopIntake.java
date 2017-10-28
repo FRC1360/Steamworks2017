@@ -28,12 +28,18 @@ public class TeleopIntake implements TeleopComponent {
 	@Override
 	public void calculate() { //Run every tick to process data for TelopIntake.
 		double speed = this.humanInput.getIntake();
+		boolean pivot = this.humanInput.getOperatorPivotGear();
 		boolean release = this.humanInput.getOperatorOutake();
 		//boolean open = this.humanInput.getOperatorOpenIntake();
 		
 		if(Math.abs(speed) < 0.20)
 		{
 			speed = 0;
+		}
+		
+		if(pivot)
+		{
+			speed = 0.1;
 		}
 		
 		this.robotOutput.intake(speed);

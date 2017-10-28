@@ -130,7 +130,7 @@ public class HumanInput {
 
 	public double getIntake()								
 	{
-		return this.operator.getLeftYAxis(); //Read the value of the Right Trigger on the Operator Controller for Intake
+		return this.operator.getRightYAxis()*-0.35; //Read the value of the Right Trigger on the Operator Controller for Intake
 	}
 	
 	/*public boolean getOperatorGearRelease()
@@ -155,7 +155,7 @@ public class HumanInput {
 	
 	public double getOperatorEatGear()
 	{
-		return this.operator.getRightYAxis();
+		return this.operator.getLeftYAxis();
 	}
 	
 	public boolean getOperatorAutoClimb()

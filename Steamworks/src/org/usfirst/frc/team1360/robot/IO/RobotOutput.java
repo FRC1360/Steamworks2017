@@ -35,15 +35,15 @@ public class RobotOutput {
 		vicDriveRightForward = new Victor(2);
 		vicDriveRightRear = new Victor(3);
 		vicClimberFront = new Victor(4);
-		vicIntake = new Victor(5);
-		vicIndexSystem = new Victor(7);
-		vicGearMech = new Victor(6);
+		vicIntake = new Victor(6); //5;
+		vicIndexSystem = new Victor(5);
+		vicGearMech = new Victor(7); //7
 		
 		solDriveShifter = new Solenoid(1);
 		//solGearFlap = new Solenoid(3);
 		//solGearRelease = new Solenoid(2);
 		solFineAdjustment = new Solenoid(3);
-		solPivotPiston = new Solenoid(2);
+		solPivotPiston = new Solenoid(5);
 		solOutFlap = new Solenoid(4);
 		//solIntake = new Solenoid(5);
 		
@@ -124,7 +124,7 @@ public class RobotOutput {
 	public void intake(double speed) // Sets intake/index motors
 	{
 		vicIntake.set(-speed);
-		vicIndexSystem.set(-speed);
+		//vicIndexSystem.set(-speed);
 	}
 	
 	/*public void openItake(boolean shift) // Sets intake position
@@ -139,7 +139,10 @@ public class RobotOutput {
 	
 	public void pivotGearMech(boolean pivot)
 	{
-		solPivotPiston.set(pivot);
+		//solPivotPiston.set(pivot);
+		
+		if(pivot) vicIntake.set(-0.35);
+		else vicIntake.set(0);
 	}
 	
 	/*public void flapGear(boolean release) // Sets gear flap position

@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
 	private AutonControl autonControl;
-	//private OrbitCamera camera;
+	private OrbitCamera camera;
 	private Connection connection;
 	private PositionTracker pt; 
 	int i;
@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
     	this.autonControl = AutonControl.getInstance();
     	this.sensorInput.reset();
     	
-    	//camera = new OrbitCamera("10.13.60.3", "Axis Camera");
+    	camera = new OrbitCamera();
     	pt = PositionTracker.getInstance();
     	i = 0;
     }
@@ -80,6 +80,7 @@ public class Robot extends IterativeRobot {
     {
     	this.sensorInput.calculate();
     	this.autonControl.updateModes();
+    	this.camera.updateCamera();
     	
     	
     }
@@ -97,7 +98,7 @@ public class Robot extends IterativeRobot {
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
-        //this.camera.updateCamera();
+        this.camera.updateCamera();
         if (i == 10)
         {
         	//System.out.println(pt.getPosition()[0] + "\n" + pt.getPosition()[1] + "\n\n\n");
