@@ -26,7 +26,7 @@ public class AutonGear extends AutonCommand {
 		//this.robotOutput.flapGear(flap);
 		//this.robotOutput.releaseGear(release);
 		this.robotOutput.fineAdjustGearMech(fine);
-		this.robotOutput.pivotGearMech(piston);
+		this.robotOutput.pivotGear(0.35);
 		this.robotOutput.intakeGear(speed);
 		return true;
 	}

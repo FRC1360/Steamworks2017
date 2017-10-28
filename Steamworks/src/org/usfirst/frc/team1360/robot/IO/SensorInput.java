@@ -35,6 +35,9 @@ public class SensorInput {
 	private Encoder driveLeftEncoder;
 	private Encoder driveRightEncoder;
 	
+	// Pivot encoder
+	private Encoder pivotEncoder;
+	
 	private Thread ahrsThread; // Thread that controls NavX; this is to avoid multiple threads accessing AHRS object, which has caused issues in the past
 	private double[] ahrsValues = new double[7]; // Array to store data from NavX: yaw, pitch, roll, x acceleration (world frame), y acceleration (world frame), x velocity (local frame), y velocity (local frame)
 	private ConcurrentLinkedQueue<Runnable> ahrsThreadDispatchQueue = new ConcurrentLinkedQueue<>(); // Queue code to be run on ahrsThread
@@ -44,6 +47,7 @@ public class SensorInput {
 		// Initialize fields
 		driveLeftEncoder = new Encoder(1, 0);
 		driveRightEncoder = new Encoder(4, 5);
+		pivotEncoder = new Encoder(6, 7);
 		PDP = new PowerDistributionPanel();
 
 		ahrsThread = new Thread(() ->
@@ -161,6 +165,11 @@ public class SensorInput {
 		return this.driveRightEncoder.get();
 	}
 	
+	public int getPivotEncoder() // Get position of pivot encoder
+	{
+		return this.pivotEncoder.get();
+	}
+	
 	public double getLeftEncoderVelocity() // Get velocity of left drive encoder
 	{
 		return this.driveLeftEncoder.getRate();
@@ -179,6 +188,11 @@ public class SensorInput {
 	public void resetRightEncoder() // Reset right drive encoder
 	{
 		this.driveRightEncoder.reset();
+	}
+	
+	public void resetPivotEncoder() // Reset pivot encoder
+	{
+		this.pivotEncoder.reset();
 	}
 	
 	public void calculate() // To be run every cycle - updates values

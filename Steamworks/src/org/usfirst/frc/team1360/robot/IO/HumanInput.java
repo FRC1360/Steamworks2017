@@ -127,11 +127,6 @@ public class HumanInput {
 
 	//Operator Controls
 	
-
-	public double getIntake()								
-	{
-		return this.operator.getRightYAxis()*-0.35; //Read the value of the Right Trigger on the Operator Controller for Intake
-	}
 	
 	/*public boolean getOperatorGearRelease()
 	{
@@ -143,7 +138,7 @@ public class HumanInput {
 		return this.operator.getButtonB();					//Read the value of the Right Back Button on the Operator Controller
 	}*/
 	
-	public boolean getOperatorPivotGear()
+	public boolean getOperatorPivotBtn()
 	{
 		return this.operator.getButtonRB();
 	}

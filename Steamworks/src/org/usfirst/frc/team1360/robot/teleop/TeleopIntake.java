@@ -27,10 +27,11 @@ public class TeleopIntake implements TeleopComponent {
 	
 	@Override
 	public void calculate() { //Run every tick to process data for TelopIntake.
-		double speed = this.humanInput.getIntake();
-		boolean pivot = this.humanInput.getOperatorPivotGear();
+		//double speed = this.humanInput.getIntake();
+		//boolean pivot = this.humanInput.getOperatorPivotGear();
+		
 		boolean release = this.humanInput.getOperatorOutake();
-		//boolean open = this.humanInput.getOperatorOpenIntake();
+		/*//boolean open = this.humanInput.getOperatorOpenIntake();
 		
 		if(Math.abs(speed) < 0.20)
 		{
@@ -42,14 +43,15 @@ public class TeleopIntake implements TeleopComponent {
 			speed = 0.1;
 		}
 		
-		this.robotOutput.intake(speed);
+		this.robotOutput.pivotGear(speed);*/
 		this.robotOutput.outtake(release);
 		//this.robotOutput.openItake(open);
 	}
 
 	@Override
 	public void disable() { //Run when the robot is disabled.
-		this.robotOutput.intake(0);
+		//this.robotOutput.pivotGear(0);
+		this.robotOutput.outtake(false);
 	}
 
 }
