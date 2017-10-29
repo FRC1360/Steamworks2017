@@ -211,5 +211,13 @@ public class HumanInput {
 	    return result;
 	}
 	
-
+	public boolean getAutoInc()
+	{
+		return driver.getButtonY();
+	}
+	
+	public boolean getAutoDec()
+	{
+		return driver.getButtonA();
+	}
 }
