@@ -29,17 +29,17 @@ public class MiddleGear extends AutonRoutine {
 		});
 		AutonControl.registerThread(gear);
 		gear.start();
-		new DrivePIDEncoder(0.0, 0.75, 850, 2000).runCore();
-		new DrivePIDEncoder(0.0, 0.25, 750, 1000).runCore();
+		new DrivePIDEncoder(0.0, 0.75, 850, 2000).runUntilFinish();
+		new DrivePIDEncoder(0.0, 0.25, 750, 1000).runUntilFinish();
 		pivot = false;
 		while (Gear.getState() != 0)
 		{
 			Thread.sleep(10);
 		}
-		new DrivePIDEncoder(0.0, -0.5, -200, 4000).runCore();
+		new DrivePIDEncoder(0.0, -0.5, -200, 4000).runUntilFinish();
 		pivot = true;
-		new DrivePIDEncoder(0.0, 0.5, 200, 4000).runCore();
-		new DrivePIDEncoder(0.0, -0.5, -600, 4000).runCore();
+		new DrivePIDEncoder(0.0, 0.5, 200, 4000).runUntilFinish();
+		new DrivePIDEncoder(0.0, -0.5, -600, 4000).runUntilFinish();
 		pivot = false;
 		Thread.sleep(1000);
 		gear.interrupt();
