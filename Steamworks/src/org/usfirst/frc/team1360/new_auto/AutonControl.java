@@ -44,6 +44,21 @@ public class AutonControl {
 		autoThreads.add(thread);
 	}
 	
+	public static Thread run(AutonRunnable runnable)
+	{
+		Thread t = new Thread(() ->
+		{
+			try {
+				runnable.run();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		autoThreads.add(t);
+		t.start();
+		return t;
+	}
+	
 	public static void start()
 	{
 		routines.get(selectedIndex).start();
@@ -53,5 +68,10 @@ public class AutonControl {
 	public static void stop()
 	{
 		autoThreads.forEach(Thread::interrupt);
+	}
+	
+	public static interface AutonRunnable
+	{
+		void run() throws InterruptedException;
 	}
 }

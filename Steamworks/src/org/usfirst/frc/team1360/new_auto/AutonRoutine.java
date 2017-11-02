@@ -8,6 +8,7 @@ import org.usfirst.frc.team1360.robot.IO.SensorInput;
 
 public abstract class AutonRoutine extends Thread {
 	private final String name;
+	private final long timeout;
 	protected static final RobotOutput robotOutput = RobotOutput.getInstance();
 	protected static final SensorInput sensorInput = SensorInput.getInstance();
 	
@@ -15,16 +16,26 @@ public abstract class AutonRoutine extends Thread {
 	private static final HashMap<String, AutonRoutine> map = new HashMap<>();
 	private boolean done = false;
 	
-	public AutonRoutine(String name)
+	public AutonRoutine(String name, long timeout)
 	{
 		this.name = name;
+		this.timeout = timeout;
 	}
 	
 	protected abstract void runCore() throws InterruptedException;
 	
 	public final void runUntilFinish() throws InterruptedException
 	{
-		runCore();
+		if (timeout != 0)
+		{
+			start();
+			Thread.sleep(timeout);
+			interrupt();
+		}
+		else
+		{
+			runCore();
+		}
 		synchronized(this)
 		{
 			notifyAll();
@@ -38,20 +49,31 @@ public abstract class AutonRoutine extends Thread {
 		map.put(name, this);
 		AutonControl.registerThread(this);
 		start();
+		if (timeout != 0)
+		{
+			AutonControl.run(() ->
+			{
+				Thread.sleep(timeout);
+				if (!done)
+				{
+					kill();
+				}
+			});
+		}
 	}
 	
 	public final void runAfter(String other, String name)
 	{
 		AutonRoutine otherRoutine = map.get(other);
-		map.put(name, this);
 		synchronized (otherRoutine)
 		{
 			if (otherRoutine.done)
 			{
-				start();
+				runNow(name);
 			}
 			else
 			{
+				map.put(name, this);
 				otherRoutine.queue.add(this);
 			}	
 		}
@@ -65,14 +87,18 @@ public abstract class AutonRoutine extends Thread {
 		done = true;
 	}
 	
-	public static void waitFor(String name) throws InterruptedException
+	public static void waitFor(String name, long timeout) throws InterruptedException
 	{
 		AutonRoutine routine = map.get(name);
 		synchronized (routine)
 		{
 			if (!routine.done)
 			{
-				routine.wait();
+				routine.wait(timeout);
+				if (!routine.done)
+				{
+					routine.kill();
+				}
 			}
 		}
 	}
@@ -81,7 +107,13 @@ public abstract class AutonRoutine extends Thread {
 	public final void run()
 	{
 		try {
-			runUntilFinish();
+			runCore();
+			synchronized(this)
+			{
+				notifyAll();
+				queue.forEach(AutonRoutine::start);
+				done = true;
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
