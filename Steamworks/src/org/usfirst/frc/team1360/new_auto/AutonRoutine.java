@@ -57,6 +57,14 @@ public abstract class AutonRoutine extends Thread {
 		}
 	}
 	
+	public synchronized final void kill()
+	{
+		interrupt();
+		notifyAll();
+		queue.forEach(AutonRoutine::start);
+		done = true;
+	}
+	
 	public static void waitFor(String name) throws InterruptedException
 	{
 		AutonRoutine routine = map.get(name);
