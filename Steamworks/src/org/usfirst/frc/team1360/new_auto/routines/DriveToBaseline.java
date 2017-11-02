@@ -11,6 +11,6 @@ public class DriveToBaseline extends AutonRoutine {
 	@Override
 	public void runCore() throws InterruptedException
 	{
-		new DrivePIDEncoder(0.0, 1.0, 800, 4000);
+		new DrivePIDEncoder(0.0, 1.0, 800, 4000).runUntilFinish();
 	}
 }
