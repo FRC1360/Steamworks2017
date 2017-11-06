@@ -60,3 +60,6 @@ Steamworks/Steamworks.ipr
 Steamworks/Steamworks.iws
 Steamworks/.gradle
 .classpath
+.gradle
+*.ipr
+*.iws
