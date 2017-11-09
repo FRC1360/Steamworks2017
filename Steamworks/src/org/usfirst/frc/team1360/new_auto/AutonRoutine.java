@@ -3,18 +3,24 @@ package org.usfirst.frc.team1360.new_auto;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.usfirst.frc.team1360.robot.IO.RobotOutput;
-import org.usfirst.frc.team1360.robot.IO.SensorInput;
+import org.usfirst.frc.team1360.new_auto.providers.RobotOutputProvider;
+import org.usfirst.frc.team1360.new_auto.providers.SensorInputProvider;
 
 public abstract class AutonRoutine extends Thread {
 	private final String name;
 	private final long timeout;
-	protected static final RobotOutput robotOutput = RobotOutput.getInstance();
-	protected static final SensorInput sensorInput = SensorInput.getInstance();
+	protected static RobotOutputProvider robotOutput;
+	protected static SensorInputProvider sensorInput;
 	
 	private final ArrayList<AutonRoutine> queue = new ArrayList<>();
 	private static final HashMap<String, AutonRoutine> map = new HashMap<>();
 	private boolean done = false;
+	
+	public static void configure(RobotOutputProvider robotOutput, SensorInputProvider sensorInput)
+	{
+		AutonRoutine.robotOutput = robotOutput;
+		AutonRoutine.sensorInput = sensorInput;
+	}
 	
 	public AutonRoutine(String name, long timeout)
 	{
