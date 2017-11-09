@@ -14,7 +14,7 @@ public class AutonControl {
 	
 	private static ArrayList<Thread> autoThreads = new ArrayList<>();
 	
-	public AutonControl() {
+	static {
 		routines.add(new DriveToBaseline());
 	}
 	
@@ -61,8 +61,11 @@ public class AutonControl {
 	
 	public static void start()
 	{
-		routines.get(selectedIndex).start();
-		autoThreads.add(routines.get(selectedIndex));
+		if (selectedIndex < routines.size())
+		{
+			routines.get(selectedIndex).start();
+			autoThreads.add(routines.get(selectedIndex));
+		}
 	}
 	
 	public static void stop()
