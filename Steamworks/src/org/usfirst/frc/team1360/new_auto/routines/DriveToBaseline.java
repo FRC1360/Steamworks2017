@@ -5,12 +5,12 @@ import org.usfirst.frc.team1360.new_auto.drive.DrivePIDEncoder;
 
 public class DriveToBaseline extends AutonRoutine {
 	public DriveToBaseline() {
-		super("Drive to baseline");
+		super("Drive to baseline", 0);
 	}
 	
 	@Override
 	public void runCore() throws InterruptedException
 	{
-		new DrivePIDEncoder(0.0, 1.0, 800, 4000).runUntilFinish();
+		new DrivePIDEncoder(4000, 0.0, 1.0, 800).runUntilFinish();
 	}
 }
