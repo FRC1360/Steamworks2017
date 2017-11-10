@@ -2,26 +2,32 @@ package org.usfirst.frc.team1360.new_auto;
 
 import java.util.ArrayList;
 
+import org.usfirst.frc.team1360.new_auto.providers.SelectionProvider;
 import org.usfirst.frc.team1360.new_auto.routines.DriveToBaseline;
-import org.usfirst.frc.team1360.robot.IO.HumanInput;
 
 public class AutonControl {
-	private static HumanInput humanInput = HumanInput.getInstance();
-	private static ArrayList<AutonRoutine> routines = new ArrayList<>();
+	private static SelectionProvider provider;
+	public static ArrayList<AutonRoutine> routines = new ArrayList<>();
 	private static int selectedIndex = 0;
 	private static boolean lastInc = false;
 	private static boolean lastDec = false;
 	
-	private static ArrayList<Thread> autoThreads = new ArrayList<>();
+	public static ArrayList<Thread> autoThreads = new ArrayList<>();
 	
-	public AutonControl() {
+	static
+	{
 		routines.add(new DriveToBaseline());
+	}
+	
+	public static void configure(SelectionProvider provider)
+	{
+		AutonControl.provider = provider;
 	}
 	
 	public static void select()
 	{
-		boolean inc = humanInput.getAutoInc();
-		boolean dec = humanInput.getAutoDec();
+		boolean inc = provider.getAutoInc();
+		boolean dec = provider.getAutoDec();
 		
 		if (inc && !lastInc && selectedIndex < routines.size() - 1)
 		{
@@ -44,14 +50,43 @@ public class AutonControl {
 		autoThreads.add(thread);
 	}
 	
+	public static Thread run(AutonRunnable runnable)
+	{
+		Thread t = new Thread(() ->
+		{
+			try {
+				runnable.run();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		registerThread(t);
+		t.start();
+		return t;
+	}
+	
 	public static void start()
 	{
-		routines.get(selectedIndex).start();
-		autoThreads.add(routines.get(selectedIndex));
+		if (selectedIndex < routines.size())
+		{
+			routines.get(selectedIndex).runNow("");
+		}
 	}
 	
 	public static void stop()
 	{
 		autoThreads.forEach(Thread::interrupt);
+		autoThreads.forEach(t -> {
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+	}
+	
+	public static interface AutonRunnable
+	{
+		void run() throws InterruptedException;
 	}
 }
