@@ -21,7 +21,7 @@ public class AutonLowGoal extends AutonCommand {
 
 	@Override
 	public boolean calculate() {
-		this.robotOutput.intake(speed);
+		//this.robotOutput.intake(speed);
 		this.robotOutput.outtake(open);
 		return true;
 	}
