@@ -51,7 +51,7 @@ public abstract class AutonRoutine extends Thread {
 	
 	public final void runNow(String name)
 	{
-		map.put(name, this);
+		map.put(name.toLowerCase(), this);
 		AutonControl.registerThread(this);
 		start();
 		if (timeout != 0)
@@ -69,7 +69,7 @@ public abstract class AutonRoutine extends Thread {
 	
 	public final void runAfter(String other, String name)
 	{
-		AutonRoutine otherRoutine = map.get(other);
+		AutonRoutine otherRoutine = map.get(other.toLowerCase());
 		synchronized (otherRoutine)
 		{
 			if (otherRoutine.done)
@@ -78,7 +78,7 @@ public abstract class AutonRoutine extends Thread {
 			}
 			else
 			{
-				map.put(name, this);
+				map.put(name.toLowerCase(), this);
 				otherRoutine.queue.add(this);
 			}	
 		}
@@ -98,7 +98,8 @@ public abstract class AutonRoutine extends Thread {
 	
 	public static void waitFor(String name, long timeout) throws InterruptedException
 	{
-		AutonRoutine routine = map.get(name);
+		System.out.println("Waiting for " + name);
+		AutonRoutine routine = map.get(name.toLowerCase());
 		synchronized (routine)
 		{
 			if (timeout == 0)
