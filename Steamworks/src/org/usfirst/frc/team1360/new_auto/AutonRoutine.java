@@ -14,7 +14,7 @@ public abstract class AutonRoutine extends Thread {
 	
 	private final ArrayList<AutonRoutine> queue = new ArrayList<>();
 	private static final HashMap<String, AutonRoutine> map = new HashMap<>();
-	private boolean done = false;
+	private boolean done;
 	
 	public static void configure(RobotOutputProvider robotOutput, SensorInputProvider sensorInput)
 	{
@@ -42,11 +42,10 @@ public abstract class AutonRoutine extends Thread {
 		{
 			runCore();
 		}
+		done = true;
 		synchronized(this)
 		{
-			notifyAll();
 			queue.forEach(AutonRoutine::start);
-			done = true;
 		}
 	}
 	
@@ -60,7 +59,7 @@ public abstract class AutonRoutine extends Thread {
 			AutonControl.run(() ->
 			{
 				Thread.sleep(timeout);
-				if (!done)
+				if (isAlive())
 				{
 					kill();
 				}
@@ -88,9 +87,13 @@ public abstract class AutonRoutine extends Thread {
 	public synchronized final void kill()
 	{
 		interrupt();
+		try {
+			join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		notifyAll();
 		queue.forEach(AutonRoutine::start);
-		done = true;
 	}
 	
 	public static void waitFor(String name, long timeout) throws InterruptedException
@@ -98,13 +101,13 @@ public abstract class AutonRoutine extends Thread {
 		AutonRoutine routine = map.get(name);
 		synchronized (routine)
 		{
-			if (!routine.done)
+			if (timeout == 0)
+				routine.join();
+			else
+				routine.join(timeout);
+			if (routine.isAlive())
 			{
-				routine.wait(timeout);
-				if (!routine.done)
-				{
-					routine.kill();
-				}
+				routine.kill();
 			}
 		}
 	}
