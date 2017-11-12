@@ -1,4 +1,5 @@
 package org.usfirst.frc.team1360.robot.IO;
+import org.usfirst.frc.team1360.new_auto.providers.SelectionProvider;
 import org.usfirst.frc.team1360.robot.util.LogitechExtremeJoystick;
 /*****
  * Author: Tatiana Tomas Zahhar
@@ -6,7 +7,7 @@ import org.usfirst.frc.team1360.robot.util.LogitechExtremeJoystick;
  */
 import org.usfirst.frc.team1360.robot.util.XboxRemote;
 
-public class HumanInput {
+public class HumanInput implements SelectionProvider {
 	private static HumanInput instance;
 
 	// Joysticks
@@ -211,5 +212,15 @@ public class HumanInput {
 	    return result;
 	}
 	
-
+	@Override
+	public boolean getAutoInc()
+	{
+		return driver.getButtonY();
+	}
+	
+	@Override
+	public boolean getAutoDec()
+	{
+		return driver.getButtonA();
+	}
 }

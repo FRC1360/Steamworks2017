@@ -1,10 +1,12 @@
 package org.usfirst.frc.team1360.robot.IO;
 
+import org.usfirst.frc.team1360.new_auto.providers.RobotOutputProvider;
+
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class RobotOutput {
+public class RobotOutput implements RobotOutputProvider {
 	// Victors
 	private Victor vicDriveLeftForward;
 	private Victor vicDriveLeftRear;
@@ -58,6 +60,10 @@ public class RobotOutput {
 		return instance;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#setDriveLeft(double)
+	 */
+	@Override
 	public void setDriveLeft(double speed)
 	{
 		vicDriveLeftForward.set(-speed);
@@ -66,6 +72,10 @@ public class RobotOutput {
 		SmartDashboard.putNumber("Left Voltage", -speed);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#setDriveRight(double)
+	 */
+	@Override
 	public void setDriveRight(double speed)
 	{
 		vicDriveRightForward.set(speed);
@@ -74,6 +84,10 @@ public class RobotOutput {
 		SmartDashboard.putNumber("Right Voltage", speed);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#tankDrive(double, double)
+	 */
+	@Override
 	public void tankDrive(double left, double right) // Basic tank drive helper
 	{
 		//setDriveLeft(left);
@@ -84,6 +98,10 @@ public class RobotOutput {
 		vicDriveRightRear.set(right);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#arcadeDrive(double, double)
+	 */
+	@Override
 	public void arcadeDrive(double speed, double turn) // Arcade drive algorithm that filters turn
 	{
 		//double left = (speed) + (TURN_WEIGHT_FACTOR * turn);
@@ -112,6 +130,10 @@ public class RobotOutput {
 		setDriveRight(right);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#arcadeDrivePID(double, double)
+	 */
+	@Override
 	public void arcadeDrivePID(double speed, double turn) // Non-filtering arcade drive algorithm for use in PID-based autos
 	{
 		double left = (speed) + turn;
@@ -130,6 +152,10 @@ public class RobotOutput {
 		solGearRelease.set(release);
 	}*/
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#pivotGear(double)
+	 */
+	@Override
 	public void pivotGear(double speed)
 	{
 		vicPivot.set(-speed);
@@ -140,31 +166,55 @@ public class RobotOutput {
 		solGearFlap.set(release);
 	}*/
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#fineAdjustGearMech(boolean)
+	 */
+	@Override
 	public void fineAdjustGearMech(boolean pivot)
 	{
 		solFineAdjustment.set(pivot);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#intakeGear(double)
+	 */
+	@Override
 	public void intakeGear(double speed)
 	{
 		vicGearMech.set(speed);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#shiftSpeed(boolean)
+	 */
+	@Override
 	public void shiftSpeed(boolean shift) // Sets drive shifter position
 	{
 		solDriveShifter.set(shift);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#outtake(boolean)
+	 */
+	@Override
 	public void outtake(boolean release) // Sets outtake flap position
 	{
 		solOutFlap.set(release);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#climb(double)
+	 */
+	@Override
 	public void climb(double speed) // Runs climber at given speed
 	{
 		vicClimberFront.set(speed);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.usfirst.frc.team1360.robot.IO.RobotOutputProvider#stopAll()
+	 */
+	@Override
 	public void stopAll() // Stops all motors and resets all solenoids
 	{
 		vicDriveLeftForward.set(0);
