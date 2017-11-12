@@ -4,7 +4,7 @@ package org.usfirst.frc.team1360.robot;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.usfirst.frc.team1360.new_auto.AutonControl;
+import org.usfirst.frc.team1360.auto.AutonControl;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
 	private HumanInput humanInput;
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
+	private AutonControl autonControl;
 	private OrbitCamera camera;
 	private Connection connection;
 	private PositionTracker pt; 
@@ -43,6 +44,7 @@ public class Robot extends IterativeRobot {
     	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
+    	this.autonControl = AutonControl.getInstance();
     	this.sensorInput.reset();
     	
     	camera = new OrbitCamera();
@@ -62,7 +64,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() 
     {
-    	AutonControl.start();
+    	this.autonControl.initialize();
     	this.sensorInput.reset();
     	this.sensorInput.resetAHRS();
     }
@@ -72,19 +74,21 @@ public class Robot extends IterativeRobot {
     	this.robotOutput.stopAll();
     	this.teleopControl.disable();
     	this.sensorInput.calculate();
-    	AutonControl.stop();
     }
     
     public void disabledPeriodic()
     {
     	this.sensorInput.calculate();
-    	AutonControl.select();
+    	this.autonControl.updateModes();
     	this.camera.updateCamera();
+    	
+    	
     }
 
     public void autonomousPeriodic()
     {
     	sensorInput.calculate();
+    	autonControl.runCycle();
     	this.sensorInput.calculate();
 		SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
     }

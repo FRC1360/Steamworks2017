@@ -28,9 +28,9 @@ public class SensorInput implements SensorInputProvider {
 	private AHRS ahrs; // NavX interface
 
 	// Drive PID values
-	public double driveP = 0.1;
-	public double driveI = 0.00005;
-	public double driveD = 0.01;
+	public static final double driveP = 0.1;
+	public static final double driveI = 0.00005;
+	public static final double driveD = 0.01;
 	
 	// Drive encoders
 	private Encoder driveLeftEncoder;
@@ -47,8 +47,8 @@ public class SensorInput implements SensorInputProvider {
 	{
 		// Initialize fields
 		driveLeftEncoder = new Encoder(1, 0);
-		driveRightEncoder = new Encoder(4, 5);
-		pivotEncoder = new Encoder(6, 7);
+		driveRightEncoder = new Encoder(2, 3);
+		pivotEncoder = new Encoder(5, 4);
 		PDP = new PowerDistributionPanel();
 
 		ahrsThread = new Thread(() ->

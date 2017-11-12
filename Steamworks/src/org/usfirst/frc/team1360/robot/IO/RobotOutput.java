@@ -158,7 +158,7 @@ public class RobotOutput implements RobotOutputProvider {
 	@Override
 	public void pivotGear(double speed)
 	{
-		vicPivot.set(speed);
+		vicPivot.set(-speed);
 	}
 	
 	/*public void flapGear(boolean release) // Sets gear flap position
