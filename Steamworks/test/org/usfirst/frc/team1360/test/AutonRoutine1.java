@@ -2,6 +2,8 @@ package org.usfirst.frc.team1360.test;
 
 import static org.junit.Assert.*;
 
+import static org.usfirst.frc.team1360.new_auto.AutonRoutine.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -85,7 +87,7 @@ public class AutonRoutine1 {
 		Thread.yield();
 		assertFalse(done);
 		assertTrue(command.isAlive());
-		command.kill();
+		kill("testKill");
 		assertFalse(done);
 		assertFalse(command.isAlive());
 	}
@@ -95,7 +97,7 @@ public class AutonRoutine1 {
 		done = false;
 		TestCommand command = new TestCommand();
 		command.runNow("testWaitFor");
-		AutonRoutine.waitFor("testWaitFor", 0);
+		waitFor("testWaitFor", 0);
 		assertTrue(done);
 		assertFalse(command.isAlive());
 	}

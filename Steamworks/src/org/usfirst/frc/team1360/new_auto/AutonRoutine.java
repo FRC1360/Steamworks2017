@@ -96,6 +96,11 @@ public abstract class AutonRoutine extends Thread {
 		queue.forEach(AutonRoutine::start);
 	}
 	
+	public static void kill(String name)
+	{
+		map.get(name.toLowerCase()).kill();
+	}
+	
 	public static void waitFor(String name, long timeout) throws InterruptedException
 	{
 		System.out.println("Waiting for " + name);
