@@ -3,7 +3,7 @@ package org.usfirst.frc.team1360.new_auto.routines;
 import org.usfirst.frc.team1360.new_auto.AutonControl;
 import org.usfirst.frc.team1360.new_auto.AutonRoutine;
 import org.usfirst.frc.team1360.new_auto.drive.DrivePIDEncoder;
-import org.usfirst.frc.team1360.robot.subsystems.Gear;
+//import org.usfirst.frc.team1360.robot.subsystems.Gear;
 
 public class MiddleGear extends AutonRoutine {
 	private boolean pivot = true;
@@ -20,7 +20,7 @@ public class MiddleGear extends AutonRoutine {
 			try {
 				while (true)
 				{
-					Gear.runStateMachine(pivot);
+					//Gear.runStateMachine(pivot);
 					Thread.sleep(10);
 				}
 			} catch (InterruptedException e) {
@@ -32,10 +32,10 @@ public class MiddleGear extends AutonRoutine {
 		new DrivePIDEncoder(2000, 0.0, 0.75, 850).runUntilFinish();
 		new DrivePIDEncoder(1000, 0.0, 0.25, 750).runUntilFinish();
 		pivot = false;
-		while (Gear.getState() != 0)
+		/*while (Gear.getState() != 0)
 		{
 			Thread.sleep(10);
-		}
+		}*/
 		new DrivePIDEncoder(4000, 0.0, -0.5, -200).runUntilFinish();
 		pivot = true;
 		new DrivePIDEncoder(4000, 0.0, 0.5, 200).runUntilFinish();
