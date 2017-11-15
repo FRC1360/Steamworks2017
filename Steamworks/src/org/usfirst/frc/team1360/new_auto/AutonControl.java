@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1360.new_auto;
 
 import java.util.ArrayList;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.usfirst.frc.team1360.new_auto.providers.SelectionProvider;
 import org.usfirst.frc.team1360.new_auto.routines.DriveToBaseline;
@@ -13,6 +15,7 @@ public class AutonControl {
 	private static boolean lastDec = false;
 	
 	public static ArrayList<Thread> autoThreads = new ArrayList<>();
+	public static ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1);
 	
 	static
 	{
@@ -83,6 +86,19 @@ public class AutonControl {
 				e.printStackTrace();
 			}
 		});
+		autoThreads.clear();
+		scheduler.shutdownNow();
+	}
+	
+	public static void schedule(AutonRunnable runnable, long period)
+	{
+		scheduler.scheduleAtFixedRate(() -> {
+			try {
+				runnable.run();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}, 0, period, TimeUnit.MICROSECONDS);
 	}
 	
 	public static interface AutonRunnable
