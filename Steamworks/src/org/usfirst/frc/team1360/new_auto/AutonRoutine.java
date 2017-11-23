@@ -36,7 +36,17 @@ public abstract class AutonRoutine extends Thread {
 		{
 			start();
 			Thread.sleep(timeout);
-			interrupt();
+			if (isAlive())
+			{
+				try
+				{
+					interrupt();
+				}
+				finally
+				{
+					timedOut();
+				}
+			}
 		}
 		else
 		{
@@ -61,7 +71,14 @@ public abstract class AutonRoutine extends Thread {
 				Thread.sleep(timeout);
 				if (isAlive())
 				{
-					kill();
+					try
+					{
+						kill();
+					}
+					finally
+					{
+						timedOut();
+					}
 				}
 			});
 		}
@@ -107,14 +124,23 @@ public abstract class AutonRoutine extends Thread {
 		AutonRoutine routine = map.get(name.toLowerCase());
 		synchronized (routine)
 		{
-			if (timeout == 0)
-				routine.join();
-			else
-				routine.join(timeout);
+			if (routine.done)
+				return;
 			if (routine.isAlive())
 			{
-				routine.kill();
+				if (timeout == 0)
+					routine.join();
+				else
+				{
+					routine.join(timeout);
+					if (routine.isAlive())
+						routine.kill();
+				}
 			}
+			else if (timeout == 0)
+				routine.wait(timeout);
+			else
+				routine.wait();
 		}
 	}
 	
@@ -138,5 +164,10 @@ public abstract class AutonRoutine extends Thread {
 	public final String toString()
 	{
 		return name;
+	}
+	
+	protected void timedOut()
+	{
+		System.out.printf("%s timed out!\n", getClass().getSimpleName());
 	}
 }

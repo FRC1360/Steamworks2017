@@ -13,6 +13,7 @@ public class AutonControl {
 	private static int selectedIndex = 0;
 	private static boolean lastInc = false;
 	private static boolean lastDec = false;
+	private static long startTime;
 	
 	public static ArrayList<Thread> autoThreads = new ArrayList<>();
 	public static ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1);
@@ -70,6 +71,7 @@ public class AutonControl {
 	
 	public static void start()
 	{
+		startTime = System.currentTimeMillis();
 		if (selectedIndex < routines.size())
 		{
 			routines.get(selectedIndex).runNow("");
@@ -99,6 +101,11 @@ public class AutonControl {
 				e.printStackTrace();
 			}
 		}, 0, period, TimeUnit.MICROSECONDS);
+	}
+	
+	public static long getRunTime()
+	{
+		return System.currentTimeMillis() - startTime;
 	}
 	
 	public static interface AutonRunnable
