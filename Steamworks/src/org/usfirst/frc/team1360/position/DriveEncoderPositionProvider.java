@@ -27,7 +27,7 @@ public final class DriveEncoderPositionProvider implements PositionProvider {
 		this.sensorInput = sensorInput;
 		this.period = period;
 		this.driveWidth = driveWidth;
-		this.inchesPerTick = Math.PI * wheelDiameter / ticksPerRotation;
+		this.inchesPerTick = Math.PI * wheelDiameter * gearRatio / ticksPerRotation;
 		lastLeft = sensorInput.getLeftDriveEncoder();
 		lastRight = sensorInput.getRightDriveEncoder();
 		reset(x, y, a);
