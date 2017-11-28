@@ -23,7 +23,7 @@ public final class Position implements Cloneable {
 		return a;
 	}
 	
-	public void offset(double x, double y, double z) {
+	public void offset(double x, double y, double a) {
 		this.x += x;
 		this.y += y;
 		this.a += a;

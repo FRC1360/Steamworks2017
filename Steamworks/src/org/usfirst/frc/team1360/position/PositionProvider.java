@@ -5,7 +5,7 @@ public interface PositionProvider {
 	double getY();
 	double getA();
 	
-	void reset(double x, double y, double z);
+	void reset(double x, double y, double a);
 	
 	default void reset() {
 		reset(0, 0, 0);
