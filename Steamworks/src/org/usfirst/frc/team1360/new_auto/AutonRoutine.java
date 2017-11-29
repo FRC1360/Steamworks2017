@@ -44,7 +44,7 @@ public abstract class AutonRoutine extends Thread {
 				}
 				finally
 				{
-					timedOut();
+					override("timeout");
 				}
 			}
 		}
@@ -77,7 +77,7 @@ public abstract class AutonRoutine extends Thread {
 					}
 					finally
 					{
-						timedOut();
+						override("timeout");
 					}
 				}
 			});
@@ -103,12 +103,19 @@ public abstract class AutonRoutine extends Thread {
 	
 	public synchronized final void kill()
 	{
-		interrupt();
-		try {
-			join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		while (isAlive())
+		{
+			interrupt();
+			try
+			{
+				join();
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
 		}
+		override("kill");
 		notifyAll();
 		queue.forEach(AutonRoutine::start);
 	}
@@ -147,7 +154,8 @@ public abstract class AutonRoutine extends Thread {
 	@Override
 	public final void run()
 	{
-		try {
+		try
+		{
 			runCore();
 			synchronized(this)
 			{
@@ -155,7 +163,9 @@ public abstract class AutonRoutine extends Thread {
 				queue.forEach(AutonRoutine::start);
 				done = true;
 			}
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e)
+		{
 			e.printStackTrace();
 		}
 	}
@@ -166,8 +176,13 @@ public abstract class AutonRoutine extends Thread {
 		return name;
 	}
 	
-	protected void timedOut()
+	protected final void override(String reason)
 	{
-		System.out.printf("%s timed out!\n", getClass().getSimpleName());
+		System.out.printf("%s overriden: %s!\n", getClass().getSimpleName(), reason);
+		overrideCore();
+	}
+	
+	protected void overrideCore()
+	{
 	}
 }

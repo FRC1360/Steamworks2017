@@ -33,9 +33,8 @@ public class DrivePIDEncoder extends AutonRoutine {
 	}
 	
 	@Override
-	protected void timedOut()
+	protected void overrideCore()
 	{
-		super.timedOut();
 		robotOutput.tankDrive(0, 0);
 	}
 }
