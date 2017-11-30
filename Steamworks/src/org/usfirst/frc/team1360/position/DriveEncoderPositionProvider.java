@@ -34,8 +34,8 @@ public final class DriveEncoderPositionProvider implements PositionProvider {
 		scheduler.prestartAllCoreThreads();
 	}
 	
-	public DriveEncoderPositionProvider(SensorInputProvider sensorInput, int period, double driveRadius, double wheelDiameter, double gearRatio, int ticksPerRotation) {
-		this(sensorInput, period, driveRadius, wheelDiameter, gearRatio, ticksPerRotation, 0, 0, 0);
+	public DriveEncoderPositionProvider(SensorInputProvider sensorInput, int period, double driveWidth, double wheelDiameter, double gearRatio, int ticksPerRotation) {
+		this(sensorInput, period, driveWidth, wheelDiameter, gearRatio, ticksPerRotation, 0, 0, 0);
 	}
 	
 	private synchronized void loop() {
