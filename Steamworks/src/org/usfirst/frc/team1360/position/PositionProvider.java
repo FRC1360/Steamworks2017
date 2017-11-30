@@ -7,6 +7,9 @@ public interface PositionProvider {
 	
 	void reset(double x, double y, double a);
 	
+	void start();
+	void stop();
+	
 	default void reset() {
 		reset(0, 0, 0);
 	}

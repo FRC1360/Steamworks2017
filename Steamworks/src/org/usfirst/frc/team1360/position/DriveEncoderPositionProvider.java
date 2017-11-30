@@ -63,11 +63,13 @@ public final class DriveEncoderPositionProvider implements PositionProvider {
 		lastRight = right;
 	}
 	
+	@Override
 	public synchronized void start() {
 		if (!isRunning())
 			future = scheduler.scheduleAtFixedRate(this::loop, 0, period, TimeUnit.MICROSECONDS);
 	}
 	
+	@Override
 	public synchronized void stop() {
 		if (isRunning())
 			future.cancel(false);
