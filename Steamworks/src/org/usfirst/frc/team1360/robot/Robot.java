@@ -12,6 +12,8 @@ import org.usfirst.frc.team1360.robot.teleop.TeleopControl;
 import org.usfirst.frc.team1360.robot.util.OrbitCamera;
 import org.usfirst.frc.team1360.server.Connection;
 import org.usfirst.frc.team1360.navx.*;
+import org.usfirst.frc.team1360.position.DriveEncoderPositionProvider;
+import org.usfirst.frc.team1360.position.PositionProvider;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -21,6 +23,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {	
 	private static Robot instance;
 	
+	private final double DRIVE_WIDTH = 36;
+	private final double WHEEL_DIAMETER = 4;
+	private final double ENCODER_DRIVE_GEAR_RATIO = 1;
+	private final int ENCODER_TICKS_PER_ROTATION = 1024;
+	
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
 	private SensorInput sensorInput;
@@ -28,7 +35,7 @@ public class Robot extends IterativeRobot {
 	private AutonControl autonControl;
 	private OrbitCamera camera;
 	private Connection connection;
-	private PositionTracker pt; 
+	private PositionProvider position;
 	int i;
 	
 	public Robot()
@@ -48,7 +55,7 @@ public class Robot extends IterativeRobot {
     	this.sensorInput.reset();
     	
     	camera = new OrbitCamera();
-    	pt = PositionTracker.getInstance();
+    	position = new DriveEncoderPositionProvider(sensorInput, 1000, DRIVE_WIDTH, WHEEL_DIAMETER, ENCODER_DRIVE_GEAR_RATIO, ENCODER_TICKS_PER_ROTATION);
     	i = 0;
     }
     
@@ -64,6 +71,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() 
     {
+    	this.position.start();
     	this.autonControl.initialize();
     	this.sensorInput.reset();
     	this.sensorInput.resetAHRS();
@@ -71,6 +79,7 @@ public class Robot extends IterativeRobot {
 
     public void disabledInit()
     {
+    	this.position.stop();
     	this.robotOutput.stopAll();
     	this.teleopControl.disable();
     	this.sensorInput.calculate();
@@ -81,8 +90,6 @@ public class Robot extends IterativeRobot {
     	this.sensorInput.calculate();
     	this.autonControl.updateModes();
     	this.camera.updateCamera();
-    	
-    	
     }
 
     public void autonomousPeriodic()
