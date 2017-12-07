@@ -25,8 +25,8 @@ public class Robot extends IterativeRobot {
 	
 	private final double DRIVE_WIDTH = 31;
 	private final double WHEEL_DIAMETER = 3.75;
-	private final double ENCODER_DRIVE_GEAR_RATIO = 3.87;
-	private final int ENCODER_TICKS_PER_ROTATION = 1024;
+	private final double ENCODER_DRIVE_GEAR_RATIO = 1.375;
+	private final int ENCODER_TICKS_PER_ROTATION = 1440;
 	
 	private RobotOutput robotOutput;
 	private HumanInput humanInput;
