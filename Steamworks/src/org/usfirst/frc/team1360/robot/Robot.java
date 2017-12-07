@@ -23,9 +23,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {	
 	private static Robot instance;
 	
-	private final double DRIVE_WIDTH = 36;
-	private final double WHEEL_DIAMETER = 4;
-	private final double ENCODER_DRIVE_GEAR_RATIO = 1;
+	private final double DRIVE_WIDTH = 31;
+	private final double WHEEL_DIAMETER = 3.75;
+	private final double ENCODER_DRIVE_GEAR_RATIO = 3.87;
 	private final int ENCODER_TICKS_PER_ROTATION = 1024;
 	
 	private RobotOutput robotOutput;
@@ -99,29 +99,25 @@ public class Robot extends IterativeRobot {
     	this.sensorInput.calculate();
 		SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
     }
-
+    
+    public void teleopInit()
+    {
+        this.position.reset();
+        this.position.start();
+        this.sensorInput.resetAHRS();
+    }
 
     public void teleopPeriodic()
     {
         this.sensorInput.calculate();
         this.teleopControl.runCycle();
         this.camera.updateCamera();
-        if (i == 10)
-        {
-        	//System.out.println(pt.getPosition()[0] + "\n" + pt.getPosition()[1] + "\n\n\n");
-        	/*SmartDashboard.putNumber("Accel X", pt.getAcceleration()[0]);
-        	SmartDashboard.putNumber("Accel Y", pt.getAcceleration()[1]);
-        	SmartDashboard.putNumber("Vel X", pt.getVelocity()[0]);
-        	SmartDashboard.putNumber("Vel Y", pt.getVelocity()[1]);
-        	SmartDashboard.putNumber("Pos X", pt.getPosition()[0]);
-        	SmartDashboard.putNumber("Pos Y", pt.getPosition()[1]);
-        	SmartDashboard.putNumber("AHRS Vel X", sensorInput.getAHRSVelocityX());
-        	SmartDashboard.putNumber("AHRS Vel Y", sensorInput.getAHRSVelocityY());
-        	SmartDashboard.putNumber("PT Update Time", pt.timeDiff);*/
-        	i = 0;
-        }
-        
-        i++;
+        SmartDashboard.putNumber("Pos X", this.position.getX());
+        SmartDashboard.putNumber("Pos Y", this.position.getY());
+        SmartDashboard.putNumber("Pos A", this.position.getA() * 180 / Math.PI);
+        SmartDashboard.putNumber("NavX Yaw", this.sensorInput.getAHRSYaw());
+        SmartDashboard.putNumber("Encoder L", this.sensorInput.getLeftDriveEncoder());
+        SmartDashboard.putNumber("Encoder R", this.sensorInput.getRightDriveEncoder());
     }
  
 }
